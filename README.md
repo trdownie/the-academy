@@ -1,104 +1,208 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# <div align="center">The Academy</div>
 
-Welcome trdownie,
+View the live site [here](https://trdownie.github.io/the-academy/)
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. The last update to this file was: **July 2, 2021**
+This responsive website is an academic site that allows for the direct interaction of academics and the public. The purpose of this site is to connect officially recognsied academics who hold degrees and other experts with members of the public via a subscription service whereby the public fund and receive access to the work of the academics. This website also forms part of my diploma in Full Stack Development with the Code Institute, specifically full stack development. As such, this site has been developed using HTML5, CSS3, JavaScript & Python, built using the Django framework.
 
-## Gitpod Reminders
+I have streamlined certain elements of my README process to avoid duplication of content and to ensure the bulk of the time is spent on development. No material information is lost, but instead concision is practiced where possible.
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+<div align="center"><img src="static/img/README/am-i-responsive.png" style="height:500px" alt="responsive image of this website"></div>
 
-`python3 -m http.server`
+---
+# <div align="center">PART I: PRE-DEVELOPMENT</div>
 
-A blue button should appear to click: _Make Public_,
+The first section of this README details the pre-development process. The contents of this section are summarised below.
 
-Another blue button should appear to click: _Open Browser_.
+1. [Frontend Design: User Experience (UX)](#frontend-design)
+    - [User Stories](#user-stories)
+	- [Design](#design)
+	- [Frameworks/Libraries](#frontend-tools)
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+2. [Backend Design](#backend-design)
+    - [Database](#database)
+    - [Frameworks & Libraries](#backend-tools)
+---
 
-A blue button should appear to click: _Make Public_,
+## <div id="frontend-design" align="center">1. Frontend Design: User Experience (UX)</div>
 
-Another blue button should appear to click: _Open Browser_.
+### <div align="center" id="user-stories">- User Stories -</div>
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+The **primary users** of this site will fall into two categories: students and teachers. These are both simply called academics, since academic learning never ends for true academics. The teacher/student distinction is only implied by way of whether these academics are producing (teachers) or consuming (students) academic work. Therefore, once a student writes a submission they are a teacher, and when a teacher consumes academic work of another they are a student.
 
-To log into the Heroku toolbelt CLI:
+<div align="center"><img src="static/img/README/user-stories.png" style="height:500px" alt="sitemap"></div>
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+### <div align="center" id="design">- Design -</div>
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+#### *Strategy*
 
-------
+The **strategy** of the website aligns with the user goals above.
 
-## Release History
+The **primary goal** of this website is to facilitate a direct connection between academics, namely students and teachers, through which the former can compensate the latter for direct access to their work.
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+The **secondary goal** of this website is to take a small cut of that income for the site owner, for the upkeep of the platform.
 
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
+#### *Scope*
 
-**July 2 2021:** Remove extensions that are not available in Open VSX.
+The scope of the website is to achieve the strategic goals outlined above.
 
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
+The main scope considerations are:
 
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
+- The landing page will display an intuitive navigation for users to find academic work
+- The landing page will also be home to the main index with all of the latest submissions front and center
+- Users will be able to view work by:
+    - Subject
+    - Teacher
+    - Rating
+    - Latest work
+    - Tag (if time allows)
+- There will be functionality for academics to:
+	- Register an account
+	- Log in & out
+	- View/update their profile
+	- Submit work for consumption or staking
+	- Subscribe/purchase/stake other work
 
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
+(Note: staking is paying a nominal amount to contribute to work before it is created, essentially funding the work via the platform)
 
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
+The content considerations are:
+- The index will contain the author, title, snippet, and a user-submitted graphic
+- The article page will show the author's image, the full article graphic, the summary text and any further pertinent details
+- User profiles will show the academic's other work and interests alongside a profile picture
+- One bought, subscribed or staked, Articles will open in a pdf in a new tab
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+#### *Structure*
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
+The structure of the website will revolve around the main index and user profiles.
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
+The **website structure** will be as follows:
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+1. Landing Page (main index)
+2. Register Page
+3. Login Page
+4. Profile Pages
+5. Article Page
+6. Academic Page
+7. Checkout Page
+8. Confirmation Page
+9. About Page
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+A rough visual representation of this is below in the sitemap:
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
+<div align="center"><img src="static/img/README/sitemap.jpg" style="height:350px" alt="sitemap"></div>
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
+**Information flow** for the website is relatively straightforward. The main index is the centrepiece showcasing the articles. From here users can navigate to article pages and academic pages, then to checkout and confirmation when making purchases/subscriptions/stakes. Users can also register/log in to their profiles and view the about page with information regarding the site.
 
-------
+**Navigation** for the website will include a narrow top bar with links to register, log in and about. Underneath this, there will be a wider menu split into three main parts: subject, academic, and popular. Each of these will contain further links that will sort the index accordingly.
 
-## FAQ about the uptime script
+**Interaction** involves CRUD (for user profiles and articles), rating articles, sorting/filtering the articles, and searching the articles.
 
-**Why have you added this script?**
+#### *Skeleton*
 
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
+Initial sketches on paper led to the following (very) basic wireframes being developed using Concept App on an iPad Pro.
 
-**How will this affect me?**
+<div align="center"><img src="static/img/README/wireframes.jpg" style="height:500px" alt="site wireframes"></div>
 
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
+As you can see, the layout is simple and consistent on each page. A breakdown of the proposed **features** are as follows:
 
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
+1. Index
+	 - Ability to sort and filter by various dropdown menus
+	 - Ability to search by subject, title or author
+	 - Shopping cart feature for adding articles/subscriptions/stakes (once logged in)
+2. Register Page
+    - Page to register account
+3. Login Page
+	- Page to log into account
+4. Profile Pages
+	- Backend profile where academics can update their profile, settings and add articles
+	- Form pages associated with specific elements here
+5. Article Page
+	- More information regarding article
+	- Option to subscribe to author (if logged in)
+	- Option to buy article (if completed) or stake article (if proposed)
+6. Academic Page
+	- Profile of academic with image and info
+	- Option to subscribe to academic
+	- List of published articles
+	- List of people the academic subscribes to
+7. Checkout Page
+	- Upon any purchase, subscription or stake, showing summary
+	- Stripe connection to take payment
+8. Confirmation Page
+	- Post check-out confirmation of purchase/subscription/stake
+9. About Page
+	- Information regarding the site and how it works
 
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
+#### *Surface*
 
-**So….?**
+Following the wireframes, the final step of design was to create in-depth [mockups](https://www.figma.com/file/13wuXz0bu5UVPzeouO5ymU/The-Academy). Due to time constraints, only the index, article, and academic pages were created. They were created using Figma, and screenshots of these are below.
 
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
+<div align="center"><img src="static/img/README/mockup-index.png" style="height:1000px" alt="mockup of main index"></div>
 
-**Can I opt out?**
+<div align="center"><img src="static/img/README/mockup-article.png" style="height:1000px" alt="mockup of article summary page"></div>
 
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
+<div align="center"><img src="static/img/README/mockup-academic.png" style="height:1000px" alt="mockup of academic profile page"></div>
 
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
+Regarding **typography**, a classically clean font, [Montserrat](https://fonts.google.com/specimen/Montserrat#about), was chosen. This is an extremely readable font and often recommended for cleanness, and therefore fitting for the clean, fresh design of the site. Montserrat has a full breadth of weights and italics within each weight, therefore allowing distinction. In addition, capitals are used for contrast.
 
-**Anything more?**
+The **colour scheme** employed is a combination of blac and white, with a collection of appealing accent colours. The back and white are used with a view to making the website appear classic, timeless, and therefore established. In contrast, the accent colours are used to bring a fresh vibe to its design that tells users this is not a tired and old establishment.
 
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
+**Imagery** is used here in three instances: the article images, which the site encourages academics to upload; academic profiles, for adding personalisation; and icons, utilising the metaphorical nature of the human mind.
+
+The **copy** used is relatively minimalistic, with the exception of the About page and tailored navigation boxes at the bottom, which explain the purpose of the site and how to use it, and try to draw users in deeper. The rest of the copy is almost exclusively entered by users in the form of articles and academic information, with the exception of bog standard directional microcopy.
+
+### <div align="center" id="frontend-tools">- Frameworks & Libraries -</div>
+
+#### *Frameworks*
+
+No frontend frameworks will be used in this project.
+
+#### *Libraries*
+
+The following frontend libraries will be utilised:
+- [Foundation by Zurb](https://get.foundation)
+	- Used for style & layout
+- [JQuery](https://jquery.com)
+	- Used for animation and to support Foundation animations
+- [Font Awesome](https://fontawesome.com)
+	- Used for icons
+- [Google Fonts](https://fonts.google.com)
+	- Used to import Montserrat font
 
 ---
 
-Happy coding!
+## <div align="center" id="backend-design">2. Backend Design: Database and Frameworks</div>
+
+### <div align="center" id="database">- Database -</div>
+
+#### *Conceptual*
+
+Initially, a simple Entity Relational (ER) data model was developed, as shown below.
+
+<div align="center"><img src="static/img/README/entity-model.png" style="height:500px" alt="diagram of entity relationships"></div>
+
+Here, the blue squares represent the three main entities: academics, articles, and subjects. The yellow diamonds represent the relationships between the entities, with the relational verb within the diamond and the cardinality labelled on the lines that connect each entity pair. Finally, the green ovals represent the attributes of each entity.
+
+However, each of the relationships are many-to-many. One academic can write many articles or study many subjects, one subjects can be studied by many academics or covered by many articles, and one article can cover many subjects or be written by many academics. In addition, there are many to many relationships between academics in two forms: subscribing and following. Therefore, in total, there are five many to many relationships. As such, five junction entities will be required in the next phase of database design: logical.
+
+#### *Logical*
+
+Next, a database schema was developed that shows the additional junction tables, how foreign keys will link each table, and the data types for each attribute.
+
+<div align="center"><img src="static/img/README/database-schema.png" style="height:500px" alt="diagram of database schema"></div>
+
+As you can see, the model is more complex in regards to having more entities (tables), but the attributes within each table have been significantly simplified.
+
+### *Physical*
+
+Finally, consideration must be given to the physical DBMS that will be used in production. Since Django will be utilised, and since this is still a relatively simple database structure, I will default to SQLite, the default Django database that is built into Python. This is a relational database, therefore the schemas above will work nicely.
+
+### <div align="center" id="backend-tools">- Frameworks & Libraries -</div>
+
+#### *Frameworks*
+
+The [Django framework](https://www.djangoproject.com) will be used for backend development. The development section is broken down into reusable components, with an app built for each component, in line with Django development.
+
+#### *Libraries*
+
+No backend libraries will be used.
+
