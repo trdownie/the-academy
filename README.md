@@ -23,7 +23,7 @@ The first section of this README details the pre-development process. The conten
     - [Frameworks & Libraries](#backend-tools)
 ---
 
-## <div id="frontend-design" align="center">1. Frontend Design: User Experience (UX)</div>
+## <div align="center" id="frontend-design">1. Frontend Design: User Experience (UX)</div>
 
 ### <div align="center" id="user-stories">- User Stories -</div>
 
