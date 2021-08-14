@@ -43,9 +43,22 @@
         {% endblock %}
 
         <title>The Academy {% block extend_title %}{% endblock %}</title>
+
     </head>
 
     <body>
+
+        {% block page_header %}
+        {% endblock %}
         
+        {% block content %}
+        {% endblock %}
+
+        {% block page_footer %}
+        {% endblock %}
+
+        {% block postload_js %}
+        {% endblock %}
+
     </body>
 </html>
