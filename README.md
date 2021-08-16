@@ -29,11 +29,9 @@ The first section of this README details the pre-development process. The conten
 
 The **primary users** of this site will fall into two categories: students and teachers. These are both simply called academics, since academic learning never ends for true academics. The teacher/student distinction is only implied by way of whether these academics are producing (teachers) or consuming (students) academic work. Therefore, once a student writes a submission they are a teacher, and when a teacher consumes academic work of another they are a student.
 
-<div align="center"><img src="static/img/README/user-stories.png" style="height:500px" alt="sitemap"></div>
-
 ### <div align="center" id="design">- Design -</div>
 
-#### *Strategy*
+#### ***Strategy***
 
 The **strategy** of the website aligns with the user goals above.
 
@@ -41,7 +39,7 @@ The **primary goal** of this website is to facilitate a direct connection betwee
 
 The **secondary goal** of this website is to take a small cut of that income for the site owner, for the upkeep of the platform.
 
-#### *Scope*
+#### ***Scope***
 
 The scope of the website is to achieve the strategic goals outlined above.
 
@@ -70,7 +68,7 @@ The content considerations are:
 - User profiles will show the academic's other work and interests alongside a profile picture
 - One bought, subscribed or staked, Articles will open in a pdf in a new tab
 
-#### *Structure*
+#### ***Structure***
 
 The structure of the website will revolve around the main index and user profiles.
 
@@ -96,7 +94,7 @@ A rough visual representation of this is below in the sitemap:
 
 **Interaction** involves CRUD (for user profiles and articles), rating articles, sorting/filtering the articles, and searching the articles.
 
-#### *Skeleton*
+#### ***Skeleton***
 
 Initial sketches on paper led to the following (very) basic wireframes being developed using Concept App on an iPad Pro.
 
@@ -132,7 +130,7 @@ As you can see, the layout is simple and consistent on each page. A breakdown of
 9. About Page
 	- Information regarding the site and how it works
 
-#### *Surface*
+#### ***Surface***
 
 Following the wireframes, the final step of design was to create in-depth [mockups](https://www.figma.com/file/13wuXz0bu5UVPzeouO5ymU/The-Academy). Due to time constraints, only the index, article, and academic pages were created. They were created using Figma, and screenshots of these are below.
 
@@ -152,11 +150,11 @@ The **copy** used is relatively minimalistic, with the exception of the About pa
 
 ### <div align="center" id="frontend-tools">- Frameworks & Libraries -</div>
 
-#### *Frameworks*
+#### ***Frameworks***
 
 No frontend frameworks will be used in this project.
 
-#### *Libraries*
+#### ***Libraries***
 
 The following frontend libraries will be utilised:
 - [Foundation by Zurb](https://get.foundation)
@@ -174,7 +172,7 @@ The following frontend libraries will be utilised:
 
 ### <div align="center" id="database">- Database -</div>
 
-#### *Conceptual*
+#### ***Conceptual***
 
 Initially, a simple Entity Relational (ER) data model was developed, as shown below.
 
@@ -184,7 +182,7 @@ Here, the blue squares represent the three main entities: academics, articles, a
 
 However, each of the relationships are many-to-many. One academic can write many articles or study many subjects, one subjects can be studied by many academics or covered by many articles, and one article can cover many subjects or be written by many academics. In addition, there are many to many relationships between academics in two forms: subscribing and following. Therefore, in total, there are five many to many relationships. As such, five junction entities will be required in the next phase of database design: logical.
 
-#### *Logical*
+#### ***Logical***
 
 Next, a database schema was developed that shows the additional junction tables, how foreign keys will link each table, and the data types for each attribute.
 
@@ -192,17 +190,17 @@ Next, a database schema was developed that shows the additional junction tables,
 
 As you can see, the model is more complex in regards to having more entities (tables), but the attributes within each table have been significantly simplified.
 
-### *Physical*
+### ***Physical***
 
 Finally, consideration must be given to the physical DBMS that will be used in production. Since Django will be utilised, and since this is still a relatively simple database structure, I will default to SQLite, the default Django database that is built into Python. This is a relational database, therefore the schemas above will work nicely.
 
 ### <div align="center" id="backend-tools">- Frameworks & Libraries -</div>
 
-#### *Frameworks*
+#### ***Frameworks***
 
 The [Django framework](https://www.djangoproject.com) will be used for backend development. The development section is broken down into reusable components, with an app built for each component, in line with Django development.
 
-#### *Libraries*
+#### ***Libraries***
 
 No backend libraries will be used.
 
