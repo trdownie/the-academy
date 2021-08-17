@@ -23,6 +23,8 @@
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
                 integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
                 crossorigin="anonymous" referrerpolicy="no-referrer">
+            <!-- Main Custom CSS -->
+            <link rel="stylesheet" href="{% static 'css/base.css' %}" type="text">
         {% endblock %}
 
         {% block extra_css %}
@@ -30,13 +32,15 @@
 
         {% block core_js %}
             <!-- JavaScript -->
-            <!-- Foundation -->
-            <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js"
-                integrity="sha256-pRF3zifJRA9jXGv++b06qwtSqX1byFQOLjqa2PTEb2o=" crossorigin="anonymous"></script>
             <!-- JQuery -->
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
                 integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
                 crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            <!-- Foundation -->
+            <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js"
+                integrity="sha256-pRF3zifJRA9jXGv++b06qwtSqX1byFQOLjqa2PTEb2o=" crossorigin="anonymous"></script>
+            <!-- Main Custom JS -->
+
         {% endblock %}
 
         {% block extra_js %}
@@ -48,16 +52,96 @@
 
     <body>
 
+
+
+
+        <div class="title-bar" data-responsive-toggle="example-menu" data-hide-for="medium">
+            <button class="menu-icon" type="button" data-toggle="example-menu"></button>
+            <div class="title-bar-title">Menu</div>
+        </div>
+          
+        <div class="top-bar" id="example-menu">
+            <div class="top-bar-left">
+                <ul class="vertical medium-horizontal menu" data-responsive-menu="drilldown medium-dropdown">
+                    <li>
+                        <a href="#">HUMAN</a>
+                        <ul class="vertical menu">
+                            <li><a href="#">Arts (Performance)</a></li>
+                            <li><a href="#">Arts (Visual)</a></li>
+                            <li><a href="#">History</a></li>
+                            <li><a href="#">Languages & Literature</a></li>
+                            <li><a href="#">Law</a></li>
+                            <li><a href="#">Philosophy</a></li>
+                            <li><a href="#">Theology</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">SOCIAL</a>
+                        <ul class="vertical menu">
+                            <li><a href="#">Anthropology</a></li>
+                            <li><a href="#">Economics</a></li>
+                            <li><a href="#">Geography</a></li>
+                            <li><a href="#">Political Science</a></li>
+                            <li><a href="#">Psychology</a></li>
+                            <li><a href="#">Sociology</a></li>
+                            <li><a href="#">Social Work</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">NATURAL</a>
+                        <ul class="vertical menu">
+                            <li><a href="#">Biology</a></li>
+                            <li><a href="#">Chemistry</a></li>
+                            <li><a href="#">Earth Science</a></li>
+                            <li><a href="#">Space Science</a></li>
+                            <li><a href="#">Physics</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">FORMAL</a>
+                        <ul class="vertical menu">
+                            <li><a href="#">Computer Science</a></li>
+                            <li><a href="#">Mathematics</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">APPLIED</a>
+                        <ul class="vertical menu">
+                            <li><a href="#">Business</a></li>
+                            <li><a href="#">Engineering & Technology</a></li>
+                            <li><a href="#">Medicine & Health</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
         {% block page_header %}
         {% endblock %}
-        
+
         {% block content %}
         {% endblock %}
 
         {% block page_footer %}
         {% endblock %}
 
+
+
         {% block postload_js %}
+            <script type="text/javascript">
+                $(document).foundation();
+            </script>
         {% endblock %}
 
     </body>
