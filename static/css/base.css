@@ -1,0 +1,12 @@
+html {
+
+}
+
+#main-menu, #top-bar, #nav-items, a.menu-item {
+    background-color: black;
+    color: white;
+}
+
+a.menu-item::after {
+    color: white;
+}

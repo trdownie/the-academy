@@ -24,7 +24,7 @@
                 integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
                 crossorigin="anonymous" referrerpolicy="no-referrer">
             <!-- Main Custom CSS -->
-            <link rel="stylesheet" href="{% static 'css/base.css' %}" type="text">
+            <link rel="stylesheet" href="{% static 'css/base.css' %}">
         {% endblock %}
 
         {% block extra_css %}
@@ -40,7 +40,7 @@
             <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js"
                 integrity="sha256-pRF3zifJRA9jXGv++b06qwtSqX1byFQOLjqa2PTEb2o=" crossorigin="anonymous"></script>
             <!-- Main Custom JS -->
-
+            <script src="{% static 'js/base.js' %}"></script>
         {% endblock %}
 
         {% block extra_js %}
@@ -59,12 +59,12 @@
             <button class="menu-icon" type="button" data-toggle="main-menu"></button>
             <div class="title-bar-title">Menu</div>
         </div>
-          
+        
         <div class="top-bar align-center-middle" id="main-menu">
-            <div class="top-bar">
-                <ul class="vertical medium-horizontal menu grid-x" data-responsive-menu="drilldown medium-dropdown">
-                    <li class="cell large-2">
-                        <a href="#">HUMAN</a>
+            <div class="top-bar" id="top-bar">
+                <ul class="vertical medium-horizontal menu" id="nav-items" data-responsive-menu="drilldown medium-dropdown">
+                    <li>
+                        <a class="menu-item" href="#">HUMAN</a>
                         <ul class="vertical menu">
                             <li><a href="#">Arts (Performance)</a></li>
                             <li><a href="#">Arts (Visual)</a></li>
@@ -75,7 +75,7 @@
                             <li><a href="#">Theology</a></li>
                         </ul>
                     </li>
-                    <li class="cell small-2">
+                    <li class="">
                         <a href="#">SOCIAL</a>
                         <ul class="vertical menu">
                             <li><a href="#">Anthropology</a></li>
@@ -87,7 +87,7 @@
                             <li><a href="#">Social Work</a></li>
                         </ul>
                     </li>
-                    <li class="cell small-2">
+                    <li class="">
                         <a href="#">NATURAL</a>
                         <ul class="vertical menu">
                             <li><a href="#">Biology</a></li>
@@ -97,14 +97,14 @@
                             <li><a href="#">Physics</a></li>
                         </ul>
                     </li>
-                    <li class="cell small-2">
+                    <li class="">
                         <a href="#">FORMAL</a>
                         <ul class="vertical menu">
                             <li><a href="#">Computer Science</a></li>
                             <li><a href="#">Mathematics</a></li>
                         </ul>
                     </li>
-                    <li class="cell small-2">
+                    <li class="">
                         <a href="#">APPLIED</a>
                         <ul class="vertical menu">
                             <li><a href="#">Business</a></li>
