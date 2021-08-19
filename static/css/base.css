@@ -10,10 +10,15 @@ a {
 }
 
 .btn, .form-control {
+    height: 35px;
     margin-top: 5px;
     border-radius: 0;
     color: white;
     border-color: white;
+}
+
+#magnifying-glass {
+    size: 200px;
 }
 
 .btn:hover {
@@ -27,10 +32,9 @@ a {
 }
 
 #logo {
-    font-size: xx-large;
-    font-weight: bold;
-    margin-left: 10px;
-    margin-top: 10px;
+    font-weight: 400;
+    padding-left: 10px;
+    margin-top: 5px;
 }
 
 #top-bar {
@@ -45,17 +49,14 @@ a {
 #register-link {
     background-color: #35DB95;
     color: black;
-    padding: 10px;
     margin-right: 0px;
 }
-
-
 
 #navbarSupportedContent {
     margin: 10px 0px;
 }
 
-ul.dropdown-menu {
+.dropdown-menu {
     border-radius: 0;
 }
 
@@ -70,4 +71,38 @@ ul.dropdown-menu {
 
 .navbar-toggler {
     
+}
+
+@media screen and (min-width: 768px){
+    #mobile-logo, #mobile-search, #login, #register {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 767px){
+    #top-bar {
+        display: none;
+    }
+    .navbar {
+        padding: 10px 0px;
+    }
+    .dropdown-menu, #login-link, #register-link {
+        text-align: center;
+    }
+    #register-link {
+        background-color: revert;
+        color: white;
+}
+
+@media screen and (max-width: 991px){
+    #logo {
+        font-size: 20px;
+        padding-top: 2px;
+    }
+}
+
+@media screen and (min-width: 992px){
+    #logo {
+        font-size: 24px;
+    }
 }
