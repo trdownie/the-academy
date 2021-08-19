@@ -52,14 +52,14 @@
         <div class="container-fluid bg-dark" id="top-bar">
             <div class="row">
                 <!-- Main Logo -->
-                <div id="logo" class="col-3 col-lg-4">
-                    <a class="uppercase" href="#">The <strong>Academy</strong></a>
+                <div id="logo-main" class="col-3 col-lg-4">
+                    <a class="uppercase white-text" href="#">The <strong>Academy</strong></a>
                 </div>
                 <!-- Search Form -->
                 <div class="col-6 col-lg-4">
                     <form class="d-flex">
                         <input class="form-control me-2" type="search" placeholder="Search..." aria-label="Search">
-                        <button class="btn" type="submit">
+                        <button id="search-btn" class="btn" type="submit">
                             <i class="fas fa-search" id="magnifying-glass"></i>
                         </button>
                     </form>
@@ -82,7 +82,7 @@
             <div class="container-fluid">
                 <!-- Mobile Only Logo -->
                 <div id="mobile-logo" class="justify-content-start">
-                    <a class="uppercase" href="#">The <strong>Academy</strong></a>
+                    <a class="uppercase white-text" href="#">The <strong>Academy</strong></a>
                 </div>
                 <!-- Mobile Only Hamburger Icon -->
                 <div class="justify-content-end">
@@ -213,8 +213,43 @@
         {% block content %}
         {% endblock %}
 
-        {% block page_footer %}
-        {% endblock %}
+
+
+        <!-- Sitewide Footer -->
+        <div class="d-flex align-items-end flex-column" style="height: 800px;"></div>
+            <div class="mt-auto row">
+                <div id="bottom-box" class="col-8 offset-2">
+                    <div class="row top-20">
+                        <div class="col center">
+                            <p class="uppercase md-text">Join The Academy</p>
+                        </div>
+                    </div>
+                    <div class="row top-20">
+                        <div class="col-10 offset-1">
+                            <p>Academic work should be available and affordable for all. Great institutions are important, 
+                                and we do not seek to replace them, but there are limitations to what they can and will do. 
+                                The Academy looks to remedy those limitations by connecting academics to communities directly 
+                                in a way that benefits both, as well as enhances the knowledge bank we can all share and benefit from.</p>
+                        </div>
+                    </div>
+                    <div class="row top-20 bottom-20">
+                        <div class="d-flex justify-content-center">
+                            <a class="nav-link black-text center" id="register-link-bottom" href="#">Register</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Sitewide Footer -->
+        <div class="d-flex align-items-end flex-column"></div>
+            <div class="mt-auto bg-dark row" id="bottom-bar">
+                <div class="col center">
+                    <a class="uppercase white-text" href="#">The <strong>Academy</strong></a>
+                </div>
+            </div>
+        </div>
+
+
 
         {% block postload_js %}
         <!-- Bootstrap -->

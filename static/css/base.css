@@ -1,15 +1,50 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 html {
-    background-color: white;
+    font-family: Montserrat, sans-serif;
+    font-size: 16px;
 }
 
 a {
-    color: white;
     text-decoration: none;
 }
 
-.btn, .form-control {
+.md-text {
+    font-size: 1.25rem;
+}
+
+.lg-text {
+    font-size: 1.5rem;
+}
+
+.xl-text {
+    font-size: 2rem;
+}
+
+.xxl-text {
+    font-size: 2.5rem;
+}
+
+
+
+
+.large-text {
+
+}
+
+.white-text {
+    color: white;
+}
+
+.black-text {
+    color: black;
+}
+
+.center {
+    text-align: center;
+}
+
+#search-btn, .form-control {
     height: 35px;
     margin-top: 5px;
     border-radius: 0;
@@ -21,7 +56,7 @@ a {
     size: 200px;
 }
 
-.btn:hover {
+#search-btn:hover {
     color: black;
     border-color: black;
     background-color: white;
@@ -31,7 +66,7 @@ a {
     text-transform: uppercase;
 }
 
-#logo {
+#logo-main {
     font-weight: 400;
     padding-left: 10px;
     margin-top: 5px;
@@ -46,10 +81,16 @@ a {
     color: white;
 }
 
-#register-link {
+#register-link, #register-link-bottom {
     background-color: #35DB95;
     color: black;
+    border: 1px solid black;
+    border-radius: 0px;
     margin-right: 0px;
+}
+
+#register-link-bottom {
+    width: 100px;
 }
 
 #navbarSupportedContent {
@@ -69,8 +110,23 @@ a {
     text-align: center;
 }
 
-.navbar-toggler {
-    
+#bottom-box {
+    border: 1px solid #C7C7C7;
+    margin-bottom: 40px;
+}
+
+.top-20 {
+    margin-top: 20px;
+}
+
+.bottom-20 {
+    margin-bottom: 20px;
+}
+
+#bottom-bar {
+    height: 50px;
+    align-content: center;
+    justify-content: center;
 }
 
 @media screen and (min-width: 768px){
@@ -83,6 +139,9 @@ a {
     #top-bar {
         display: none;
     }
+    #mobile-logo {
+        font-size: 20px;
+    }
     .navbar {
         padding: 10px 0px;
     }
@@ -92,17 +151,18 @@ a {
     #register-link {
         background-color: revert;
         color: white;
+    }
 }
 
 @media screen and (max-width: 991px){
-    #logo {
+    #logo-main {
         font-size: 20px;
         padding-top: 2px;
     }
 }
 
 @media screen and (min-width: 992px){
-    #logo {
+    #logo-main {
         font-size: 24px;
     }
 }
