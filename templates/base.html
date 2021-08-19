@@ -16,9 +16,9 @@
 
         {% block core_css %}
             <!-- CSS -->
-            <!-- Foundation -->
-            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css"
-                integrity="sha256-ogmFxjqiTMnZhxCqVmcqTvjfe1Y/ec4WaRj/aQPvn+I=" crossorigin="anonymous">
+            <!-- Bootstrap -->
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+                integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
             <!-- Font Awesome -->
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
                 integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
@@ -36,9 +36,6 @@
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
                 integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
                 crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-            <!-- Foundation -->
-            <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js"
-                integrity="sha256-pRF3zifJRA9jXGv++b06qwtSqX1byFQOLjqa2PTEb2o=" crossorigin="anonymous"></script>
             <!-- Main Custom JS -->
             <script src="{% static 'js/base.js' %}"></script>
         {% endblock %}
@@ -52,69 +49,123 @@
 
     <body>
 
-
-
-
-        <div class="title-bar" data-responsive-toggle="main-menu" data-hide-for="medium">
-            <button class="menu-icon" type="button" data-toggle="main-menu"></button>
-            <div class="title-bar-title">Menu</div>
-        </div>
-        
-        <div class="top-bar align-center-middle" id="main-menu">
-            <div class="top-bar" id="top-bar">
-                <ul class="vertical medium-horizontal menu" id="nav-items" data-responsive-menu="drilldown medium-dropdown">
-                    <li>
-                        <a class="menu-item" href="#">HUMAN</a>
-                        <ul class="vertical menu">
-                            <li><a href="#">Arts (Performance)</a></li>
-                            <li><a href="#">Arts (Visual)</a></li>
-                            <li><a href="#">History</a></li>
-                            <li><a href="#">Languages & Literature</a></li>
-                            <li><a href="#">Law</a></li>
-                            <li><a href="#">Philosophy</a></li>
-                            <li><a href="#">Theology</a></li>
-                        </ul>
-                    </li>
-                    <li class="">
-                        <a href="#">SOCIAL</a>
-                        <ul class="vertical menu">
-                            <li><a href="#">Anthropology</a></li>
-                            <li><a href="#">Economics</a></li>
-                            <li><a href="#">Geography</a></li>
-                            <li><a href="#">Political Science</a></li>
-                            <li><a href="#">Psychology</a></li>
-                            <li><a href="#">Sociology</a></li>
-                            <li><a href="#">Social Work</a></li>
-                        </ul>
-                    </li>
-                    <li class="">
-                        <a href="#">NATURAL</a>
-                        <ul class="vertical menu">
-                            <li><a href="#">Biology</a></li>
-                            <li><a href="#">Chemistry</a></li>
-                            <li><a href="#">Earth Science</a></li>
-                            <li><a href="#">Space Science</a></li>
-                            <li><a href="#">Physics</a></li>
-                        </ul>
-                    </li>
-                    <li class="">
-                        <a href="#">FORMAL</a>
-                        <ul class="vertical menu">
-                            <li><a href="#">Computer Science</a></li>
-                            <li><a href="#">Mathematics</a></li>
-                        </ul>
-                    </li>
-                    <li class="">
-                        <a href="#">APPLIED</a>
-                        <ul class="vertical menu">
-                            <li><a href="#">Business</a></li>
-                            <li><a href="#">Engineering & Technology</a></li>
-                            <li><a href="#">Medicine & Health</a></li>
-                        </ul>
-                    </li>
-                </ul>
+        <div class="container-fluid bg-dark" id="top-bar">
+            <div class="row">
+                <div class="col-3 col-lg-4">
+                    <a id="logo" class="uppercase" href="#">The Academy</a>
+                </div>
+                <div class="col-6 col-lg-4">
+                    <form class="d-flex">
+                        <input class="form-control me-2" type="search" placeholder="Search..." aria-label="Search">
+                        <button class="btn" type="submit">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
+                </div>
+                <div class="col-3 col-lg-4 g-0">
+                    <div class="row float-end">
+                        <div class="col">
+                            <a class="nav-link" id="login-link" href="#">Login</a>
+                        </div>
+                        <div class="col">
+                            <a class="nav-link" id="register-link" href="#">Register</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+            <div class="container-fluid justify-content-end">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                    <div class="collapse navbar-collapse row" id="navbarSupportedContent">
+                        <ol class="navbar-nav">
+                            <li class="nav-item dropdown col">
+                                <a class="nav-link dropdown-toggle uppercase" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Human
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="#">Arts (Performance)</a></li>
+                                    <li><a class="dropdown-item" href="#">Arts (Visual)</a></li>
+                                    <li><a class="dropdown-item" href="#">History</a></li>
+                                    <li><a class="dropdown-item" href="#">Languages & Literature</a></li>
+                                    <li><a class="dropdown-item" href="#">Law</a></li>
+                                    <li><a class="dropdown-item" href="#">Philosophy</a></li>
+                                    <li><a class="dropdown-item" href="#">Theology</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="#">Propose</a></li>
+                                    <li><a class="dropdown-item" href="#">Submit</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown col">
+                                <a class="nav-link dropdown-toggle uppercase" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Social
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="#">Anthropology</a></li>
+                                    <li><a class="dropdown-item" href="#">Economics</a></li>
+                                    <li><a class="dropdown-item" href="#">Geography</a></li>
+                                    <li><a class="dropdown-item" href="#">Political Science</a></li>
+                                    <li><a class="dropdown-item" href="#">Psychology</a></li>
+                                    <li><a class="dropdown-item" href="#">Sociology</a></li>
+                                    <li><a class="dropdown-item" href="#">Social Work</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="#">Propose</a></li>
+                                    <li><a class="dropdown-item" href="#">Submit</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown col">
+                                <a class="nav-link dropdown-toggle uppercase" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Natural
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="#">Biology</a></li>
+                                    <li><a class="dropdown-item" href="#">Chemistry</a></li>
+                                    <li><a class="dropdown-item" href="#">Earth Science</a></li>
+                                    <li><a class="dropdown-item" href="#">Space Science</a></li>
+                                    <li><a class="dropdown-item" href="#">Physics</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="#">Propose</a></li>
+                                    <li><a class="dropdown-item" href="#">Submit</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown col">
+                                <a class="nav-link dropdown-toggle uppercase" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Formal
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="#">Computer Science</a></li>
+                                    <li><a class="dropdown-item" href="#">Mathematics</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="#">Propose</a></li>
+                                    <li><a class="dropdown-item" href="#">Submit</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown col">
+                                <a class="nav-link dropdown-toggle uppercase" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Applied
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="#">Business</a></li>
+                                    <li><a class="dropdown-item" href="#">Engineering & Technology</a></li>
+                                    <li><a class="dropdown-item" href="#">Medicine & Health</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="#">Propose</a></li>
+                                    <li><a class="dropdown-item" href="#">Submit</a></li>
+                                </ul>
+                            </li>
+                        </ol>
+                    </div>
+            </div>
+        </nav>
+
+
+
+
+    
+                    
+
 
 
 
@@ -136,13 +187,10 @@
         {% block page_footer %}
         {% endblock %}
 
-
-
         {% block postload_js %}
-            <script type="text/javascript">
-                $(document).foundation();
-            </script>
+        <!-- Bootstrap -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
         {% endblock %}
-
     </body>
 </html>
