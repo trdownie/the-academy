@@ -49,7 +49,7 @@
     <body>
         <!-- Navigation -->
         <!-- Main Top Bar: Larger Screens -->
-        <div class="container-fluid bg-dark" id="top-bar">
+        <div class="container-fluid bg-dark d-none d-md-block" id="top-bar">
             <div class="row">
                 <!-- Main Logo: Larger Screens -->
                 <div id="logo-main" class="col-3 col-lg-4">
@@ -59,8 +59,8 @@
                 <div class="col-6 col-lg-4">
                     <form class="d-flex">
                         <input class="form-control me-2" type="search" placeholder="Search..." aria-label="Search">
-                        <button id="search-btn" class="btn" type="submit">
-                            <i class="fas fa-search" id="magnifying-glass"></i>
+                        <button id="search-btn-main" class="btn" type="submit">
+                            <i class="fas fa-search" id="magnifying-glass-main"></i>
                         </button>
                     </form>
                 </div>
@@ -91,7 +91,7 @@
             <div class="container-fluid">
                 <!-- Mobile Only Logo: Small Screens -->
                 <div id="mobile-logo" class="justify-content-start">
-                    <a class="uppercase white-text" href="#">The <strong>Academy</strong></a>
+                    <a class="uppercase white-text d-md-none" href="#">The <strong>Academy</strong></a>
                 </div>
                 <!-- Mobile Only Hamburger Icon: Small Screens -->
                 <div class="justify-content-end">
@@ -104,17 +104,17 @@
                     <ol class="navbar-nav flex-grow-1">
                         <!-- Mobile Only Additional Links: Small Screens (dropdown) -->
                         {% if request.user.is_authenticated %}
-                            <li id="mobile-profile" class="nav-item">
+                            <li id="mobile-profile" class="nav-item d-md-none">
                                 <a id="mobile-profile-link" class="nav-link" href="">Profile</a>
                             </li>                        
-                            <li id="mobile-logout" class="nav-item">
+                            <li id="mobile-logout" class="nav-item d-md-none">
                                 <a id="mobile-logout-link" class="nav-link" href="{% url 'account_logout' %}">Logout</a>
                             </li>
                         {% else %}
-                            <li id="mobile-login" class="nav-item">
+                            <li id="mobile-login" class="nav-item d-md-none">
                                 <a id="mobile-login-link" class="nav-link" href="{% url 'account_login' %}">Login</a>
                             </li>                        
-                            <li id="mobile-register" class="nav-item">
+                            <li id="mobile-register" class="nav-item d-md-none">
                                 <a id="mobile-register-link" class="nav-link" href="{% url 'account_signup' %}">Register</a>
                             </li>
                         {% endif %}
@@ -194,11 +194,11 @@
                             </ul>
                         </li>
                         <!-- Mobile Only Search Bar: Small Screens (dropdown) -->
-                        <li id="mobile-search">
+                        <li id="mobile-search" class="mx-5 d-md-none">
                             <form class="d-flex">
                                 <input class="form-control me-2" type="search" placeholder="Search..." aria-label="Search">
-                                <button class="btn" type="submit">
-                                    <i class="fas fa-search" id="magnifying-glass"></i>
+                                <button id="search-btn-mobile" class="btn" type="submit">
+                                    <i class="fas fa-search" id="magnifying-glass-mobile"></i>
                                 </button>
                             </form>
                         </li>
@@ -255,7 +255,7 @@
                     <!-- Action Button -->
                     <div class="row mb-3">
                         <div class="d-flex justify-content-center">
-                            <a class="nav-link black-text center" id="register-link-bottom" href="#">Register</a>
+                            <a class="nav-link black-text center" id="register-link-bottom" href="{% url 'account_signup' %}">Register</a>
                         </div>
                     </div>
                 </div>

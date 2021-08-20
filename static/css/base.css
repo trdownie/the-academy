@@ -37,7 +37,7 @@ a {
     text-align: center;
 }
 
-#search-btn, .form-control {
+#search-btn-main, #search-btn-mobile, .form-control {
     height: 35px;
     margin-top: 5px;
     border-radius: 0;
@@ -45,11 +45,11 @@ a {
     border-color: white;
 }
 
-#magnifying-glass {
+#magnifying-glass-main, #magnifying-glass-mobile {
     size: 200px;
 }
 
-#search-btn:hover {
+#search-btn-main:hover, #search-btn-mobile:hover {
     color: black;
     border-color: black;
     background-color: white;
@@ -116,17 +116,7 @@ a {
     justify-content: center;
 }
 
-@media screen and (min-width: 768px){
-    #mobile-logo, #mobile-search, #mobile-login, #mobile-register,
-    #mobile-profile, #mobile-logout {
-        display: none;
-    }
-}
-
 @media screen and (max-width: 767px){
-    #top-bar {
-        display: none;
-    }
     #mobile-logo {
         font-size: 20px;
     }
