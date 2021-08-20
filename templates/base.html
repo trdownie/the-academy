@@ -53,7 +53,7 @@
             <div class="row">
                 <!-- Main Logo: Larger Screens -->
                 <div id="logo-main" class="col-3 col-lg-4">
-                    <a class="uppercase white-text" href="#">The <strong>Academy</strong></a>
+                    <a id="logo-main-link" class="uppercase white-text" href="{% url 'home' %}">The <strong>Academy</strong></a>
                 </div>
                 <!-- Main Search Form: Larger Screens -->
                 <div class="col-6 col-lg-4">
@@ -69,17 +69,17 @@
                     <div class="row float-end">
                         {% if request.user.is_authenticated %}
                             <div class="col">
-                                <a id="main-profile-link" class="nav-link" href="#">Profile</a>
+                                <a id="main-profile-link" class="nav-link" href="">Profile</a>
                             </div>                      
                             <div class="col">
-                                <a id="main-logout-link" class="nav-link" href="#">Logout</a>
+                                <a id="main-logout-link" class="nav-link" href="{% url 'account_logout' %}">Logout</a>
                             </div>
                         {% else %}
                             <div class="col">
-                                <a id="main-login-link" class="nav-link" href="#">Login</a>
+                                <a id="main-login-link" class="nav-link" href="{% url 'account_login' %}">Login</a>
                             </div>
                             <div class="col">
-                                <a id="main-register-link" class="nav-link" href="#">Register</a>
+                                <a id="main-register-link" class="nav-link" href="{% url 'account_signup' %}">Register</a>
                             </div>
                         {% endif %}
                     </div>
@@ -100,22 +100,22 @@
                     </button>
                 </div>
                 <!-- Main Nav Links -->
-                <div class="collapse navbar-collapse row" id="navbarSupportedContent">
+                <div class="collapse navbar-collapse row my-2" id="navbarSupportedContent">
                     <ol class="navbar-nav flex-grow-1">
                         <!-- Mobile Only Additional Links: Small Screens (dropdown) -->
                         {% if request.user.is_authenticated %}
                             <li id="mobile-profile" class="nav-item">
-                                <a id="mobile-profile-link" class="nav-link" href="#">Profile</a>
+                                <a id="mobile-profile-link" class="nav-link" href="">Profile</a>
                             </li>                        
                             <li id="mobile-logout" class="nav-item">
-                                <a id="mobile-logout-link" class="nav-link" href="#">Logout</a>
+                                <a id="mobile-logout-link" class="nav-link" href="{% url 'account_logout' %}">Logout</a>
                             </li>
                         {% else %}
                             <li id="mobile-login" class="nav-item">
-                                <a id="mobile-login-link" class="nav-link" href="#">Login</a>
+                                <a id="mobile-login-link" class="nav-link" href="{% url 'account_login' %}">Login</a>
                             </li>                        
                             <li id="mobile-register" class="nav-item">
-                                <a id="mobile-register-link" class="nav-link" href="#">Register</a>
+                                <a id="mobile-register-link" class="nav-link" href="{% url 'account_signup' %}">Register</a>
                             </li>
                         {% endif %}
                         <!-- Main Categories: Larger Screens -->
@@ -236,15 +236,15 @@
         <!-- CTA Bottom Box -->
         <div class="d-flex align-items-end flex-column" style="height: 800px;"></div>
             <div class="mt-auto row">
-                <div id="bottom-box" class="col-8 offset-2">
+                <div id="bottom-box" class="col-8 offset-2 mb-5">
                     <!-- CTA -->
-                    <div class="row top-20">
+                    <div class="row mt-4 mb-3">
                         <div class="col center">
                             <p class="uppercase md-text">Join The Academy</p>
                         </div>
                     </div>
                     <!-- Teaser Text -->
-                    <div class="row top-20">
+                    <div class="row mb-3">
                         <div class="col-10 offset-1">
                             <p>Academic work should be available and affordable for all. Great institutions are important, 
                                 and we do not seek to replace them, but there are limitations to what they can and will do. 
@@ -253,7 +253,7 @@
                         </div>
                     </div>
                     <!-- Action Button -->
-                    <div class="row top-20 bottom-20">
+                    <div class="row mb-3">
                         <div class="d-flex justify-content-center">
                             <a class="nav-link black-text center" id="register-link-bottom" href="#">Register</a>
                         </div>
@@ -265,7 +265,7 @@
         <div class="d-flex align-items-end flex-column"></div>
             <div class="mt-auto bg-dark row" id="bottom-bar">
                 <div class="col center">
-                    <a class="uppercase white-text" href="#">The <strong>Academy</strong></a>
+                    <a class="uppercase white-text" href="{% url 'home' %}">The <strong>Academy</strong></a>
                 </div>
             </div>
         </div>

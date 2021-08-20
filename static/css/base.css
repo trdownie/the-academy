@@ -71,12 +71,12 @@ a {
 }
 
 #main-login-link, #main-profile-link, #mobile-login-link,
-#mobile-register-link, #mobile-profile-link, #mobile-logout-link, #navbarDropdown {
+#mobile-register-link, #mobile-profile-link, #mobile-logout-link, #navbarDropdown,  #main-register-link:hover {
     color: white;
 }
 
 #main-login-link:hover, #main-profile-link:hover, #mobile-login-link:hover,
-#mobile-register-link:hover, #mobile-profile-link:hover, #mobile-logout-link:hover, #navbarDropdown:hover {
+#mobile-register-link:hover, #mobile-profile-link:hover, #mobile-logout-link:hover, #navbarDropdown:hover, #logo-main-link:hover {
     color: grey;
 }
 
@@ -85,24 +85,21 @@ a {
     color: black;
     border: 1px solid black;
     border-radius: 0px;
-    margin-right: 0px;
+}
+
+#main-logout-link {
+    background-color: #FD636B;
+    color: black;
+    border: 1px solid black;
+    border-radius: 0px;
 }
 
 #register-link-bottom {
     width: 100px;
 }
 
-#navbarSupportedContent {
-    margin: 10px 0px;
-}
-
 .dropdown-menu {
     border-radius: 0;
-}
-
-.navbar {
-    margin: 0px;
-    padding: 0px;
 }
 
 #navbarDropdown {
@@ -111,15 +108,6 @@ a {
 
 #bottom-box {
     border: 1px solid #C7C7C7;
-    margin-bottom: 40px;
-}
-
-.top-20 {
-    margin-top: 20px;
-}
-
-.bottom-20 {
-    margin-bottom: 20px;
 }
 
 #bottom-bar {
@@ -129,7 +117,8 @@ a {
 }
 
 @media screen and (min-width: 768px){
-    #mobile-logo, #mobile-search, #mobile-login, #mobile-register {
+    #mobile-logo, #mobile-search, #mobile-login, #mobile-register,
+    #mobile-profile, #mobile-logout {
         display: none;
     }
 }
@@ -144,7 +133,8 @@ a {
     .navbar {
         padding: 10px 0px;
     }
-    .dropdown-menu, #mobile-login-link, #mobile-register-link {
+    .dropdown-menu, #mobile-login-link, #mobile-register-link,
+    #mobile-profile-link, #mobile-logout-link {
         text-align: center;
     }
     #main-register-link {
