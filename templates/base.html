@@ -48,14 +48,14 @@
     </head>
     <body>
         <!-- Navigation -->
-        <!-- Top Bar: Larger Screens -->
+        <!-- Main Top Bar: Larger Screens -->
         <div class="container-fluid bg-dark" id="top-bar">
             <div class="row">
-                <!-- Main Logo -->
+                <!-- Main Logo: Larger Screens -->
                 <div id="logo-main" class="col-3 col-lg-4">
                     <a class="uppercase white-text" href="#">The <strong>Academy</strong></a>
                 </div>
-                <!-- Search Form -->
+                <!-- Main Search Form: Larger Screens -->
                 <div class="col-6 col-lg-4">
                     <form class="d-flex">
                         <input class="form-control me-2" type="search" placeholder="Search..." aria-label="Search">
@@ -64,27 +64,36 @@
                         </button>
                     </form>
                 </div>
-                <!-- Login/Register Buttons -->
+                <!-- Main Additional Links: Larger Screens -->
                 <div class="col-3 col-lg-4 g-0">
                     <div class="row float-end">
-                        <div class="col">
-                            <a class="nav-link" id="login-link" href="#">Login</a>
-                        </div>
-                        <div class="col">
-                            <a class="nav-link" id="register-link" href="#">Register</a>
-                        </div>
+                        {% if request.user.is_authenticated %}
+                            <div class="col">
+                                <a id="main-profile-link" class="nav-link" href="#">Profile</a>
+                            </div>                      
+                            <div class="col">
+                                <a id="main-logout-link" class="nav-link" href="#">Logout</a>
+                            </div>
+                        {% else %}
+                            <div class="col">
+                                <a id="main-login-link" class="nav-link" href="#">Login</a>
+                            </div>
+                            <div class="col">
+                                <a id="main-register-link" class="nav-link" href="#">Register</a>
+                            </div>
+                        {% endif %}
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Main Nav -->
+        <!-- Main Nav:  -->
         <nav class="navbar navbar-expand-md navbar-dark bg-dark">
             <div class="container-fluid">
-                <!-- Mobile Only Logo -->
+                <!-- Mobile Only Logo: Small Screens -->
                 <div id="mobile-logo" class="justify-content-start">
                     <a class="uppercase white-text" href="#">The <strong>Academy</strong></a>
                 </div>
-                <!-- Mobile Only Hamburger Icon -->
+                <!-- Mobile Only Hamburger Icon: Small Screens -->
                 <div class="justify-content-end">
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -93,14 +102,23 @@
                 <!-- Main Nav Links -->
                 <div class="collapse navbar-collapse row" id="navbarSupportedContent">
                     <ol class="navbar-nav flex-grow-1">
-                        <!-- Mobile Only Login/Register -->
-                        <li id="login" class="nav-item">
-                            <a class="nav-link" id="login-link" href="#">Login</a>
-                        </li>                        
-                        <li id="register" class="nav-item">
-                            <a class="nav-link" id="register-link" href="#">Register</a>
-                        </li>
-                        <!-- Main Categories -->
+                        <!-- Mobile Only Additional Links: Small Screens (dropdown) -->
+                        {% if request.user.is_authenticated %}
+                            <li id="mobile-profile" class="nav-item">
+                                <a id="mobile-profile-link" class="nav-link" href="#">Profile</a>
+                            </li>                        
+                            <li id="mobile-logout" class="nav-item">
+                                <a id="mobile-logout-link" class="nav-link" href="#">Logout</a>
+                            </li>
+                        {% else %}
+                            <li id="mobile-login" class="nav-item">
+                                <a id="mobile-login-link" class="nav-link" href="#">Login</a>
+                            </li>                        
+                            <li id="mobile-register" class="nav-item">
+                                <a id="mobile-register-link" class="nav-link" href="#">Register</a>
+                            </li>
+                        {% endif %}
+                        <!-- Main Categories: Larger Screens -->
                         <li class="nav-item dropdown col">
                             <a class="nav-link dropdown-toggle uppercase" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Human
@@ -175,7 +193,7 @@
                                 <li><a class="dropdown-item" href="#">Submit</a></li>
                             </ul>
                         </li>
-                        <!-- Mobile Only Search Bar -->
+                        <!-- Mobile Only Search Bar: Small Screens (dropdown) -->
                         <li id="mobile-search">
                             <form class="d-flex">
                                 <input class="form-control me-2" type="search" placeholder="Search..." aria-label="Search">

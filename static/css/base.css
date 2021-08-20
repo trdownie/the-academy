@@ -70,11 +70,11 @@ a {
     height: 50px;
 }
 
-#login-link {
+#main-login-link {
     color: white;
 }
 
-#register-link, #register-link-bottom {
+#main-register-link, #register-link-bottom {
     background-color: #35DB95;
     color: black;
     border: 1px solid black;
@@ -123,7 +123,7 @@ a {
 }
 
 @media screen and (min-width: 768px){
-    #mobile-logo, #mobile-search, #login, #register {
+    #mobile-logo, #mobile-search, #mobile-login, #mobile-register {
         display: none;
     }
 }
@@ -138,10 +138,10 @@ a {
     .navbar {
         padding: 10px 0px;
     }
-    .dropdown-menu, #login-link, #register-link {
+    .dropdown-menu, #main-login-link, #main-register-link {
         text-align: center;
     }
-    #register-link {
+    #main-register-link {
         background-color: revert;
         color: white;
     }
