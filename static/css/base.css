@@ -70,8 +70,14 @@ a {
     height: 50px;
 }
 
-#main-login-link {
+#main-login-link, #main-profile-link, #mobile-login-link,
+#mobile-register-link, #mobile-profile-link, #mobile-logout-link, #navbarDropdown {
     color: white;
+}
+
+#main-login-link:hover, #main-profile-link:hover, #mobile-login-link:hover,
+#mobile-register-link:hover, #mobile-profile-link:hover, #mobile-logout-link:hover, #navbarDropdown:hover {
+    color: grey;
 }
 
 #main-register-link, #register-link-bottom {
@@ -138,7 +144,7 @@ a {
     .navbar {
         padding: 10px 0px;
     }
-    .dropdown-menu, #main-login-link, #main-register-link {
+    .dropdown-menu, #mobile-login-link, #mobile-register-link {
         text-align: center;
     }
     #main-register-link {
