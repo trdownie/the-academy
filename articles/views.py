@@ -4,4 +4,4 @@ from .models import Subject
 # Create your views here.
 
 def display_index(request):
-    return redner(request, '')
+    return render(request, '')
