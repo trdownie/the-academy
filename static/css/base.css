@@ -116,6 +116,13 @@ a {
     justify-content: center;
 }
 
+#banner {
+    height: 1000px;
+    background-image: url("../../media/banner-image.jpg");
+    background-size: 100% 100%;
+    background-attachment: fixed;
+}
+
 #header {
     color: #444444;
 }
