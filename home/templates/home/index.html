@@ -3,17 +3,23 @@
 {% load static %}
 
 {% block content %}
+    <!-- Background image & tooltip -->
     <div id="banner" class="container-fluid position-relative">
-            <div class="position-absolute bottom-0 end-0">
-                <button type="button" class="btn" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Photo by Vadim Sherbakov on Unsplash">
-                    <i class="fas fa-info"></i>
-                </button>
-            </div>
+        <div class="position-absolute bottom-50 end-50">
+            <h1 class="welcome">Welcome to The Academy</h1>
+            <a href="" class="enter">Begin Learning</a>
+        </div>
+        <div class="position-absolute bottom-0 end-0">
+            <button type="button" class="btn" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Photo by Vadim Sherbakov on Unsplash">
+                <i class="fas fa-info"></i>
+            </button>
+        </div>
     </div>
 {% endblock %}
 
 
 {% block postload_js %}
+    <!-- Activate tooltip (from Bootstrap) -->
     <script>  
         var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
         var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
