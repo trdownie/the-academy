@@ -207,6 +207,10 @@
             </div>
         </nav>
 
+        {% if messages %}
+            <div class="message-container center"></div>
+        {% endif %}
+
         {% block page_header %}
         {% endblock %}
 
