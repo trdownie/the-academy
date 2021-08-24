@@ -10,8 +10,17 @@ def all_articles(request):
 
     articles = Article.objects.all()
     query = None
+    subject = None
 
     if request.GET:
+        if 'subject' in request.GET:
+            subjects = request.GET['subject'].split(',')
+            correct_subjects = Subject.objects.filter(subject__in=subjects)
+
+            articles = articles.filter(subject__in=subjects)
+            subjects = Subject.objects.filter(name__in=subjects)
+
+
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:
@@ -24,6 +33,7 @@ def all_articles(request):
     context = {
         'articles': articles,
         'search_term': query,
+        'current_subjects': subjects,
     }
 
     return render(request, 'articles/articles.html', context)

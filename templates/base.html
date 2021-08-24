@@ -124,13 +124,13 @@
                             Human
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Arts (Performance)</a></li>
-                                <li><a class="dropdown-item" href="#">Arts (Visual)</a></li>
-                                <li><a class="dropdown-item" href="#">History</a></li>
-                                <li><a class="dropdown-item" href="#">Languages & Literature</a></li>
-                                <li><a class="dropdown-item" href="#">Law</a></li>
-                                <li><a class="dropdown-item" href="#">Philosophy</a></li>
-                                <li><a class="dropdown-item" href="#">Theology</a></li>
+                                <li><a class="dropdown-item" href="{% url 'articles' %}?subject=performance">Arts (Performance)</a></li>
+                                <li><a class="dropdown-item" href="{% url 'articles' %}?subject=visual">Arts (Visual)</a></li>
+                                <li><a class="dropdown-item" href="{% url 'articles' %}?subject=history">History</a></li>
+                                <li><a class="dropdown-item" href="{% url 'articles' %}?subject=languages,literature">Languages & Literature</a></li>
+                                <li><a class="dropdown-item" href="{% url 'articles' %}?subject=law">Law</a></li>
+                                <li><a class="dropdown-item" href="{% url 'articles' %}?subject=philosophy">Philosophy</a></li>
+                                <li><a class="dropdown-item" href="{% url 'articles' %}?subject=theology">Theology</a></li>
                                 <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item" href="#">Propose</a></li>
                                 <li><a class="dropdown-item" href="#">Submit</a></li>
