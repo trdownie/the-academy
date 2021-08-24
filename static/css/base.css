@@ -123,6 +123,28 @@ a {
     background-attachment: fixed;
 }
 
+#welcome {
+    width: 100%;
+    height: 20%;
+    opacity: 50%;
+    background-color: white;
+}
+
+#welcome-text {
+
+}
+
+#begin {
+    margin-top: 55px;
+}
+
+#begin-button {
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+    border-radius: 0px;
+}
+
 #header {
     color: #444444;
 }
