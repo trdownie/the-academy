@@ -37,17 +37,16 @@
                                      No Rating
                                 {% endif %}
                             </p>
-                            <p><i class="fas fa-user fa-fw"></i>
+                            <p class="card-text">
                                 {% for academic in article.academics.all %}
-                                    <span class="card-text">{{ academic }}</span>
+                                    <i class="fas fa-user fa-fw"></i>
+                                    <span> {{ academic }}</span>
                                 {% endfor %}
                             </p>
                             <p class="card-text"><i class="fas fa-calendar fa-fw"></i> {{ article.date }}</p>
-                            <p><i class="fas fa-info-circle fa-fw"></i>
+                            <p>
                                 {% for subject in article.subjects.all %}
-                                    {% if forloop.counter > 1 %}
-                                    |
-                                    {% endif %}
+                                    <i class="fas fa-info-circle fa-fw"></i>
                                     <span href="#" class="card-text">{{ subject }}</span>
                                 {% endfor %}
                             </p>
