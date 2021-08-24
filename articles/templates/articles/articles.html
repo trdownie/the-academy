@@ -20,11 +20,11 @@
                 {% for article in articles %}
                     <div class="card col-sm-6 col-md-6 col-lg-4 col-xl-3">
                         {% if article.image %}
-                            <a href="">
+                            <a href="{% url 'article_detail' article.id %}">
                                 <img class="card-img-top" src="{{ article.image.url }}"  alt="{{ article.name }}">
                             </a>
                         {% else %}
-                            <a href="">
+                            <a href="{% url 'article_detail' article.id %}">
                                 <img class="card-img-top" src="{{ MEDIA_URL }}noimage.png" alt="{{ article.name }}">
                             </a>
                         {% endif %}
@@ -43,7 +43,7 @@
                                 {% endfor %}
                             </p>
                             <div class="center">
-                                <a id="buy-button" href="#" class="btn">BUY {{ article.price}}</a>
+                                <a id="buy-button" href="{% url 'article_detail' article.id %}" class="btn">BUY {{ article.price}}</a>
                             </div>
                         </div>
 
