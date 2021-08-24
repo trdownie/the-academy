@@ -28,31 +28,35 @@
                                 <img class="card-img-top" src="{{ MEDIA_URL }}noimage.png" alt="{{ article.name }}">
                             </a>
                         {% endif %}
-
                         <div class="card-body">
                             <h5 class="card-title center">{{ article.title }}</h5>
+                            <p class="card-text"><i class="fas fa-star fa-fw"></i>
+                                {% if article.rating %}
+                                     {{ article.rating }}
+                                {% else %}
+                                     No Rating
+                                {% endif %}
+                            </p>
                             <p><i class="fas fa-user fa-fw"></i>
                                 {% for academic in article.academics.all %}
-                                    <span class="card-text"> {{ academic }}, </span>
+                                    <span class="card-text">{{ academic }}</span>
                                 {% endfor %}
                             </p>
                             <p class="card-text"><i class="fas fa-calendar fa-fw"></i> {{ article.date }}</p>
                             <p><i class="fas fa-info-circle fa-fw"></i>
                                 {% for subject in article.subjects.all %}
-                                    <span class="card-text"> {{ subject }}, </span>
+                                    {% if forloop.counter > 1 %}
+                                    |
+                                    {% endif %}
+                                    <span href="#" class="card-text">{{ subject }}</span>
                                 {% endfor %}
                             </p>
-                            <div class="center">
-                                <a id="buy-button" href="{% url 'article_detail' article.id %}" class="btn">BUY £{{ article.price}}</a>
-                            </div>
+                            <p class="card-text"><i class="fas fa-pound-sign fa-fw"></i> {{ article.price}}</p>
                         </div>
-
-                        <div class="card-footer">
-                            {% if article.rating %}
-                                <p class="card-text center">{{ article.rating }}</p>
-                            {% else %}
-                                <p class="card-text center">No Rating</p>
-                            {% endif %}
+                        
+                        <div class="card-footer center">
+                            <a id="more-button" href="{% url 'article_detail' article.id %}" class="btn">MORE</a>
+                            <a id="buy-button" href="{% url 'article_detail' article.id %}" class="btn">ADD TO BASKET</a>
                         </div>
                     </div>
 

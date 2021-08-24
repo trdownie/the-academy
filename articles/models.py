@@ -6,6 +6,9 @@ from django.utils.translation import gettext_lazy as _
 
 class Subject(models.Model):
 
+    subject = models.CharField(max_length=200, null=False, blank=False)
+    friendly_name = models.CharField(max_length=200, blank=True)
+
     class ScienceArea(models.TextChoices):
         HUMAN = 'HU', _('Human')
         SOCIAL = 'SO', _('Social')
@@ -18,9 +21,6 @@ class Subject(models.Model):
         choices=ScienceArea.choices,
         blank=False,
     )
-
-    subject = models.CharField(max_length=200, null=False, blank=False)
-    friendly_name = models.CharField(max_length=200, blank=True)
 
     def __str__(self):
         return self.subject

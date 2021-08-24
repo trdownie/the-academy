@@ -154,10 +154,17 @@ a {
 
 /* articles */
 
+#more-button {
+    background-color: lightgreen;
+    color: black;
+    border: 1px solid black;
+    border-radius: 0px;
+}
+
 #buy-button {
     background-color: black;
     color: white;
-    border: 1px solid white;
+    border: 1px solid black;
     border-radius: 0px;
 }
 
