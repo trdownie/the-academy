@@ -149,6 +149,17 @@ a {
     color: #444444;
 }
 
+#main-content {
+    min-height: 750px;
+}
+
+#buy-button {
+    background-color: black;
+    color: white;
+    border: 1px solid white;
+    border-radius: 0px;
+}
+
 @media screen and (max-width: 767px){
     #mobile-logo {
         font-size: 20px;
