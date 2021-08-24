@@ -16,8 +16,38 @@
 {% block content %}
     <div id="main-content" class="container">
         <div class="row">
+            <div class="col-6 my-5">
+                <a href="{{ article.image.url }}" target="_blank">
+                    <img class="article-image" src="{{ article.image.url }}"  alt="{{ article.name }}">
+                </a>
+            </div>
+            <div class="col-6 my-5">
+                <p class="my-4"><i class="fas fa-user fa-fw"></i>
+                    {% for academic in article.academics.all %}
+                        <span class="card-text"> {{ academic }}, </span>
+                    {% endfor %}
+                </p>
+                <p class="my-4"><i class="fas fa-calendar fa-fw"></i> {{ article.date }}</p>
+                <p class="my-4"><i class="fas fa-info-circle fa-fw"></i>
+                    {% for subject in article.subjects.all %}
+                        <span class="card-text"> {{ subject }}, </span>
+                    {% endfor %}
+                </p>
+                <p class="my-4"><i class="fas fa-star fa-fw"></i> {{ article.rating }}</p>
+                <a id="buy-button" class="btn px-4" href="{% url 'articles' %}">BUY £{{ article.price }}</a>
+            </div>
+        </div>
+        <div class="col-8 offset-2">
+            <hr>
+        </div>
+        <div class="row">
             <div class="col">
-                Some stuff
+                <div class="row">
+                    <h2 class="center">SUMMARY</h2>
+                </div>
+                <div class="row">
+                    <p class="">{{ article.summary }}</p>
+                </div>
             </div>
         </div>
     </div>

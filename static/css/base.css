@@ -152,11 +152,19 @@ a {
     min-height: 750px;
 }
 
+/* articles */
+
 #buy-button {
     background-color: black;
     color: white;
     border: 1px solid white;
     border-radius: 0px;
+}
+
+/* article_detail */
+
+.article-image {
+    max-width: 100%;
 }
 
 @media screen and (max-width: 767px){

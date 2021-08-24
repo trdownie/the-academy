@@ -31,19 +31,19 @@
 
                         <div class="card-body">
                             <h5 class="card-title center">{{ article.title }}</h5>
-                            <p><br>
-                                {% for subject in article.academics.all %}
-                                    <span class="card-text">{{ academic }}, </span>
+                            <p><i class="fas fa-user fa-fw"></i>
+                                {% for academic in article.academics.all %}
+                                    <span class="card-text"> {{ academic }}, </span>
                                 {% endfor %}
                             </p>
-                            <p class="card-text">{{ article.date }}</p>
-                            <p>
+                            <p class="card-text"><i class="fas fa-calendar fa-fw"></i> {{ article.date }}</p>
+                            <p><i class="fas fa-info-circle fa-fw"></i>
                                 {% for subject in article.subjects.all %}
-                                    <span class="card-text">{{ subject }}, </span>
+                                    <span class="card-text"> {{ subject }}, </span>
                                 {% endfor %}
                             </p>
                             <div class="center">
-                                <a id="buy-button" href="{% url 'article_detail' article.id %}" class="btn">BUY {{ article.price}}</a>
+                                <a id="buy-button" href="{% url 'article_detail' article.id %}" class="btn">BUY £{{ article.price}}</a>
                             </div>
                         </div>
 
