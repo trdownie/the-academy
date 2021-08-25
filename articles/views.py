@@ -13,24 +13,14 @@ def all_articles(request):
     subject = None
 
     if request.GET:
+        # determine whether a subject parameter is defined within request
         if 'subject' in request.GET:
-            subject = request.GET['subject']
-            test_one = subject
-            fixed_category = 'history'
-            # articles = articles.filter(subject__subject_name__in='The')
-            # article_list = articles.filter(subjects__value__in=subjects)
-            articles = Article.objects.filter(subjects__subject_name__contains=subject)
-
-
-            test_two = 'test'
-            test_three = 'test'
-            test_four = fixed_category
-
-            # subjects = 'history'
-
-            # 
-
-            # subjects = Subject.objects.filter(subject__in=subjects)
+            # if so, split this parameter into list
+            subjects = request.GET['subject'].split(',')
+            # find *distinct* articles with subject names in the list
+            articles = articles.filter(subjects__subject_name__in=subjects).distinct()
+            # define a list of 'in use' subject names for later use
+            subjects = Subject.objects.filter(subject_name__in=subjects)
 
 
         if 'q' in request.GET:
@@ -45,11 +35,7 @@ def all_articles(request):
     context = {
         'articles': articles,
         'search_term': query,
-        # 'current_subjects': subjects,
-        'test_one': test_one,
-        'test_two': test_two,
-        'test_three': test_three,
-        'test_four': test_four,
+        'current_subjects': subjects,
     }
 
     return render(request, 'articles/articles.html', context)
