@@ -5,19 +5,20 @@
 {% block page_header %}
 <div class="container">
     <div class="row">
-        <div class="col-6 offset-3">
-            <h1 id="header" class="center mt-4">
-                {% for subject in current_subjects %}
-                    <a id="category-button" href="{% url 'articles' %}?subject={{ subject.subject_name }}" class="btn">
-                        {% if subject.friendly_name %}
-                            {{ subject.friendly_name|title }}<br>
-                        {% else %}
-                            {{ subject.subject_name|title }}<br>
-                        {% endif %} 
-                    </a>
-              {% endfor %}
-            </h1>
+        <div class="col-12">
+            {% for subject in current_subjects %}
+                <a id="category-button" href="{% url 'articles' %}?subject={{ subject.subject_name }}" class="btn">
+                    {% if subject.friendly_name %}
+                        {{ subject.friendly_name|title }}<br>
+                    {% else %}
+                        {{ subject.subject_name|title }}<br>
+                    {% endif %} 
+                </a>
+            {% endfor %}
             <hr>
+        </div>
+        <div class="col-4">
+            Displaying {{ articles|length }} articles{% if search_term %} found for <strong>"{{ search_term }}"</strong>{% endif %}
         </div>
     </div>
 </div>
