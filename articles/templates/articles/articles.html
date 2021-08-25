@@ -5,7 +5,7 @@
 {% block page_header %}
 <div class="container">
     <div class="row">
-        <div class="col-12">
+        <div class="col-12 mt-4 center">
             {% for subject in current_subjects %}
                 <a id="category-button" href="{% url 'articles' %}?subject={{ subject.subject_name }}" class="btn">
                     {% if subject.friendly_name %}
@@ -15,21 +15,22 @@
                     {% endif %} 
                 </a>
             {% endfor %}
-            <hr>
         </div>
         <div class="col-4">
-            Displaying {{ articles|length }} articles{% if search_term %} found for <strong>"{{ search_term }}"</strong>{% endif %}
+            Articles: {{ articles|length }}{% if search_term %} found for <strong>"{{ search_term }}"</strong>{% endif %}
         </div>
+        <hr class="mt-2">
     </div>
 </div>
 {% endblock %}
 
 {% block content %}
-    <!-- TEST TEST TEST TEST TEST TEST TEST TEST-->
+    <!-- TEST TEST TEST TEST TEST TEST TEST TEST --
     <div class="center">
         <h1>Test 1:</h1>
         <h1>Test 2:</h1>
     </div>
+    -->
     <!-- MAIN CONTENT -->
     <div id="main-content" class="container">
         <div class="row">
