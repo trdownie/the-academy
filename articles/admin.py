@@ -5,7 +5,7 @@ from .models import Subject, Article
 
 class SubjectAdmin(admin.ModelAdmin):
     list_display = (
-        'subject',
+        'subject_name',
         'friendly_name',
         'science',
     )

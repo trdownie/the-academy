@@ -14,11 +14,23 @@ def all_articles(request):
 
     if request.GET:
         if 'subject' in request.GET:
-            subjects = request.GET['subject'].split(',')
-            correct_subjects = Subject.objects.filter(subject__in=subjects)
+            subject = request.GET['subject']
+            test_one = subject
+            fixed_category = 'history'
+            # articles = articles.filter(subject__subject_name__in='The')
+            # article_list = articles.filter(subjects__value__in=subjects)
+            articles = Article.objects.filter(subjects__subject_name__contains=subject)
 
-            articles = articles.filter(subject__in=subjects)
-            subjects = Subject.objects.filter(name__in=subjects)
+
+            test_two = 'test'
+            test_three = 'test'
+            test_four = fixed_category
+
+            # subjects = 'history'
+
+            # 
+
+            # subjects = Subject.objects.filter(subject__in=subjects)
 
 
         if 'q' in request.GET:
@@ -33,7 +45,11 @@ def all_articles(request):
     context = {
         'articles': articles,
         'search_term': query,
-        'current_subjects': subjects,
+        # 'current_subjects': subjects,
+        'test_one': test_one,
+        'test_two': test_two,
+        'test_three': test_three,
+        'test_four': test_four,
     }
 
     return render(request, 'articles/articles.html', context)

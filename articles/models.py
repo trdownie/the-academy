@@ -6,7 +6,7 @@ from django.utils.translation import gettext_lazy as _
 
 class Subject(models.Model):
 
-    subject = models.CharField(max_length=200, null=False, blank=False)
+    subject_name = models.CharField(max_length=200, null=False, blank=False)
     friendly_name = models.CharField(max_length=200, blank=True)
 
     class ScienceArea(models.TextChoices):
@@ -23,7 +23,7 @@ class Subject(models.Model):
     )
 
     def __str__(self):
-        return self.subject
+        return self.subject_name
 
     def get_friendly_name(self):
         return self.friendly_name
@@ -31,7 +31,7 @@ class Subject(models.Model):
 
 class Article(models.Model):
     title = models.CharField(max_length=200)
-    subjects = models.ManyToManyField(Subject)
+    subjects = models.ManyToManyField(Subject) # ['history', 'maths']
     article = models.FileField(upload_to='uploads/')
     date = models.DateField()
     summary = models.TextField()
