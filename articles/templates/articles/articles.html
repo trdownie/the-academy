@@ -6,7 +6,16 @@
 <div class="container">
     <div class="row">
         <div class="col-4 offset-4">
-            <h1 id="header" class="center mt-4">Articles</h1>
+            <h1 id="header" class="center mt-4">
+                Articles:<br>
+                {% for subject in current_subjects %}
+                    {% if subject.friendly_name %}
+                        {{ subject.friendly_name|title }}<br>
+                    {% else %}
+                        {{ subject.subject_name|title }}<br>
+                    {% endif %}
+                {% endfor %}
+            </h1>
             <hr>
         </div>
     </div>

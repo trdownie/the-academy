@@ -22,6 +22,9 @@ class Subject(models.Model):
         blank=False,
     )
 
+    class Meta:
+        ordering = ['subject_name']
+
     def __str__(self):
         return self.subject_name
 
