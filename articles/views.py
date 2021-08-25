@@ -10,8 +10,8 @@ def all_articles(request):
 
     articles = Article.objects.all()
     query = None
-    subject = None
-
+    subjects = None
+    
     if request.GET:
         # determine whether a subject parameter is defined within request
         if 'subject' in request.GET:
