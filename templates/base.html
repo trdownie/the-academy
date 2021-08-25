@@ -143,13 +143,15 @@
                             Social
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Anthropology</a></li>
-                                <li><a class="dropdown-item" href="#">Economics</a></li>
-                                <li><a class="dropdown-item" href="#">Geography</a></li>
-                                <li><a class="dropdown-item" href="#">Political Science</a></li>
-                                <li><a class="dropdown-item" href="#">Psychology</a></li>
-                                <li><a class="dropdown-item" href="#">Sociology</a></li>
-                                <li><a class="dropdown-item" href="#">Social Work</a></li>
+                                <li><a class="dropdown-item" href="{% url 'articles' %}?subject=anthropology,economics,geography,political_science,psychology,sociology,social_work">All</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="{% url 'articles' %}?subject=anthropology">Anthropology</a></li>
+                                <li><a class="dropdown-item" href="{% url 'articles' %}?subject=economics">Economics</a></li>
+                                <li><a class="dropdown-item" href="{% url 'articles' %}?subject=geography">Geography</a></li>
+                                <li><a class="dropdown-item" href="{% url 'articles' %}?subject=political_science">Political Science</a></li>
+                                <li><a class="dropdown-item" href="{% url 'articles' %}?subject=psychology">Psychology</a></li>
+                                <li><a class="dropdown-item" href="{% url 'articles' %}?subject=sociology">Sociology</a></li>
+                                <li><a class="dropdown-item" href="{% url 'articles' %}?subject=social_work">Social Work</a></li>
                                 <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item" href="#">Propose</a></li>
                                 <li><a class="dropdown-item" href="#">Submit</a></li>
@@ -160,11 +162,13 @@
                             Natural
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Biology</a></li>
-                                <li><a class="dropdown-item" href="#">Chemistry</a></li>
-                                <li><a class="dropdown-item" href="#">Earth Science</a></li>
-                                <li><a class="dropdown-item" href="#">Space Science</a></li>
-                                <li><a class="dropdown-item" href="#">Physics</a></li>
+                                <li><a class="dropdown-item" href="{% url 'articles' %}?subject=biology,chemistry,earth_science,space_science,physics">All</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="{% url 'articles' %}?subject=biology">Biology</a></li>
+                                <li><a class="dropdown-item" href="{% url 'articles' %}?subject=chemistry">Chemistry</a></li>
+                                <li><a class="dropdown-item" href="{% url 'articles' %}?subject=earth_science">Earth Science</a></li>
+                                <li><a class="dropdown-item" href="{% url 'articles' %}?subject=space_science">Space Science</a></li>
+                                <li><a class="dropdown-item" href="{% url 'articles' %}?subject=physics">Physics</a></li>
                                 <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item" href="#">Propose</a></li>
                                 <li><a class="dropdown-item" href="#">Submit</a></li>
@@ -175,8 +179,10 @@
                             Formal
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Computer Science</a></li>
-                                <li><a class="dropdown-item" href="#">Mathematics</a></li>
+                                <li><a class="dropdown-item" href="{% url 'articles' %}?subject=mathematics,computer_science">All</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="{% url 'articles' %}?subject=computer_science">Computer Science</a></li>
+                                <li><a class="dropdown-item" href="{% url 'articles' %}?subject=mathematics">Mathematics</a></li>
                                 <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item" href="#">Propose</a></li>
                                 <li><a class="dropdown-item" href="#">Submit</a></li>
@@ -187,9 +193,11 @@
                             Applied
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Business</a></li>
-                                <li><a class="dropdown-item" href="#">Engineering & Technology</a></li>
-                                <li><a class="dropdown-item" href="#">Medicine & Health</a></li>
+                                <li><a class="dropdown-item" href="{% url 'articles' %}?subject=business,engineering,technology,medicine,health">All</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="{% url 'articles' %}?subject=business">Business</a></li>
+                                <li><a class="dropdown-item" href="{% url 'articles' %}?subject=engineering,technology">Engineering & Technology</a></li>
+                                <li><a class="dropdown-item" href="{% url 'articles' %}?subject=medicine,health">Medicine & Health</a></li>
                                 <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item" href="#">Propose</a></li>
                                 <li><a class="dropdown-item" href="#">Submit</a></li>
