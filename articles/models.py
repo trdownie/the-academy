@@ -2,8 +2,6 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 
-# Create your models here.
-
 class Subject(models.Model):
 
     subject_name = models.CharField(max_length=200, null=False, blank=False)
@@ -34,13 +32,12 @@ class Subject(models.Model):
 
 class Article(models.Model):
     title = models.CharField(max_length=200)
-    subjects = models.ManyToManyField(Subject) # ['history', 'maths']
+    subjects = models.ManyToManyField(Subject)  # ['history', 'maths', etc.]
     article = models.FileField(upload_to='uploads/')
     date = models.DateField()
     summary = models.TextField()
-    rating = models.DecimalField(max_digits=5, decimal_places=1, blank=True)
+    rating = models.DecimalField(max_digits=2, decimal_places=1, blank=True)
     price = models.DecimalField(max_digits=6, decimal_places=2, blank=True)
-    image_url = models.URLField(blank=True)
     image = models.ImageField(blank=True)
 
     class Meta:
