@@ -67,11 +67,11 @@
                 <!-- Main Additional Links: Larger Screens -->
                 <div class="col-3 col-lg-4 g-0">
                     <div class="row float-end">
-                        <div class="col">
-                            <a href="{% url 'bag' %}" class="my-0 center">
-                                {% if grand_total %}
-                                    <i class="fas fa-shopping-bag fa-lg white-text mt-2"></i>
-                                    £{{ grand_total|floatformat:2 }}
+                        <div class="col mt-1">
+                            <a href="{% url 'bag' %}" class="center white-text">
+                                {% if bag_total %}
+                                    <i class="fas fa-shopping-bag fa-lg mt-2"></i>
+                                    £{{ bag_total|floatformat:2 }}
                                 {% else %}
                                     £0.00
                                 {% endif %}

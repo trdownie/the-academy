@@ -10,8 +10,8 @@
                 <h1 id="welcome-text" class="center m-3">Syllabus</h1>
             </div>
             <div class="col-12">
-                {% if bag_items %}
-                    <div>BAG - TBC</div>
+                {% if bag_total %}
+                    <div class="center">BAG - TBC</div>
                 {% else %}
                     <div class="center">
                         <p>No articles on syllabus!</p>
@@ -19,6 +19,7 @@
                     </div>
                 {% endif %}
             </div>
+        </div>
     </div>
 {% endblock %}
 
