@@ -11,7 +11,26 @@
             </div>
             <div class="col-12">
                 {% if bag_total %}
-                    <div class="center">BAG - TBC</div>
+                    <table class="table table-dark table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Article</th>
+                                <th scope="col"></th>
+                                <th scope="col">Author(s)</th>
+                                <th scope="col">Price</th>
+                            </tr>
+                        </thead>
+                        {% for article in bag_articles %}
+                        <tbody>
+                            <tr>
+                                <td>{{ article.article.image }}</td>
+                                <td>{{ article.article.title }}</td>
+                                <td>{% for author in article.article.authors.all %}{{ author }}{% endfor %}</td>
+                                <td>{{ article.article.price }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
                 {% else %}
                     <div class="center">
                         <p>No articles on syllabus!</p>

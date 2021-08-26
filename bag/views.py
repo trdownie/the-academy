@@ -6,8 +6,6 @@ from django.shortcuts import render, redirect
 def shopping_bag(request):
     """ view to render shopping bag contents """
 
-
-
     context = {
 
     }
@@ -24,6 +22,4 @@ def add_to_bag(request, article_id):
     bag[article_id] = 1
 
     request.session['bag'] = bag
-    
-    print(request.session['bag'])
     return redirect(redirect_url)
