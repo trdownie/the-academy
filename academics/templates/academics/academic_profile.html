@@ -6,20 +6,18 @@
 <div class="container">
     <div class="row">
         <h1 id="header" class="center uppercase mt-4">{{ academic.name }}</h1>
-        <p class="fs-3 center">
-            <i class="fas fa-graduation-cap fa-fw"></i>
+        <p class="fs-4 center">
             {% if academic.level >= 80 %}
-                <span> SAGE </span>
+                <span>- SAGE -</span>
             {% elif academic.level < 80 and academic.level >= 60 %}
-                <span> SAVANT </span>
+                <span>- SAVANT -</span>
             {% elif academic.level < 60 and academic.level >= 40 %}
-                <span> PROFESSOR </span>
+                <span>- PROFESSOR -</span>
             {% elif academic.level < 40 and academic.level >= 20 %}
-                <span> ACADEMIC </span>
+                <span>- ACADEMIC -</span>
             {% elif academic.level < 20 %}
-                <span> STUDENT </span>
+                <span>- STUDENT -</span>
             {% endif %}
-            <i class="fas fa-graduation-cap fa-fw"></i>
         </p>
     </div>
     <div class="row">

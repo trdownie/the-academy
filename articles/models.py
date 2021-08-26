@@ -1,6 +1,8 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
+from academics.models import Academic
+
 
 class Subject(models.Model):
 
@@ -32,6 +34,7 @@ class Subject(models.Model):
 
 class Article(models.Model):
     title = models.CharField(max_length=200)
+    authors = models.ManyToManyField(Academic)  # ['Einstein', 'Tesla', etc.]
     subjects = models.ManyToManyField(Subject)  # ['history', 'maths', etc.]
     article = models.FileField(upload_to='uploads/')
     date = models.DateField()
