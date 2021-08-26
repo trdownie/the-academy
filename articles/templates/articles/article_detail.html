@@ -5,8 +5,30 @@
 {% block page_header %}
 <div class="container">
     <div class="row">
-        <h1 id="header" class="center uppercase mt-4">{{ article.title }}</h1>
-        <div class="col-4 offset-4">
+        <h1 id="header" class="center text-capitalize mt-4">{{ article.title }}</h1>
+        <div class="col mt-4">
+            <p class="">
+                {% for author in article.authors.all %}
+                    <i class="fas fa-user fa-fw"></i>
+                    <span class="card-text"> {{ author }}</span>
+                {% endfor %}
+            </p>
+        </div>
+        <div class="col mt-4">
+            <p class=""><i class="fas fa-calendar fa-fw"></i> {{ article.date }}</p>
+        </div>
+        <div class="col mt-4">
+            <p class=""><i class="fas fa-star fa-fw"></i> {{ article.rating }}</p>
+        </div>
+        <div class="col mt-4">
+
+            <p>
+                {% for subject in article.subjects.all %}
+                    <i class="fas fa-info-circle fa-fw"></i>
+                    <span href="#" class="card-text">{{ subject }}</span>
+                {% endfor %}
+            </p>
+        </div>
             <hr>
         </div>
     </div>
@@ -22,22 +44,26 @@
                 </a>
             </div>
             <div class="col-6 my-5">
-                <p class="my-4">
-                    {% for academic in article.academics.all %}
-                        <i class="fas fa-user fa-fw"></i>
-                        <span class="card-text"> {{ academic }}</span>
-                    {% endfor %}
-                </p>
-                <p class="my-4"><i class="fas fa-calendar fa-fw"></i> {{ article.date }}</p>
-                <p>
-                    {% for subject in article.subjects.all %}
-                        <i class="fas fa-info-circle fa-fw"></i>
-                        <span href="#" class="card-text">{{ subject }}</span>
-                    {% endfor %}
-                </p>
-                <p class="my-4"><i class="fas fa-star fa-fw"></i> {{ article.rating }}</p>
-                <p class="card-text"><i class="fas fa-pound-sign fa-fw"></i> {{ article.price}}</p>
-                <a id="buy-button" href="{% url 'article_detail' article.id %}" class="btn">ADD TO BASKET</a>
+                <div class="row">
+                    <h2 class="center">SUMMARY</h2>
+                </div>
+                <div class="row">
+                    <p class="">{{ article.summary }}</p>
+                </div>
+                <p class="card-text center fs-5"><i class="fas fa-pound-sign fa-fw"></i> {{ article.price}}</p>
+                <form class="form" action="{% url 'add_to_bag' article.id %}" method="POST">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-12 center">
+                            <a id="return-button" class="btn mt-3 text-uppercase" href="{% url 'articles' %}">
+                                <i class="fas fa-chevron-left"></i>
+                                Articles
+                            </a>
+                            <input id="buy-button" type="submit" class="btn rounded-0 text-uppercase mt-3" value="Add to Bag">
+                        </div>
+                        <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                    </div>
+                </form>
             </div>
         </div>
         <div class="col-8 offset-2">
@@ -45,12 +71,7 @@
         </div>
         <div class="row">
             <div class="col">
-                <div class="row">
-                    <h2 class="center">SUMMARY</h2>
-                </div>
-                <div class="row">
-                    <p class="">{{ article.summary }}</p>
-                </div>
+                
             </div>
         </div>
     </div>
