@@ -1,12 +1,10 @@
 from django.db import models
-from articles.models import Subject
 
 
 class Academic(models.Model):
     name = models.CharField(max_length=70)
     username = models.CharField(max_length=15)
     about = models.TextField()
-    subjects = models.ManyToManyField(Subject)  # ['history', 'maths', etc.]
     level = models.DecimalField(max_digits=4, decimal_places=1, blank=True)
     image = models.ImageField(blank=True)
     following = models.ManyToManyField('self', symmetrical=False, blank=True)
