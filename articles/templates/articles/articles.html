@@ -63,18 +63,18 @@
                         {% endif %}
                         <div class="card-body">
                             <h5 class="card-title center">{{ article.title }}</h5>
+                            <p class="card-text">
+                                {% for author in article.authors.all %}
+                                    <i class="fas fa-user fa-fw"></i>
+                                    <span> {{ author }}</span>
+                                {% endfor %}
+                            </p>
                             <p class="card-text"><i class="fas fa-star fa-fw"></i>
                                 {% if article.rating %}
                                      {{ article.rating }}
                                 {% else %}
                                      No Rating
                                 {% endif %}
-                            </p>
-                            <p class="card-text">
-                                {% for academic in article.academics.all %}
-                                    <i class="fas fa-user fa-fw"></i>
-                                    <span> {{ academic }}</span>
-                                {% endfor %}
                             </p>
                             <p class="card-text"><i class="fas fa-calendar fa-fw"></i> {{ article.date }}</p>
                             <p>
