@@ -198,6 +198,14 @@ a {
     }
 }
 
+
+#follow-button {
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+    border-radius: 0px;
+}
+
 @media screen and (max-width: 991px){
     #logo-main {
         font-size: 20px;
