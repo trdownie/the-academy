@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+    <!-- Background image & tooltip -->
+    <div id="banner" class="container-fluid position-relative">
+        <div id="bag-box" class="row position-absolute mt-5">
+            <div class="col-12">
+                <h1 id="welcome-text" class="center m-3">Syllabus</h1>
+            </div>
+            <div class="col-12">
+                {% if bag_items %}
+                    <div>BAG - TBC</div>
+                {% else %}
+                    <div class="center">
+                        <p>No articles on syllabus!</p>
+                        <a id="begin-button" class="btn px-4" href="{% url 'articles' %}">See Articles</a>
+                    </div>
+                {% endif %}
+            </div>
+    </div>
+{% endblock %}
+
+
+{% block postload_js %}
+    {{ block.super }}
+    <!-- Activate tooltip (from Bootstrap) -->
+    <script>  
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+        })
+    </script> 
+{% endblock %}
