@@ -21,13 +21,16 @@
         </p>
     </div>
     <div class="row">
-        <div class="col-4">
-            <p class="center"><i class="fas fa-eye fa-fw"></i> Following: {{ academic.following.all.count }}</p>
-        </div>
-        <div class="col-4">
+        <div class="col-3">
             <p class="center"><i class="fas fa-at fa-fw"></i>{{ academic.username }}</p>
         </div>
-        <div class="col-4">
+        <div class="col-3">
+            <p class="center"><i class="fas fa-eye fa-fw"></i> Following: {{ academic.following.all.count }}</p>
+        </div>
+        <div class="col-3">
+            <p class="center"><i class="far fa-eye fa-fw"></i> Followers: {{ followers }}</p>
+        </div>
+        <div class="col-3">
             <p class="center"> <i class="fas fa-pen fa-fw"></i> Subscribers: {{ academic.subscribers }}</p>
         </div>
     </div>
