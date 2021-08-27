@@ -131,10 +131,6 @@ a {
     background-color: white;
 }
 
-#welcome-text {
-
-}
-
 #begin {
     margin-top: 55px;
 }
@@ -226,9 +222,19 @@ a {
 
 #bag-box {
     width: 100%;
-    height: 20%;
+    height: 10%;
     opacity: 95%;
-    background-color: white;
+}
+
+#syllabus-text {
+    color: white;
+    border-bottom: 1px solid white;
+}
+
+.bag-img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
 }
 
 @media screen and (max-width: 991px){
