@@ -49,9 +49,9 @@
     <!-- MAIN CONTENT -->
     <div id="main-content" class="container">
         <div class="row">
-            <div class="col">
-                {% for article in articles %}
-                    <div class="card col-sm-6 col-md-6 col-lg-4 col-xl-3">
+            {% for article in articles %}
+                <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 pb-5">
+                    <div class="card h-100">
                         {% if article.image %}
                             <a href="{% url 'article_detail' article.id %}">
                                 <img class="card-img-top" src="{{ article.image.url }}"  alt="{{ article.name }}">
@@ -85,35 +85,13 @@
                             </p>
                             <p class="card-text"><i class="fas fa-pound-sign fa-fw"></i> {{ article.price}}</p>
                         </div>
-                        
                         <div class="card-footer center">
                             <a id="more-button" href="{% url 'article_detail' article.id %}" class="btn">MORE</a>
                             <a id="buy-button" href="{% url 'article_detail' article.id %}" class="btn">ADD TO BASKET</a>
                         </div>
                     </div>
-
-                    {% if forloop.counter|divisibleby:1 %}
-                        <div class="col-12 d-sm-none mb-5">
-                            <hr>
-                        </div>
-                    {% endif %}
-                    {% if forloop.counter|divisibleby:2 %}
-                        <div class="col-12 d-none d-sm-block d-md-block d-lg-none mb-5">
-                            <hr>
-                        </div>
-                    {% endif %}
-                    {% if forloop.counter|divisibleby:3 %}
-                        <div class="col-12 d-none d-lg-block d-xl-none mb-5">
-                            <hr>
-                        </div>
-                    {% endif %}
-                    {% if forloop.counter|divisibleby:4 %}
-                        <div class="col-12 d-none d-xl-block mb-5">
-                            <hr>
-                        </div>
-                    {% endif %}
-                {% endfor %}
-            </div>
+                </div>
+            {% endfor %}
         </div>
     </div>
 {% endblock %}
