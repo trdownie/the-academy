@@ -18,7 +18,7 @@
                                 <th scope="col"></th>
                                 <th scope="col">Author(s)</th>
                                 <th scope="col">Price</th>
-                                <th scope="col">Remove</th>
+                                <th scope="col"></th>
                             </tr>
                         </thead>
                         {% for article in bag_articles %}
@@ -35,7 +35,7 @@
                                     <td class="align-middle">
                                         <form class="form" action="{% url 'remove_from_bag' article.article.id %}" method="POST">
                                             {% csrf_token %}
-                                            <input id="buy-button" type="submit" class="btn rounded-0 text-uppercase mt-3" value="x">
+                                            <input id="remove-button" type="submit" class="btn text-uppercase" value="X">
                                             <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                         </form>
                                     </td>
@@ -52,7 +52,7 @@
                                         <i class="fas fa-chevron-left"></i>
                                         Articles
                                     </a>
-                                    <a id="buy-button" class="btn mt-3 text-uppercase" href="{% url 'articles' %}">
+                                    <a id="checkout-button" class="btn mt-3 text-uppercase" href="{% url 'articles' %}">
                                         <i class="fas fa-chevron-lock"></i>
                                         Secure Checkout
                                     </a>

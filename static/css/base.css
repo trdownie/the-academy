@@ -187,7 +187,7 @@ a {
 #return-button {
     background-color: #FFA52C;
     color: black;
-    border: 1px solid #FFA52C;
+    border: 1px solid black;
     border-radius: 0px;
 }
 
@@ -235,6 +235,20 @@ a {
     width: 150px;
     height: 150px;
     object-fit: cover;
+}
+
+#remove-button {
+    background-color: #FD636B;
+    color: black;
+    border: 1px solid black;
+    border-radius: 0px;
+}
+
+#checkout-button {
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+    border-radius: 0px;
 }
 
 @media screen and (max-width: 991px){
