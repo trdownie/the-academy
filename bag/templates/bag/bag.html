@@ -18,6 +18,7 @@
                                 <th scope="col"></th>
                                 <th scope="col">Author(s)</th>
                                 <th scope="col">Price</th>
+                                <th scope="col">Remove</th>
                             </tr>
                         </thead>
                         {% for article in bag_articles %}
@@ -31,15 +32,22 @@
                                     <td class="align-middle">{{ article.article.title }}</td>
                                     <td class="align-middle">{% for author in article.article.authors.all %}{% if not forloop.counter == 1 %}<br>{% endif %}{{ author }}{% endfor %}</td>
                                     <td class="align-middle">£ {{ article.article.price }}</td>
+                                    <td class="align-middle">
+                                        <form class="form" action="{% url 'remove_from_bag' article.article.id %}" method="POST">
+                                            {% csrf_token %}
+                                            <input id="buy-button" type="submit" class="btn rounded-0 text-uppercase mt-3" value="x">
+                                            <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                                        </form>
+                                    </td>
                                 </tr>
                             {% endfor %}
                             <tr>
-                                <td colspan="4" class="text-center py-3">
+                                <td colspan="5" class="text-center py-3">
                                     <h4><strong>Total: £{{ bag_total|floatformat:2 }}</strong></h4>
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="4" class="text-center">
+                                <td colspan="5" class="text-center">
                                     <a id="return-button" class="btn mt-3 text-uppercase" href="{% url 'articles' %}">
                                         <i class="fas fa-chevron-left"></i>
                                         Articles

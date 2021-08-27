@@ -7,7 +7,7 @@ def bag_contents(request):
 
     bag_articles = []
     bag_subscriptions = []
-    bag_total = 5
+    bag_total = 0
     article_count = 0
     subscription_count = 0
     bag = request.session.get('bag', {})

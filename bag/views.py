@@ -23,3 +23,15 @@ def add_to_bag(request, article_id):
 
     request.session['bag'] = bag
     return redirect(redirect_url)
+
+
+def remove_from_bag(request, article_id):
+    """ Remove specified article from shopping bag """
+
+    redirect_url = request.POST.get('redirect_url')
+    bag = request.session.get('bag', {})
+
+    bag.pop(article_id)
+
+    request.session['bag'] = bag
+    return redirect(redirect_url)
