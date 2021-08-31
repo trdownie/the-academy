@@ -251,6 +251,17 @@ a {
     border-radius: 0px;
 }
 
+
+.toast-container {
+    position: fixed;
+    z-index: 100;
+}
+
+.toast {
+    overflow: visible;
+}
+
+
 @media screen and (max-width: 991px){
     #logo-main {
         font-size: 20px;

@@ -10,6 +10,8 @@ from .models import Subject, Article
 def all_articles(request):
     """ view to show all articles, including sorting/searching """
 
+    messages.info(request, 'INFO')
+
     articles = Article.objects.all()
     query = None
     subjects = None
