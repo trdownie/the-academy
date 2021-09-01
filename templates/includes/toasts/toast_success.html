@@ -5,8 +5,34 @@
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
     </div>
     <div class="toast-body">
-        {{ message }}
+        <h6 class="text-center">{{ message }}</h6>
     </div>
+    <hr>
+    {% if bag_total %}
+        <h6 class="center underline">Items in Bag</h6>
+        {% for article in bag_articles %}
+            <div class="row">
+                <div class="col-4">
+                    <div class="m-2">
+                        <img class="bag-mini-img" src="{{ article.article.image.url }}"  alt="{{ article.article.image.name }}">
+                    </div>
+                </div>
+                <div class="col-8 mt-4">
+                    <div class="text-truncate">{{ article.article.title }}</div>
+                    <div><strong>£ {{ article.article.price }}</strong></div>
+                </div>
+            </div>
+        {% endfor %}
+        <div class="row mb-0">
+            <div class="col text-end">
+                <p><strong>Bag Total:</strong></p>
+            </div>
+            <div class="col text-start">
+                <p class="underline"><strong>£{{ bag_total }}</strong></p>
+            </div>
+        </div>
+    <hr class="mt-0">
+    {% endif %}
     <div class="center">
         <a id="begin-button" class="btn px-3 mb-3" href="{% url 'bag' %}">Shopping Bag</a>
     </div>

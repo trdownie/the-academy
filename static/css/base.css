@@ -60,6 +60,10 @@ a {
     text-transform: uppercase;
 }
 
+.underline {
+    text-decoration: underline;
+}
+
 #logo-main {
     font-weight: 400;
     padding-left: 10px;
@@ -251,7 +255,6 @@ a {
     border-radius: 0px;
 }
 
-
 .toast-container {
     position: fixed;
     z-index: 100;
@@ -259,6 +262,11 @@ a {
 
 .toast {
     overflow: visible;
+}
+
+.bag-mini-img {
+    width: 100px;
+    height: 100px;
 }
 
 
