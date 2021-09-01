@@ -1,6 +1,7 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 
+from articles.models import Article
 # Create your views here.
 
 
@@ -19,9 +20,15 @@ def add_to_bag(request, article_id):
 
     redirect_url = request.POST.get('redirect_url')
     bag = request.session.get('bag', {})
+    article = get_object_or_404(Article, pk=article_id)
+    new_line = '/n'
 
-    bag[article_id] = 1
-
+    if article_id in bag:
+        messages.error(request, f'Already in bag - {article.title}')
+    else:
+        bag[article_id] = 1
+        messages.success(request, f'Added to bag - {article.title}')
+    
     request.session['bag'] = bag
     return redirect(redirect_url)
 
@@ -31,8 +38,10 @@ def remove_from_bag(request, article_id):
 
     redirect_url = request.POST.get('redirect_url')
     bag = request.session.get('bag', {})
+    article = get_object_or_404(Article, pk=article_id)
 
     bag.pop(article_id)
+    messages.warning(request, f'Removed from bag - {article.title}')
 
     request.session['bag'] = bag
     return redirect(redirect_url)

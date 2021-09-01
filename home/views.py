@@ -6,5 +6,4 @@ from django.contrib import messages
 
 def index(request):
     """ view to return index page """
-    messages.warning(request, 'WARNING')
     return render(request, 'home/index.html')

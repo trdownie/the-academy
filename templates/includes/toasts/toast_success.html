@@ -1,4 +1,4 @@
-<div class="toast bottom-0 end-0 rounded-0" role="alert" aria-live="assertive" aria-atomic="true">
+<div class="toast bottom-0 end-0 rounded-0" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false">
     <div class="toast-header border border-success text-success bg-dark">
         <strong class="me-auto">The Academy</strong>
         <small>Now</small>
@@ -6,5 +6,8 @@
     </div>
     <div class="toast-body">
         {{ message }}
+    </div>
+    <div class="center">
+        <a id="begin-button" class="btn px-3 mb-3" href="{% url 'bag' %}">Shopping Bag</a>
     </div>
 </div>

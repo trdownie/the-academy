@@ -10,8 +10,6 @@ from .models import Subject, Article
 def all_articles(request):
     """ view to show all articles, including sorting/searching """
 
-    messages.info(request, 'INFO')
-
     articles = Article.objects.all()
     query = None
     subjects = None
@@ -25,6 +23,7 @@ def all_articles(request):
         if 'sort' in request.GET:
             # define sortkey as this parameter
             sortkey = request.GET['sort']
+            sort = sortkey
             # define sort as the same (to preserve sort)
 
             # if sorting by article title, add a temporary lowercase field
@@ -44,6 +43,7 @@ def all_articles(request):
 
             # if direction is descending, reverse sortkey
             articles = articles.order_by(sortkey)
+            messages.info(request, f'Articles sorted by {sort} in {direction}ending order')
 
         # determine whether a subject parameter is defined
         if 'subject' in request.GET:
@@ -64,6 +64,7 @@ def all_articles(request):
             
             queries = Q(title__icontains=query) | Q(summary__icontains=query)
             articles = articles.filter(queries)
+            messages.info(request, f'Showing articles containing: {query}')
 
     context = {
         'articles': articles,
