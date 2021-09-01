@@ -10,19 +10,21 @@
     <hr>
     {% if bag_total %}
         <h6 class="center underline">Items in Bag</h6>
-        {% for article in bag_articles %}
-            <div class="row">
-                <div class="col-4">
-                    <div class="m-2">
-                        <img class="bag-mini-img" src="{{ article.article.image.url }}"  alt="{{ article.article.image.name }}">
+        <div class="bag-item-wrapper">
+            {% for article in bag_articles %}
+                <div class="row">
+                    <div class="col-4">
+                        <div class="m-2">
+                            <img class="bag-mini-img" src="{{ article.article.image.url }}"  alt="{{ article.article.image.name }}">
+                        </div>
+                    </div>
+                    <div class="col-8 mt-4">
+                        <div class="text-truncate">{{ article.article.title }}</div>
+                        <div><strong>£ {{ article.article.price }}</strong></div>
                     </div>
                 </div>
-                <div class="col-8 mt-4">
-                    <div class="text-truncate">{{ article.article.title }}</div>
-                    <div><strong>£ {{ article.article.price }}</strong></div>
-                </div>
-            </div>
-        {% endfor %}
+            {% endfor %}
+        </div>
         <div class="row mb-0">
             <div class="col text-end">
                 <p><strong>Bag Total:</strong></p>

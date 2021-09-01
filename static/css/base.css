@@ -264,10 +264,18 @@ a {
     overflow: visible;
 }
 
+.bag-item-wrapper {
+    height: 150px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
 .bag-mini-img {
     width: 100px;
     height: 100px;
 }
+
+
 
 
 @media screen and (max-width: 991px){
