@@ -28,10 +28,8 @@ var style = {
 var card = elements.create('card', {style: style});
 card.mount('#card-element');
 
-
-
 /*
-// Set up Stripe.js and Elements to use in checkout form
+// Set up Stripe.js and Elements to use in checkout form - FROM STRIPE:
 var elements = stripe.elements();
 var style = {
   base: {
@@ -42,3 +40,19 @@ var style = {
 var card = elements.create("card", { style: style });
 card.mount("#card-element");
 */
+
+// Handle realtime validation errors on card element
+card.addEventListener('change', function (event) {
+    var errorDiv = document.getElementById('card-errors');
+    if (event.error) {
+        var html = `
+            <span class="icon" role="alert">
+                <i class="fas fa-exclamation-triangle"></i>
+            </span>
+            <span>${event.error.message}</span>
+        `;
+        $(errorDiv).html(html);
+    } else {
+        errorDiv.textContent = '';
+    }
+});
