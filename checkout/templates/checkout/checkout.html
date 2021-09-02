@@ -4,7 +4,7 @@
 
 {% block content %}
     <!-- Background image & tooltip -->
-    <div id="banner" class="container-fluid position-relative">
+    <div id="" class="container-fluid position-relative">
         <div id="bag-box" class="row position-absolute mt-5">
             <div class="center">
                 <h1 id="syllabus-text" class="py-3 mb-0 bg-dark">Enroll</h1>
@@ -54,9 +54,20 @@
                         <legend>Personal Info</legend>
                         {{ order_form.full_name | as_crispy_field }}
                         {{ order_form.email | as_crispy_field }}
+                        {{ order_form.phone_number | as_crispy_field }}
+                    </fieldset>
+                    <fieldset>
+                        <legend>Billing Info</legend>
+                        {{ order_form.street_address1 | as_crispy_field }}
+                        {{ order_form.street_address2 | as_crispy_field }}
+                        {{ order_form.town_or_city | as_crispy_field }}
+                        {{ order_form.postcode | as_crispy_field }}
+                        {{ order_form.county | as_crispy_field }}
+                        {{ order_form.country | as_crispy_field }}
                         <div>
                             {% if user.is_authenticated %}
-                                <div></div>
+                                <label class="form-check-label" for="save-info">Save billing information to my profile (exlcluding card details)</label>
+                                <input class="form-check-input" type="checkbox" id="save-info" name="save-info" checked>
                             {% else %}
                                 <a href="{% url 'account_signup' %}">Create Account</a>
                                 <a href="{% url 'account_login' %}">Login</a> to save information
