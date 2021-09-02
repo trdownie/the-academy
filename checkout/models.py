@@ -63,7 +63,7 @@ class Order(models.Model):
 
     def save(self, *args, **kwargs):
         """
-        Ser order number if not yet set
+        Set order number if not yet set
         """
         if self.id:
             self.update_total()
