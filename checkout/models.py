@@ -35,8 +35,11 @@ class Order(models.Model):
         update order total when saving Order
         """
         # self.order_total = self.order_items.aggregate(Sum('price'))['price__sum']
-        self.order_total = sum(Article.price for article in self.order_items.through.all())
-    
+        # if self.pk is None:
+        #    self.order_total = 0
+        # else:
+        self.order_total = sum(article.price for article in self.order_items.all())
+
     
     """
     FROM STACK OVERFLOW
@@ -62,6 +65,8 @@ class Order(models.Model):
         """
         Ser order number if not yet set
         """
+        if self.id:
+            self.update_total()
         if not self.order_number:
             self.order_number = self._generate_order_number()
         super().save(*args, **kwargs)
