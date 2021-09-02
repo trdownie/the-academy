@@ -13,6 +13,8 @@ from bag.contexts import bag_contents
 def checkout(request):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
+    bag = request.session.get('bag', {})
+    print(bag)
 
     if request.method == 'POST':
         bag = request.session.get('bag', {})
@@ -31,6 +33,22 @@ def checkout(request):
         order_form = OrderForm(form_data)
         if order_form.is_valid():
             order = order_form.save()
+            bag_total = 0
+
+            for article_id, article_count in bag.items():
+                article = get_object_or_404(Article, pk=article_id)
+                bag_total += article.price
+                order.order_items.add(article)
+                order.order_total = bag_total
+            order.save()
+            
+            """ THIS WORKS FOR ITEMS
+            for article_id in bag:
+                article = get_object_or_404(Article, id=article_id)
+                order.order_items.add(article)
+            order.save()
+            """
+
             request.session['save-info'] = 'save-info' in request.POST
             return redirect(reverse('checkout_success', args=[order.order_number]))
         else:

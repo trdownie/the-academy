@@ -29,21 +29,32 @@ class Order(models.Model):
         """
         return uuid.uuid4().hex.upper()
 
+
+    def update_total(self):
+        """
+        update order total when saving Order
+        """
+        # self.order_total = self.order_items.aggregate(Sum('price'))['price__sum']
+        self.order_total = sum(Article.price for article in self.order_items.through.all())
+    
+    
     """
     FROM STACK OVERFLOW
     def order_total(self):
         queryset = self.order_items.all().aggregate(
             order_total=models.Sum('price'))
         return queryset["total_price"]
+    """
 
-
-    FROM CODE INSTITUTE
+    """
+    def calculate_total(self):
+        return sum(Article.price for article in self.order_items)
+    """
+    
+    """
     def update_total(self):
-        
         Update order total each time a line item is added
-        
-        
-        self.order_total = self.lineitems.aggregate(Sum('lineitem_total'))['lineitem_total__sum']
+        self.order_total = self.order_items.aggregate(Sum('price'))
         self.save()
     """
 
