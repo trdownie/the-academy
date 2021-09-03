@@ -275,7 +275,7 @@ a {
     height: 100px;
 }
 
-/* bag */
+/* checkout */
 
 #loading-overlay {
     display: none;
@@ -284,7 +284,7 @@ a {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(23, 162, 184, .85);
+    background: rgba(13, 214, 181, 0.85);
     z-index: 9999;
 }
     
