@@ -1,6 +1,8 @@
 import stripe
+import json
 
-from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
+from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
 
@@ -8,6 +10,24 @@ from .forms import OrderForm
 from .models import Order
 from articles.models import Article
 from bag.contexts import bag_contents
+
+
+@require_POST
+def cache_checkout_data(request):
+    try:
+        pid = request.POST.get('client_secret').split('_secret')[0]
+        stripe.api_key = settings.STRIPE_SECRET_KEY
+        stripe.PaymentIntent.modify(pid, metadata={
+            'bag': json.dumps(request.session.get('bag', {})),
+            'save_info': request.POST.get('save_info'),
+            'username': request.user,
+        })
+        print("TEST!!!")
+        return HttpResponse(status=200)
+    except Exception as e:
+        messages.error(request, 'Error. Payment request not processed \
+            please try again.')
+        return HttpResponse(content=e, status=400)
 
 
 def checkout(request):
@@ -50,11 +70,11 @@ def checkout(request):
             """
 
             request.session['save-info'] = 'save-info' in request.POST
-            return redirect(reverse('checkout_success', args=[order.order_number]))
+            return redirect(reverse('checkout_success',
+                            args=[order.order_number]))
         else:
             messages.error(request, 'There was an error with your form. \
                             Please check your information.')
-
 
     else:
         bag = request.session.get('bag', {})

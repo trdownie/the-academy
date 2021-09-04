@@ -31,11 +31,6 @@
                             <td class="align-middle">{% for author in article.article.authors.all %}{% if not forloop.counter == 1 %}<br>{% endif %}{{ author }}{% endfor %}</td>
                             <td class="align-middle">£ {{ article.article.price }}</td>
                             <td class="align-middle">
-                                <form class="form" action="{% url 'remove_from_bag' article.article.id %}" method="POST">
-                                    {% csrf_token %}
-                                    <input id="remove-button" type="submit" class="btn text-uppercase" value="X">
-                                    <input type="hidden" name="redirect_url" value="{{ request.path }}">
-                                </form>
                             </td>
                         </tr>
                     {% endfor %}
