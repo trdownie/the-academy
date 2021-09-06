@@ -71,10 +71,12 @@
                     </fieldset>
                     <fieldset>
                         <legend>Payment Info</legend>
-                        <!-- Stripe Card Element -->
+                        <!-- Stripe: Card Element -->
                         <div id="card-element"></div>
-                        <!-- Stripe Form Errors -->
+                        <!-- Stripe: Form Errors -->
                         <div id="card-errors"></div>
+                        <!-- Pass client secret to view to obtain payment intent id -->
+                        <input type="hidden" value="{{ client_secret }}" name="client_secret">
                     </fieldset>
                     <div class="submit-button text-right mt-5 mb-2">
                         <a href="{% url 'bag' %}" class="btn">

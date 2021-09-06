@@ -52,9 +52,12 @@ def checkout(request):
         }
         order_form = OrderForm(form_data)
         if order_form.is_valid():
-            order = order_form.save()
+            order = order_form.save(commit=False)
             bag_total = 0
-
+            pid = request.POST.get('client_secret').split('_secret')[0]
+            order.stripe_pid = pid
+            order.original_bag = json.dumps(bag)
+            order.save()
             for article_id, article_count in bag.items():
                 article = get_object_or_404(Article, pk=article_id)
                 bag_total += article.price

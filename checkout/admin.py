@@ -9,13 +9,16 @@ class OrderAdmin(admin.ModelAdmin):
 
     exclude = ('order_items',)
 
-    readonly_fields = ('order_number', 'date', 'order_total',)
+    readonly_fields = ('order_number', 'date', 'order_total',
+                       'original_bag', 'stripe_pid')
 
-    fields = ('order_number', 'order_total', 'date', 'full_name', 'email', 'phone_number', 
-                  'street_address1', 'street_address2', 'town_or_city',
-                  'postcode', 'county', 'country',)
+    fields = ('order_number', 'order_total', 'date', 'full_name',
+              'email', 'phone_number', 'street_address1',
+              'street_address2', 'town_or_city', 'postcode',
+              'county', 'country', 'original_bag', 'stripe_pid')
 
-    list_display = ('order_number',  'order_total', 'date', 'full_name', 'email',)
+    list_display = ('order_number',  'order_total', 'date',
+                    'full_name', 'email',)
 
     ordering = ('-date',)
 
