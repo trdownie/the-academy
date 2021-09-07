@@ -7,8 +7,8 @@
     <div class="toast-body">
         <h6 class="text-center">{{ message }}</h6>
     </div>
-    <hr>
-    {% if bag_total %}
+    {% if bag_total and not on_profile %}
+        <hr>
         <h6 class="center underline">Items in Bag</h6>
         <div class="bag-item-wrapper">
             {% for article in bag_articles %}
@@ -34,8 +34,8 @@
             </div>
         </div>
     <hr class="mt-0">
-    {% endif %}
     <div class="center">
         <a id="begin-button" class="btn px-3 mb-3" href="{% url 'bag' %}">Shopping Bag</a>
     </div>
+    {% endif %}
 </div>

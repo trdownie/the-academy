@@ -1,6 +1,5 @@
-from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.shortcuts import render, get_object_or_404
 from django.contrib import messages
-from django.db.models import Count
 
 from .models import Academic
 from .forms import AcademicProfileForm
@@ -26,6 +25,7 @@ def academic_profile(request, academic_id):
         'followers': followers,
         'form': form,
         'orders': orders,
+        'on_profile': True,
     }
 
     return render(request, 'academics/academic_profile.html', context)
