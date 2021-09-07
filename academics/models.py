@@ -26,10 +26,10 @@ class Academic(models.Model):
 
     # Academic Info
     about = models.TextField()
-    level = models.DecimalField(max_digits=4, decimal_places=1, blank=True)
+    level = models.DecimalField(max_digits=4, decimal_places=1, null=True, blank=True)
     image = models.ImageField(blank=True)
     following = models.ManyToManyField('self', symmetrical=False, blank=True)
-    subscribers = models.DecimalField(max_digits=9, decimal_places=0, blank=True)
+    subscribers = models.DecimalField(max_digits=9, decimal_places=0, null=True, blank=True)
 
     class Meta:
         ordering = ['name']
