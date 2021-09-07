@@ -18,14 +18,17 @@
             <div class="row">
                 <h2 class="center mt-3 pt-5">PERSONAL INFO</h2>
             </div>
-            <div class="row">
-                <p class="mt-4">{{ academic.about }}</p>
-            </div>
-            <div class="row">
-                <div class="col center">
-                    <a id="follow-button" href="#" class="btn text mt-4">Follow <strong>@{{ academic.username }}</strong></a>
+            <form action="{% url 'academic_profile' academic.id %}" method="POST" id="profile-form">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <button id="submit-button" class="btn">
+                    <span class="font-weight-bold">Update Information</span>
+                    <span class="icon">
+                        <i class="fas fa-lock"></i>
+                    </span>
+                </button>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 </div>
