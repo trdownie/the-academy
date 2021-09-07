@@ -7,9 +7,13 @@ from django.conf import settings
 from django_countries.fields import CountryField
 
 from articles.models import Article
+from academics.models import Academic
 
 
 class Order(models.Model):
+    academic = models.ForeignKey(Academic, on_delete=models.SET_NULL,
+                                 null=True, blank=True,
+                                 related_name='orders')
     order_number = models.CharField(max_length=32, null=False, editable=False)
     date = models.DateTimeField(auto_now_add=True)
     full_name = models.CharField(max_length=50, null=False, blank=False)
