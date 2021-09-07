@@ -5,10 +5,11 @@ from .models import Academic
 
 class AcademicAdmin(admin.ModelAdmin):
     list_display = (
-        'image',
         'name',
         'username',
+        'image',
         'level',
+        'default_email',
     )
 
 
