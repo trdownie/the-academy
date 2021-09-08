@@ -3,6 +3,7 @@ from django.shortcuts import get_object_or_404
 
 from .models import Order
 from articles.models import Article
+from academics.models import Academic
 
 import json
 import time
@@ -33,6 +34,22 @@ class StripeWH_Handler:
 
         billing_details = intent.charges.data[0].billing_details
         order_total = round(intent.charges.data[0].amount / 100, 2)
+
+        # Update profile info is save_info checked
+        academic = None
+        username = intent.metadata.username
+        if username != 'AnonymousUser':
+            academic = Academic.objects.get(user__username=username)
+            if save_info:
+                print('testing123')
+                academic.default_phone_number = billing_details.phone,
+                academic.default_country = billing_details.address.country,
+                academic.default_postcode = billing_details.address.postal_code,
+                academic.default_town_or_city = billing_details.address.city,
+                academic.default_street_address1 = billing_details.address.line1,
+                academic.default_street_address2 = billing_details.address.line2,
+                academic.default_county = billing_details.address.state,
+                academic.save()
 
         order_exists = False
         attempt = 1
@@ -65,6 +82,7 @@ class StripeWH_Handler:
             try:
                 order = Order.objects.create(
                     full_name=billing_details.name,
+                    academic=academic,
                     email=billing_details.email,
                     phone_number=billing_details.phone,
                     country=billing_details.address.country,
