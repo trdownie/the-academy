@@ -222,6 +222,13 @@ a {
     border-radius: 0px;
 }
 
+/* profile */
+
+#order-history {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
 /* bag */
 
 #bag-box {

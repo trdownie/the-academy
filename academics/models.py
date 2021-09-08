@@ -8,7 +8,7 @@ from django_countries.fields import CountryField
 
 class Academic(models.Model):
     # Profile Info
-    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=70)
     username = models.CharField(max_length=15)  # to delete?
 

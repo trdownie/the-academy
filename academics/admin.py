@@ -6,10 +6,9 @@ from .models import Academic
 
 class AcademicAdmin(admin.ModelAdmin):
     list_display = (
+        'user',
         'name',
         'username',
-        'image',
-        'level',
         'default_email',
     )
 

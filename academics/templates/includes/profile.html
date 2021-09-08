@@ -5,13 +5,29 @@
             <div class="row">
                 <h2 class="center mt-3 pt-5">ORDER HISTORY</h2>
             </div>
-            <div class="row">
-                <p class="mt-4">{{ academic.about }}</p>
-            </div>
-            <div class="row">
-                <div class="col center">
-                    <a id="follow-button" href="#" class="btn text mt-4">Follow <strong>@{{ academic.username }}</strong></a>
-                </div>
+            <div id="order-history" class="row">
+                <table class="table table-dark table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Order Number</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Articles</th>
+                            <th scope="col">Order Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for article in bag_articles %}
+                            <tr>
+                                <td class="col-1">
+                                    <a href="{% url 'order_history' order.order_number %}" title="{{ order.order_number }}">{{ order.order_number|truncatechars:6 }}</a>
+                                </td>
+                                <td class="align-middle">{{ order.date }}</td>
+                                <td class="align-middle">{% for article in order.order_items.all %}{% if not forloop.counter == 1 %}<br>{% endif %}{{ author }}{% endfor %}</td>
+                                <td class="align-middle">£ {{ order.order_total }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
             </div>
         </div>
         <div class="col-6">
