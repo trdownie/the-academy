@@ -24,7 +24,6 @@ def cache_checkout_data(request):
             'save_info': request.POST.get('save_info'),
             'username': request.user,
         })
-        print("TEST!!!")
         return HttpResponse(status=200)
     except Exception as e:
         messages.error(request, 'Error. Payment request not processed \
@@ -36,7 +35,6 @@ def checkout(request):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
     bag = request.session.get('bag', {})
-    print(bag)
 
     if request.method == 'POST':
         bag = request.session.get('bag', {})
@@ -66,15 +64,8 @@ def checkout(request):
                 order.order_items.add(article)
                 order.order_total = bag_total
             order.save()
-            
-            """ THIS WORKS FOR ITEMS
-            for article_id in bag:
-                article = get_object_or_404(Article, id=article_id)
-                order.order_items.add(article)
-            order.save()
-            """
 
-            request.session['save-info'] = 'save-info' in request.POST
+            request.session['save_info'] = 'save-info' in request.POST
             return redirect(reverse('checkout_success',
                             args=[order.order_number]))
         else:
@@ -131,28 +122,38 @@ def checkout(request):
 def checkout_success(request, order_number):
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)
-    messages.success(request, f'Order successfully processed. \
-        Your order number is {order_number}. A confirmation email \
-        will be sent to {order.email}.')
 
-    academic = Academic.objects.get(user=request.user)
-    order.academic = academic
-    order.save()
+    if request.user.is_authenticated:
+        academic = Academic.objects.get(user=request.user)
+        order.academic = academic
+        order.save()
 
-    if save_info:
-        profile_data = {
-            'default_phone_number': order.phone_number,
-            'default_street_address1': order.street_address1,
-            'default_street_address2': order.street_address2,
-            'default_town_or_city': order.town_or_city,
-            'default_county': order.county,
-            'default_postcode': order.postcode,
-            'default_country': order.country,
-        }
-        academic_profile_form = AcademicProfileForm(profile_data, instance=academic)
-        if academic_profile_form.is_valid():
-            academic_profile_form.save()
-    
+        if save_info:
+            profile_data = {
+                'default_email': order.email,
+                'default_phone_number': order.phone_number,
+                'default_street_address1': order.street_address1,
+                'default_street_address2': order.street_address2,
+                'default_town_or_city': order.town_or_city,
+                'default_county': order.county,
+                'default_postcode': order.postcode,
+                'default_country': order.country,
+                'name': order.academic.name,
+                'username': order.academic.username,
+                'about': order.academic.about,
+                'level': order.academic.level,
+                'image': order.academic.image,
+                'following': order.academic.following,
+                'subscribers': order.academic.subscribers,
+            }
+            academic_profile_form = AcademicProfileForm(profile_data, instance=academic)
+            if academic_profile_form.is_valid():
+                academic_profile_form.save()
+
+        messages.success(request, f'Order successfully processed. \
+            Your order number is {order_number}. A confirmation email \
+            will be sent to {order.email}.')
+
     if 'bag' in request.session:
         del request.session['bag']
 

@@ -68,7 +68,7 @@ form.addEventListener('submit', function(ev) {
     $('#loading-overlay').fadeToggle(100);
 
     // Get whether 'save info' ticked on form
-    var saveInfo = Boolean($('#save-info').attr('checked'));
+    var saveInfo = Boolean($('#id-save-info').attr('checked'));
     // Get csrf from form
     var csrfToken = $('input[name="csrfmiddlewaretoken"]').val();
     var postData = {
