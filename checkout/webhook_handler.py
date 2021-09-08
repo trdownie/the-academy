@@ -1,5 +1,8 @@
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
+from django.conf import settings
 
 from .models import Order
 from articles.models import Article
@@ -14,6 +17,24 @@ class StripeWH_Handler:
 
     def __init__(self, request):
         self.request = request
+
+    def _send_confirmation_email(self, order):
+        """Send confirmation email"""
+        customer_email = order.email
+        subject = render_to_string(
+            'checkout/confirmation_emails/confirmation_email_subject.txt',
+            {'order': order})
+        body = render_to_string(
+            'checkout/confirmation_emails/confirmation_email_body.txt',
+            {'order': order, 'contact_email': settings.DEFAULT_FROM_EMAIL})
+        
+        send_mail(
+            subject,
+            body,
+            settings.DEFAULT_FROM_EMAIL,
+            [customer_email]
+        )
+        
 
     def handle_event(self, event):
         """
@@ -38,6 +59,7 @@ class StripeWH_Handler:
         # Update profile info is save_info checked
         academic = None
         username = intent.metadata.username
+        print(username)
         if username != 'AnonymousUser':
             academic = Academic.objects.get(user__username=username)
             if save_info:
@@ -75,6 +97,7 @@ class StripeWH_Handler:
                 attempt += 1
                 time.sleep(1)
         if order_exists:
+            self._send_confirmation_email(order)
             return HttpResponse(content=f'Webhook received: {event["type"]} \
                                 | SUCCESS: Order exists in database', status=200)
         else:
@@ -104,6 +127,7 @@ class StripeWH_Handler:
                 return HttpResponse(
                     content=f'Webhook received: {event["type"]} | ERROR: {e}',
                     status=500)
+        self._send_confirmation_email(order)
         return HttpResponse(content=f'Webhook received: {event["type"]} \
                             | SUCCESS: Created order in webhook', status=200)
 

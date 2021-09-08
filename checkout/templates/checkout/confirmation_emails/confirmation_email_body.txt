@@ -1,0 +1,22 @@
+Hello {{ order.name }},
+
+This is a confirmation email for your order with The Academy.
+
+The details for your order are below.
+
+Order Number: {{ order.order_number }}
+Order Date: {{ order.date }}
+Order Total: {{ order.order_total }}
+
+Order Items: {% for item in order.order_items.all %}
+                {{item}}{% endfor %}
+
+Your card, registered to {{ order.postcode }}, has been charged.
+
+If you have any questions, please contact us on {{ contact_email }}.
+
+Thank you for your order!
+
+Sincerely,
+
+The Academy
