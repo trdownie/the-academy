@@ -303,6 +303,13 @@ a {
     height: 100%;
 }
 
+/* edit article */
+
+.form-mini-img {
+    width: 100px;
+    height: 100px;
+}
+
 @media screen and (max-width: 991px){
     #logo-main {
         font-size: 20px;
