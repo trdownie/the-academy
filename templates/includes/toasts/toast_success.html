@@ -15,7 +15,11 @@
                 <div class="row">
                     <div class="col-4">
                         <div class="m-2">
-                            <img class="bag-mini-img" src="{{ article.article.image.url }}"  alt="{{ article.article.image.name }}">
+                            {% if article.article.image %}
+                                <img class="bag-mini-img" src="{{ article.article.image.url }}"  alt="{{ article.article.image.name }}">
+                            {% else %}
+                                <img class="bag-mini-img" src="../../../media/C_SMIC-2.png"  alt="Placeholder image">
+                            {% endif %}
                         </div>
                     </div>
                     <div class="col-8 mt-4">

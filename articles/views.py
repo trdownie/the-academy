@@ -4,6 +4,7 @@ from django.db.models import Q
 from django.db.models.functions import Lower
 
 from .models import Subject, Article
+from .forms import ArticleForm
 
 # Create your views here.
 
@@ -87,3 +88,25 @@ def article_detail(request, article_id):
     }
 
     return render(request, 'articles/article_detail.html', context)
+
+
+def add_article(request):
+    """Add new article to store"""
+
+    if request.method == 'POST':
+        form = ArticleForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Article uploaded!')
+            return redirect(reverse('add_article'))
+        else:
+            messages.error(request, 'Article failed to upload. Please check form!')
+    else:
+        form = ArticleForm()
+
+    template = 'articles/add_article.html'
+    context = {
+        'form': form,
+    }
+
+    return render(request, template, context)

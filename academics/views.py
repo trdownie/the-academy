@@ -14,7 +14,10 @@ def academic_profile(request, academic_id):
         if form.is_valid():
             form.save()
             messages.success(request, f'Profile updated, {academic.name}')
-
+        else:
+            messages.error(request, 'Profile not updated. Please check form!')
+    else:
+        form = AcademicProfileForm(instance=academic)
     # academics = Academic.objects.all()
     followers = academic.academic_set.all().count()
     form = AcademicProfileForm(instance=academic)

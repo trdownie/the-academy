@@ -13,6 +13,6 @@ class ArticleForm(forms.ModelForm):
         subjects = Subject.objects.all()
         friendly_names = [(s.id, s.get_friendly_name()) for s in subjects]
 
-        self.fields['subject'].choices = friendly_names
+        self.fields['subjects'].choices = friendly_names
         for field_name, field in self.fields.items():
             field.widget.attrs['class'] = 'tbc'

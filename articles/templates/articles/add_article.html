@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block page_header %}
+<div class="container">
+    <div class="row">
+        <div class="col-12 mt-4 center">
+
+        </div>
+        <div class="col-4 mt-5">
+            <h1>Article Admin</h1>
+        </div>
+        <div class="col-4 offset-4 mt-3">
+
+        </div>
+        <hr class="mt-2 mb-5">
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+    <!-- MAIN CONTENT -->
+    <div id="main-content" class="container">
+        <div class="row">
+            <div class="col-12">
+                <p>Please use the form below to manage or submit an article</p>
+                <form action="{% url 'add_article' %}" method="POST" id="article-form" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form | crispy }}
+                    <div class="submit-button text-right mt-5 mb-2">
+                        <a href="{% url 'articles' %}" class="btn">
+                            <span class="icon">
+                                <i class="fas fa-chevron-left"></i>
+                                Cancel
+                            </span>
+                            <span class="font-weight-bold">Adjust Bag</span>
+                        </a>
+                        <button id="submit-button" class="btn" type="submit">
+                            <span class="font-weight-bold">Add Article</span>
+                            <span class="icon">
+                                <i class="fas fa-lock"></i>
+                            </span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
