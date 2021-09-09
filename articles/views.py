@@ -110,3 +110,28 @@ def add_article(request):
     }
 
     return render(request, template, context)
+
+
+def edit_article(request, article_id):
+    """Edit article"""
+    article = get_object_or_404(Article, pk=article_id)
+
+    if request.method == 'POST':
+        form = ArticleForm(request.POST, request.FILES, instance=article)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Article updated!')
+            return redirect(reverse('article_detail', args=[article.id]))
+        else:
+            messages.error(request, 'Article failed to update. Please check form!')
+    else:
+        form = ArticleForm(instance=article)
+        messages.info(request, f'You are now editing {article.title}')
+
+    template = 'articles/edit_article.html'
+    context = {
+        'form': form,
+        'article': article,
+    }
+    
+    return render(request, template, context)
