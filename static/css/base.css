@@ -38,7 +38,7 @@ a {
     text-align: center;
 }
 
-#search-btn-main, #search-btn-mobile, .form-control {
+#search-btn-main, #search-btn-mobile, .form-control-custom {
     height: 35px;
     margin-top: 5px;
     border-radius: 0;
@@ -305,7 +305,7 @@ a {
 
 /* edit article */
 
-.form-mini-img {
+#form-mini-img {
     width: 100px;
     height: 100px;
 }

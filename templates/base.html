@@ -55,7 +55,7 @@
                 <!-- Main Search Form: Larger Screens -->
                 <div class="col-6 col-lg-4">
                     <form class="d-flex" method="GET", action="{% url 'articles' %}">
-                        <input class="form-control me-2" type="search" name="q" placeholder="Search..." aria-label="Search">
+                        <input class="form-control form-control-custom me-2" type="search" name="q" placeholder="Search..." aria-label="Search">
                         <button id="search-btn-main" class="btn" type="submit">
                             <i class="fas fa-search" id="magnifying-glass-main"></i>
                         </button>
@@ -213,7 +213,7 @@
                         <!-- Mobile Only Search Bar: Small Screens (dropdown) -->
                         <li id="mobile-search" class="mx-5 d-md-none">
                             <form class="d-flex" method="GET", action="{% url 'articles' %}">
-                                <input class="form-control me-2" type="search" placeholder="Search..." name="q" aria-label="Search">
+                                <input class="form-control form-control-custom me-2" type="search" placeholder="Search..." name="q" aria-label="Search">
                                 <button id="search-btn-mobile" class="btn" type="submit">
                                     <i class="fas fa-search" id="magnifying-glass-mobile"></i>
                                 </button>
