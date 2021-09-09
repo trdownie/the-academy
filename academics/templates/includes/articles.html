@@ -1,0 +1,48 @@
+<div id="main-content" class="container">
+    <div class="row">
+        <div class="col">
+            <div class="row">
+                <h2 class="center mt-3 pt-5">ARTICLE'S SUBMITTED</h2>
+            </div>
+            <div class="row">
+                {% for article in articles %}
+                    <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 pb-5">
+                        <div class="card h-100">
+                            {% if article.image %}
+                                <a href="{% url 'article_detail' article.id %}">
+                                    <img class="card-img-top" src="{{ article.image.url }}"  alt="{{ article.name }}">
+                                </a>
+                            {% else %}
+                                <a href="{% url 'article_detail' article.id %}">
+                                    <img class="card-img-top" src="{{ MEDIA_URL }}noimage.png" alt="{{ article.name }}">
+                                </a>
+                            {% endif %}
+                            <div class="card-body">
+                                <h5 class="card-title center">{{ article.title }}</h5>
+                                <p class="card-text"><i class="fas fa-star fa-fw"></i>
+                                    {% if article.rating %}
+                                         {{ article.rating }}
+                                    {% else %}
+                                         No Rating
+                                    {% endif %}
+                                </p>
+                                <p class="card-text"><i class="fas fa-calendar fa-fw"></i> {{ article.date }}</p>
+                                <p>
+                                    {% for subject in article.subjects.all %}
+                                        <i class="fas fa-info-circle fa-fw"></i>
+                                        <a href="{% url 'articles' %}?subject={{ subject.subject_name }}" class="card-text text-capitalize">{{ subject.friendly_name }}</a>
+                                    {% endfor %}
+                                </p>
+                                <p class="card-text"><i class="fas fa-pound-sign fa-fw"></i> {{ article.price}}</p>
+                            </div>
+                            <div class="card-footer center">
+                                <a id="more-button" href="{% url 'article_detail' article.id %}" class="btn">MORE</a>
+                                <a id="buy-button" href="{% url 'article_detail' article.id %}" class="btn">ADD TO BAG</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>

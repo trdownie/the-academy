@@ -22,6 +22,7 @@ def academic_profile(request, academic_id):
     followers = academic.academic_set.all().count()
     form = AcademicProfileForm(instance=academic)
     orders = academic.orders.all()
+    articles = academic.article_set.all()
 
     context = {
         'academic': academic,
@@ -29,6 +30,7 @@ def academic_profile(request, academic_id):
         'form': form,
         'orders': orders,
         'on_profile': True,
+        'articles': articles
     }
 
     return render(request, 'academics/academic_profile.html', context)

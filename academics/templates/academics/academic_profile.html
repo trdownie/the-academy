@@ -61,6 +61,9 @@
             </div>
         </div>
     </div>
+    {% if user.username == academic.username and user.is_superuser %}
+        {% include 'includes/articles.html' %}
+    {% endif %}
     {% if user.username == academic.username %}
         {% include 'includes/profile.html' %}
     {% endif %}
