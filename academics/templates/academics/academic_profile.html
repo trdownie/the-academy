@@ -40,6 +40,17 @@
 
 {% block content %}
     <div id="main-content" class="container">
+        {% if user.username == academic.username and user.is_superuser %}
+            {% include 'includes/articles.html' %}
+        {% endif %}
+        {% if user.username == academic.username %}
+            {% include 'includes/order_history.html' %}
+        {% endif %}
+        {% if user.username == academic.username %}
+            <div class="row">
+                <h2 class="center mt-3 pt-5">PERSONAL INFO</h2>
+            </div>
+        {% endif %}
         <div class="row">
             <div class="col-6 my-5">
                 <a href="{{ academic.image.url }}" target="_blank">
@@ -47,24 +58,22 @@
                 </a>
             </div>
             <div class="col-6">
-                <div class="row">
-                    <h2 class="center mt-3 pt-5">SUMMARY</h2>
-                </div>
-                <div class="row">
-                    <p class="mt-4">{{ academic.about }}</p>
-                </div>
-                <div class="row">
-                    <div class="col center">
-                        <a id="follow-button" href="#" class="btn text mt-4">Follow <strong>@{{ academic.username }}</strong></a>
+                {% if user.username == academic.username %}
+                    {% include 'includes/profile.html' %}
+                {% else %}
+                    <div class="row">
+                        <h2 class="center mt-3 pt-5">SUMMARY</h2>
                     </div>
-                </div>
+                    <div class="row">
+                        <p class="mt-4">{{ academic.about }}</p>
+                    </div>
+                    <div class="row">
+                        <div class="col center">
+                            <a id="follow-button" href="#" class="btn text mt-4">Follow <strong>@{{ academic.username }}</strong></a>
+                        </div>
+                    </div>
+                {% endif %}
             </div>
         </div>
     </div>
-    {% if user.username == academic.username and user.is_superuser %}
-        {% include 'includes/articles.html' %}
-    {% endif %}
-    {% if user.username == academic.username %}
-        {% include 'includes/profile.html' %}
-    {% endif %}
 {% endblock %}
