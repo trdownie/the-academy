@@ -96,9 +96,9 @@ def add_article(request):
     if request.method == 'POST':
         form = ArticleForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            article = form.save()
             messages.success(request, 'Article uploaded!')
-            return redirect(reverse('add_article'))
+            return redirect(reverse('article_detail', args=[article.id]))
         else:
             messages.error(request, 'Article failed to upload. Please check form!')
     else:
@@ -135,3 +135,11 @@ def edit_article(request, article_id):
     }
     
     return render(request, template, context)
+
+
+def delete_article(request, article_id):
+    """Edit article"""
+    article = get_object_or_404(Article, pk=article_id)
+    article.delete()
+    messages.success(request, 'Article deleted!')
+    return redirect(reverse('articles'))
