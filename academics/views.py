@@ -3,7 +3,7 @@ from django.contrib import messages
 
 from .models import Academic
 from .forms import AcademicProfileForm
-
+from checkout.models import Order
 
 def academic_profile(request, academic_id):
     """ view to show individual article details """
@@ -40,7 +40,7 @@ def order_history(request, order_number):
     order = get_object_or_404(Order, order_number=order_number)
 
     messages.info(request, f'This is a confirmation of order {order_number}. \
-                  A confirmation email was sent on {order.order_date}')
+                  A confirmation email was sent on {order.date}')
 
     template = 'checkout/checkout_success.html'
     context = {
