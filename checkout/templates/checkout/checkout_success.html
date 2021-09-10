@@ -9,7 +9,6 @@
             <div class="center">
                 <h1 id="syllabus-text" class="py-3 mb-0 bg-dark">Success!</h1>
             </div>
-            <!--
             <table class="table table-dark table-striped">
                 <thead>
                     <tr>
@@ -21,33 +20,25 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for article in bag_articles %}
+                    {% for article in order.order_items.all %}
                         <tr>
                             <td class="col-1">
-                                <a href="{{ article.article.image.url }}" target="_blank">
-                                    <img class="bag-img" src="{{ article.article.image.url }}"  alt="{{ article.article.image.name }}">
+                                <a href="{{ article.image.url }}" target="_blank">
+                                    <img class="bag-img" src="{{ article.image.url }}"  alt="{{ article.image.name }}">
                                 </a>
                             </td>
-                            <td class="align-middle">{{ article.article.title }}</td>
-                            <td class="align-middle">{% for author in article.article.authors.all %}{% if not forloop.counter == 1 %}<br>{% endif %}{{ author }}{% endfor %}</td>
-                            <td class="align-middle">£ {{ article.article.price }}</td>
-                            <td class="align-middle">
-                                <form class="form" action="{% url 'remove_from_bag' article.article.id %}" method="POST">
-                                    {% csrf_token %}
-                                    <input id="remove-button" type="submit" class="btn text-uppercase" value="X">
-                                    <input type="hidden" name="redirect_url" value="{{ request.path }}">
-                                </form>
-                            </td>
+                            <td class="align-middle">{{ article.title }}</td>
+                            <td class="align-middle">{% for author in article.authors.all %}{% if not forloop.counter == 1 %}<br>{% endif %}{{ author }}{% endfor %}</td>
+                            <td class="align-middle">£ {{ article.price }}</td>
                         </tr>
                     {% endfor %}
                     <tr>
                         <td colspan="5" class="text-center py-3">
-                            <h4><strong>Total: £{{ bag_total|floatformat:2 }}</strong></h4>
+                            <h4><strong>Total: £{{ order_total|floatformat:2 }}</strong></h4>
                         </td>
                     </tr>
                 </tbody>
             </table>
-            -->
             <div class="center">
                 <a id="begin-button" class="btn px-4" href="{% url 'articles' %}">See More Articles</a>
             </div>
