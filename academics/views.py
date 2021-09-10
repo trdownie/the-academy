@@ -38,6 +38,7 @@ def academic_profile(request, academic_id):
 
 def order_history(request, order_number):
     order = get_object_or_404(Order, order_number=order_number)
+    academic = Academic.objects.get(user=request.user)
 
     messages.info(request, f'This is a confirmation of order {order_number}. \
                   A confirmation email was sent on {order.date}')
@@ -46,6 +47,7 @@ def order_history(request, order_number):
     context = {
         'order': order,
         'from_profile': True,
+        'academic': academic,
     }
 
     return render(request, template, context)

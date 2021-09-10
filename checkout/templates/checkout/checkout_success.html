@@ -27,8 +27,8 @@
                     {% for article in order.order_items.all %}
                         <tr>
                             <td class="col-1">
-                                <a href="{{ article.image }}" target="_blank">
-                                    <img class="bag-img" src="{{ article.image }}"  alt="{{ article.image.name }}">
+                                <a href="{{ article.image.url }}" target="_blank">
+                                    <img class="bag-img" src="{{ article.image.url }}"  alt="{{ article.image.name }}">
                                 </a>
                             </td>
                             <td class="align-middle">{{ article.title }}</td>
@@ -43,9 +43,15 @@
                     </tr>
                 </tbody>
             </table>
-            <div class="center">
-                <a id="begin-button" class="btn px-4" href="{% url 'articles' %}">See More Articles</a>
-            </div>
+            {% if from_profile %}
+                <div class="center">
+                    <a id="begin-button" class="btn px-4" href="{% url 'academic_profile' academic.id %}">Return to Profile</a>
+                </div>
+            {% else %}
+                <div class="center">
+                    <a id="begin-button" class="btn px-4" href="{% url 'articles' %}">See More Articles</a>
+                </div>
+            {% endif %}
             </div>
         </div>
     </div>
