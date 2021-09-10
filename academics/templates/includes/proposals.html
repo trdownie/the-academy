@@ -1,17 +1,17 @@
 
             <div class="row">
-                <h2 class="center mt-3 pt-5">ARTICLES SUBMITTED</h2>
+                <h2 class="center mt-3 pt-5">PROPOSALS (TBC)</h2>
             </div>
             <div class="row my-5">
-                {% for article in articles %}
+                {% for proposal in proposals %}
                     <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 pb-5">
                         <div class="card h-100">
-                            {% if article.image %}
-                                <a href="{% url 'article_detail_profile' article.id %}">
+                            {% if proposal.image %}
+                                <a href="{% url 'article_detail' article.id %}">
                                     <img class="card-img-top" src="{{ article.image.url }}"  alt="{{ article.name }}">
                                 </a>
                             {% else %}
-                                <a href="{% url 'article_detail_profile' article.id %}">
+                                <a href="{% url 'article_detail' article.id %}">
                                     <img class="card-img-top" src="{{ MEDIA_URL }}noimage.png" alt="{{ article.name }}">
                                 </a>
                             {% endif %}
@@ -34,8 +34,8 @@
                                 <p class="card-text"><i class="fas fa-pound-sign fa-fw"></i> {{ article.price}}</p>
                             </div>
                             <div class="card-footer center">
-                                <a id="more-button" href="{% url 'article_detail_profile' article.id %}" class="btn">VIEW</a>
-                                <a id="buy-button" href="{% url 'edit_article' article.id %}" class="btn">EDIT</a>
+                                <a id="more-button" href="{% url 'article_detail' article.id %}" class="btn">MORE</a>
+                                <a id="buy-button" href="{% url 'article_detail' article.id %}" class="btn">ADD TO BAG</a>
                             </div>
                         </div>
                     </div>

@@ -4,6 +4,7 @@ from django.contrib import messages
 from .models import Academic
 from .forms import AcademicProfileForm
 from checkout.models import Order
+from articles.models import Article
 
 def academic_profile(request, academic_id):
     """ view to show individual article details """
@@ -51,3 +52,16 @@ def order_history(request, order_number):
     }
 
     return render(request, template, context)
+
+
+def article_detail_profile(request, article_id):
+    """ view to show individual article details """
+
+    article = get_object_or_404(Article, pk=article_id)
+
+    context = {
+        'article': article,
+        'from_profile': True,
+    }
+
+    return render(request, 'articles/article_detail.html', context)

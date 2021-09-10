@@ -5,7 +5,7 @@
 {% block page_header %}
 <div class="container">
     <div class="row">
-        <h1 id="header" class="center uppercase mt-4">{{ academic.name }}</h1>
+        <h1 id="header" class="center uppercase mt-4">{{ academic.name }}{% if user.username == academic.username %}'S ACADEMIC HUB{% endif %}</h1>
         <p class="fs-4 center">
             {% if academic.level >= 80 %}
                 <span>- SAGE -</span>
