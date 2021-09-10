@@ -33,14 +33,15 @@ class Subject(models.Model):
 
 
 class Article(models.Model):
+    proposal = models.BooleanField(default=False)
     title = models.CharField(max_length=200)
     authors = models.ManyToManyField(Academic)  # ['Einstein', 'Tesla', etc.]
     subjects = models.ManyToManyField(Subject)  # ['history', 'maths', etc.]
     article = models.FileField(upload_to='uploads/')
     date = models.DateField()
     summary = models.TextField()
-    rating = models.DecimalField(max_digits=2, decimal_places=1, blank=True)
-    price = models.DecimalField(max_digits=6, decimal_places=2, blank=True)
+    rating = models.DecimalField(max_digits=2, decimal_places=1, null=True, blank=True)
+    price = models.DecimalField(max_digits=6, decimal_places=2)
     image = models.ImageField(blank=True)
 
     class Meta:

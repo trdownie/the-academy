@@ -20,3 +20,12 @@ class ArticleForm(forms.ModelForm):
         self.fields['subjects'].choices = friendly_names
         for field_name, field in self.fields.items():
             field.widget.attrs['class'] = 'tbc'
+
+        self.fields['proposal'].label = 'PROPOSAL ONLY'
+        self.fields['title'].label = 'Title*'
+        self.fields['subjects'].label = 'Subjects*'
+        self.fields['authors'].label = 'Authors* (Note: adding authors without their consent can lead to article rejection)'
+        self.fields['article'].label = 'Article or Proposal*'
+        self.fields['date'].label = "Date Published* (Note: use today's date for for proposals)"
+        self.fields['summary'].label = "Summary*"
+        self.fields['price'].label = "Price or Stake*"
