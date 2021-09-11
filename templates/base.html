@@ -76,7 +76,7 @@
                         </div>
                         {% if request.user.is_authenticated %}
                             <div class="col">
-                                <a id="main-profile-link" class="nav-link" href="">Profile</a>
+                                <a id="main-profile-link" class="nav-link" href="{% url 'academic_profile' user.academic.id %}">HUB</a>
                             </div>                      
                             <div class="col">
                                 <a id="main-logout-link" class="nav-link" href="{% url 'account_logout' %}">Logout</a>

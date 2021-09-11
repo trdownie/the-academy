@@ -1,3 +1,5 @@
+{% load mathfilters %}
+
 <div class="row">
     <h2 class="center mt-3 pt-5">PROPOSALS SUBMITTED</h2>
 </div>
@@ -17,12 +19,8 @@
                     {% endif %}
                     <div class="card-body">
                         <h5 class="card-title center">{{ article.title }}</h5>
-                        <p class="card-text"><i class="fas fa-star fa-fw"></i>
-                            {% if article.rating %}
-                                {{ article.rating }}
-                            {% else %}
-                                No Rating
-                            {% endif %}
+                        <p class="card-text"><i class="fas fa-thumbs-up fa-fw"></i>
+                            {{ article.stakers }}
                         </p>
                         <p class="card-text"><i class="fas fa-calendar fa-fw"></i> {{ article.date }}</p>
                         <p>
@@ -31,7 +29,7 @@
                                 <a href="{% url 'articles' %}?subject={{ subject.subject_name }}" class="card-text text-capitalize">{{ subject.friendly_name }}</a>
                             {% endfor %}
                         </p>
-                        <p class="card-text"><i class="fas fa-pound-sign fa-fw"></i> {{ article.price}}</p>
+                        <p class="card-text"><i class="fas fa-chart-line fa-fw"></i> £{{ article.price|mul:article.stakers }}</p>
                     </div>
                     <div class="card-footer center">
                         <a id="more-button" href="{% url 'article_detail_profile' article.id %}" class="btn">VIEW</a>

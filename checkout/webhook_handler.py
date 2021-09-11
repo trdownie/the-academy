@@ -37,20 +37,16 @@ class StripeWH_Handler:
     
     def update_proposals(self, order):
         """Update any stakes paid"""
-        print('test 2')
-        def update_stakers(self, article):
-            print('test final funct.')
-            print(article.stakers)
-            article.stakers += 1
-            print(article.stakers)
-            article.save()
+        for article in order.order_items.all():
             print(article)
-
-        for article in order.order_items:
-            print('test for')
             if article.proposal:
-                print('test if')
-                update_stakers(article)
+                article = article
+                print(f'Article to update = {article}')
+                print(f'article.stakers before = {article.stakers}')
+                article.stakers += 1
+                article.save()
+                print(f'article.stakers after = {article.stakers}')
+                print(f'Article updated = {article.stakers}')
 
 
     def handle_event(self, event):
@@ -145,7 +141,7 @@ class StripeWH_Handler:
                     content=f'Webhook received: {event["type"]} | ERROR: {e}',
                     status=500)
         self._send_confirmation_email(order)
-        # self.update_proposals(order)
+        self.update_proposals(order)
         print('test 1')
         return HttpResponse(content=f'Webhook received: {event["type"]} \
                             | SUCCESS: Created order in webhook', status=200)
