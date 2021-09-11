@@ -21,7 +21,6 @@ def add_to_bag(request, article_id):
     redirect_url = request.POST.get('redirect_url')
     bag = request.session.get('bag', {})
     article = get_object_or_404(Article, pk=article_id)
-    new_line = '/n'
 
     if article_id in bag:
         messages.error(request, f'Already in bag - {article.title}')
@@ -31,6 +30,27 @@ def add_to_bag(request, article_id):
     
     request.session['bag'] = bag
     return redirect(redirect_url)
+
+
+def quick_add_to_bag(request, article_id):
+    """ Add specified article to shopping bag """
+
+    articles = Article.objects.all()
+    bag = request.session.get('bag', {})
+    article = get_object_or_404(Article, pk=article_id)
+
+    if article_id in bag:
+        messages.error(request, f'Already in bag - {article.title}')
+    else:
+        bag[article_id] = 1
+        messages.success(request, f'Added to bag - {article.title}')
+    
+    request.session['bag'] = bag
+    context = {
+        'articles': articles
+    }
+
+    return render(request, 'articles/articles.html', context)
 
 
 def remove_from_bag(request, article_id):
