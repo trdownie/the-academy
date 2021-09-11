@@ -143,3 +143,38 @@ def unfollow(request, academic_id):
     }
 
     return render(request, 'academics/academic_profile.html', context)
+
+
+def unfollow_from_hub(request, academic_id):
+    """ follow another academic """
+    academic = Academic.objects.get(user=request.user)
+    print(academic_id)
+    current_profile = Academic.objects.get(pk=academic_id)
+    print(current_profile)
+
+    to_unfollow = get_object_or_404(Academic, pk=academic_id)
+    if academic.following.filter(id=to_unfollow.id).exists():
+        academic.following.remove(to_unfollow)
+        academic.save()
+        messages.error(request, f"You're no longer following {to_unfollow}.")
+    else:
+        messages.error(request, f"You're not following {to_unfollow}!")
+
+    followers = academic.academic_set.all()
+    follower_count = followers.count() - 1
+    form = AcademicProfileForm(instance=academic)
+    orders = academic.orders.all()
+    articles = academic.article_set.all()
+
+    context = {
+        'academic': academic,
+        'followers': followers,
+        'follower_count': follower_count,
+        'form': form,
+        'orders': orders,
+        'on_profile': True,
+        'articles': articles,
+        'following': False,
+    }
+
+    return render(request, 'academics/academic_profile.html', context)

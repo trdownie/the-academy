@@ -1,0 +1,32 @@
+{% load mathfilters %}
+<hr class="py-0 my-0">
+<div class="row">
+    <h2 class="center mt-3 pt-5">FOLLOWING</h2>
+</div>
+<div class="row my-5">
+    {% for follower in academic.following.all %}
+        <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 pb-5">
+            <div class="card h-100 proposal">
+                {% if follower.image %}
+                    <a href="{% url 'academic_profile' follower.id %}">
+                        <img class="card-img-top" src="{{ follower.image.url }}"  alt="{{ follower.name }}">
+                    </a>
+                {% else %}
+                    <a href="{% url 'academic_profile' follower.id %}">
+                        <img class="card-img-top" src="{{ MEDIA_URL }}noimage.png" alt="{{ follower.name }}">
+                    </a>
+                {% endif %}
+                <div class="card-body center">
+                    <h5 class="card-title">{{ follower.name }}</h5>
+                    <p class="card-text"><i class="fas fa-at fa-fw"></i>
+                        {{ follower.username }}
+                    </p>
+                </div>
+                <div class="card-footer center">
+                    <a id="more-button" href="{% url 'academic_profile' follower.id %}" class="btn">VIEW PROFILE</a>
+                    <a id="buy-button" href="{% url 'unfollow_from_hub' follower.id %}" class="btn">UNFOLLOW</a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>

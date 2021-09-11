@@ -25,13 +25,13 @@
             <p class="center"><i class="fas fa-at fa-fw"></i>{{ academic.username }}</p>
         </div>
         <div class="col-3">
+            <p class="center"> <i class="fas fa-pen fa-fw"></i> Articles: {{ academic.article_set.all.count }}</p>
+        </div>
+        <div class="col-3">
             <p class="center"><i class="fas fa-eye fa-fw"></i> Following: {{ academic.following.all.count }}</p>
         </div>
         <div class="col-3">
             <p class="center"><i class="far fa-eye fa-fw"></i> Followers: {{ follower_count }}</p>
-        </div>
-        <div class="col-3">
-            <p class="center"> <i class="fas fa-pen fa-fw"></i> Subscribers: {{ academic.subscribers }}</p>
         </div>
     </div>
     <hr class="py-0 my-0">
@@ -40,10 +40,12 @@
 
 {% block content %}
     <div id="main-content" class="container">
-        <a id="return-button" class="btn text-uppercase" href="{% url 'articles' %}">
-            <i class="fas fa-chevron-left"></i>
-            Articles
-        </a>
+        <div class="center mt-5">
+            <a id="return-button" class="btn text-uppercase" href="{% url 'articles' %}">
+                <i class="fas fa-chevron-left"></i>
+                Articles
+            </a>
+        </div>
         {% if user.username == academic.username and user.is_superuser %}
             {% include 'includes/articles.html' %}
         {% endif %}
@@ -51,9 +53,16 @@
             {% include 'includes/proposals.html' %}
         {% endif %}
         {% if user.username == academic.username %}
+            {% include 'includes/following.html' %}
+        {% endif %}
+        {% if user.username == academic.username %}
+            {% include 'includes/followers.html' %}
+        {% endif %}
+        {% if user.username == academic.username %}
             {% include 'includes/order_history.html' %}
         {% endif %}
         {% if user.username == academic.username %}
+            <hr class="py-0 my-0">
             <div class="row">
                 <h2 class="center mt-3 pt-5">PERSONAL INFO</h2>
             </div>
