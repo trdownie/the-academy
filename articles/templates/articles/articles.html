@@ -21,7 +21,11 @@
                 Articles found: {{ articles|length }}{% if search_term %} found for <strong>"{{ search_term }}"</strong>{% endif %}
             </span>
         </div>
-        <div class="col-4 offset-4 mt-3">
+        <div class="col-4 offset-4">
+            <form id="proposals" class="form-check form-switch d-flex justify-content-end" method ="GET" action="{% url 'articles' %}?proposals=True">
+                <input class="form-check-input mx-2" type="checkbox" id="flexSwitchCheckDefault" name="proposals" {% if proposals %}checked{% endif %}>
+                <label class="form-check-label" for="flexSwitchCheckDefault">Proposals Only</label>
+            </form>
             <select id="sort-selector" class="mt-3 form-select border-{% if current_sorting != 'None_None' %}grey{% else %}black{% endif %}" aria-label="Sort selector">
                 <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort by...</option>
                 <option value="rating_desc" {% if current_sorting == 'rating_desc' %}selected{% endif %}>Rating (high)</option>
@@ -51,7 +55,7 @@
         <div class="row">
             {% for article in articles %}
                 <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 pb-5">
-                    <div class="card h-100">
+                    <div class="card h-100 {% if article.proposal %}proposal{% endif %}">
                         <a href="{% url 'article_detail' article.id %}">
                             <img class="card-img-top" src="{{ article.image.url }}"  alt="{{ article.name }}">
                         </a>
@@ -113,6 +117,10 @@
                 window.location.replace(currentUrl);
             }
         })
+        $("#proposals").change(function(){
+            $("#proposals").submit();
+            document.getElementById("#proposals").checked = true;
+        });
     </script>
 
 {% endblock %}

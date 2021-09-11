@@ -17,10 +17,15 @@ def all_articles(request):
     subjects = None
     sort = None
     direction = None
-    test_one = None # test - to remove ******************************************************
-    test_two = None # test - to remove ******************************************************
+    proposals = False
 
     if request.GET:
+
+        if 'proposals' in request.GET:
+            articles = Article.objects.filter(proposal=True)
+            proposals = True
+            messages.info(request, f'Showing proposals only')
+
         # determine whether a sort parameter is defined
         if 'sort' in request.GET:
             # define sortkey as this parameter
@@ -72,8 +77,7 @@ def all_articles(request):
         'articles': articles,
         'search_term': query,
         'current_subjects': subjects,
-        'test_one': test_one,
-        'test_two': test_two,
+        'proposals': proposals,
     }
 
     return render(request, 'articles/articles.html', context)

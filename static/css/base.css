@@ -4,6 +4,15 @@
     display: none;
 }
 
+.proposal, .proposal * {
+    background-color: rgb(80, 80, 80);
+    color: white;
+}
+
+div.proposal a:hover {
+    color: greenyellow;
+}
+
 html {
     font-family: Montserrat, sans-serif;
     font-size: 16px;
