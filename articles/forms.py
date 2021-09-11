@@ -7,7 +7,7 @@ class ArticleForm(forms.ModelForm):
 
     class Meta:
         model = Article
-        fields = '__all__'
+        exclude = ('stakers',)
 
     image = forms.ImageField(label='Image', required=False,
                              widget=CustomClearableFileInput)

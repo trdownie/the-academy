@@ -22,7 +22,7 @@
             </span>
         </div>
         <div class="col-4 offset-4">
-            <form id="proposals" class="form-check form-switch d-flex justify-content-end" method ="GET" action="{% url 'articles' %}?proposals=True">
+            <form id="proposals-form" class="form-check form-switch d-flex justify-content-end" method ="GET" action="{% url 'articles' %}?proposals=True">
                 <input class="form-check-input mx-2" type="checkbox" id="flexSwitchCheckDefault" name="proposals" {% if proposals %}checked{% endif %}>
                 <label class="form-check-label" for="flexSwitchCheckDefault">Proposals Only</label>
             </form>
@@ -117,8 +117,8 @@
                 window.location.replace(currentUrl);
             }
         })
-        $("#proposals").change(function(){
-            $("#proposals").submit();
+        $("#proposals-form").change(function(){
+            $("#proposals-form").submit();
             document.getElementById("#proposals").checked = true;
         });
     </script>

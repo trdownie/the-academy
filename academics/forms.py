@@ -31,7 +31,6 @@ class AcademicProfileForm(forms.ModelForm):
         self.fields['about'].widget = forms.Textarea(
             attrs={'rows': 6, 'cols': 25})
 
-        self.fields['name'].widget.attrs['autofocus'] = True
         for field in self.fields:
             if field != 'default_country':
                 if self.fields[field].required:

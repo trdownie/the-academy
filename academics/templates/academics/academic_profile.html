@@ -43,6 +43,9 @@
         {% if user.username == academic.username and user.is_superuser %}
             {% include 'includes/articles.html' %}
         {% endif %}
+        {% if user.username == academic.username and user.is_superuser %}
+            {% include 'includes/proposals.html' %}
+        {% endif %}
         {% if user.username == academic.username %}
             {% include 'includes/order_history.html' %}
         {% endif %}
