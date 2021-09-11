@@ -39,15 +39,9 @@
     <div id="main-content" class="container">
         <div class="row">
             <div class="col-6 my-5">
-                {% if article.image %}
-                    <a href="{{ article.image.url }}" target="_blank">
-                        <img class="article-image" src="{{ article.image.url }}"  alt="{{ article.name }}">
-                    </a>
-                {% else %}
-                    <a href="#" target="_blank">
-                        <img class="article-image" src="../../../media/C_SMIC-2.png"  alt="Placeholder image">
-                    </a>
-                {% endif %}
+                <a href="{{ article.image.url }}" target="_blank">
+                    <img class="article-image" src="{{ article.image.url }}"  alt="{{ article.name }}">
+                </a>
             </div>
             <div class="col-6 my-5">
                 <div class="row">

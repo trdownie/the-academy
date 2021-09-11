@@ -52,15 +52,9 @@
             {% for article in articles %}
                 <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 pb-5">
                     <div class="card h-100">
-                        {% if article.image %}
-                            <a href="{% url 'article_detail' article.id %}">
-                                <img class="card-img-top" src="{{ article.image.url }}"  alt="{{ article.name }}">
-                            </a>
-                        {% else %}
-                            <a href="{% url 'article_detail' article.id %}">
-                                <img class="card-img-top" src="{{ MEDIA_URL }}noimage.png" alt="{{ article.name }}">
-                            </a>
-                        {% endif %}
+                        <a href="{% url 'article_detail' article.id %}">
+                            <img class="card-img-top" src="{{ article.image.url }}"  alt="{{ article.name }}">
+                        </a>
                         <div class="card-body">
                             <h5 class="card-title center">{{ article.title }}</h5>
                             <p class="card-text">
