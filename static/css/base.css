@@ -24,6 +24,17 @@ div.article a:hover {
     color: black;
 }
 
+.spacer {
+    min-height: 90vh;
+}
+
+#signout {
+    background-color: #FD636B;
+    color: black;
+    border: 1px solid black;
+    border-radius: 0px;
+}
+
 
 html {
     font-family: Montserrat, sans-serif;

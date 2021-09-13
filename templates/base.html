@@ -33,15 +33,15 @@
     </head>
     <body>
         <!-- Navigation -->
-        <!-- Main Top Bar: Larger Screens -->
+        <!-- Top Bar: Larger Screens Only-->
         <div class="container-fluid bg-dark d-none d-md-block" id="top-bar">
             <div class="row">
-                <!-- Main Logo: Larger Screens -->
-                <div id="logo-main" class="col-3 col-lg-4">
+                <!-- Main Logo -->
+                <div id="logo-main" class="col-4">
                     <a id="logo-main-link" class="uppercase white-text" href="{% url 'home' %}">The <strong>Academy</strong></a>
                 </div>
-                <!-- Main Search Form: Larger Screens -->
-                <div class="col-6 col-lg-4">
+                <!-- Main Search Form -->
+                <div class="col-4">
                     <form class="d-flex" method="GET", action="{% url 'articles' %}">
                         <input class="form-control form-control-custom me-2" type="search" name="q" placeholder="Search..." aria-label="Search">
                         <button id="search-btn-main" class="btn" type="submit">
@@ -49,31 +49,32 @@
                         </button>
                     </form>
                 </div>
-                <!-- Main Additional Links: Larger Screens -->
-                <div class="col-3 col-lg-4 g-0">
-                    <div class="row float-end">
-                        <div class="col mt-1">
+                <!-- Main Additional Links -->
+                <div class="col-4 g-0">
+                    <div class="row">
+                        <!-- Shopping Bag -->
+                        <div class="col-lg-3 offset-lg-3 col-md-4 mt-2">
                             <a href="{% url 'bag' %}" class="center white-text">
                                 {% if bag_total %}
-                                    <i class="fas fa-shopping-bag fa-lg mt-2"></i>
-                                    £{{ bag_total|floatformat:2 }}
-                                {% else %}
-                                    £0.00
+                                    <i class="fas fa-shopping-bag"></i>
+                                    <span>£{{ bag_total|floatformat:2 }}</span>
                                 {% endif %}
                             </a>
                         </div>
                         {% if request.user.is_authenticated %}
-                            <div class="col">
+                            <!-- HUB & Logout Buttons -->
+                            <div class="col-lg-3 col-md-4 text-center">
                                 <a id="main-profile-link" class="nav-link" href="{% url 'academic_profile' user.academic.id %}">HUB</a>
                             </div>                      
-                            <div class="col">
+                            <div class="col-lg-3 col-md-4 text-center">
                                 <a id="main-logout-link" class="nav-link" href="{% url 'account_logout' %}">Logout</a>
                             </div>
                         {% else %}
-                            <div class="col">
+                            <!-- Login & Register Buttons -->
+                            <div class="col-lg-3 col-md-4 text-center">
                                 <a id="main-login-link" class="nav-link" href="{% url 'account_login' %}">Login</a>
                             </div>
-                            <div class="col">
+                            <div class="col-lg-3 col-md-4 text-center">
                                 <a id="main-register-link" class="nav-link" href="{% url 'account_signup' %}">Register</a>
                             </div>
                         {% endif %}
@@ -81,14 +82,14 @@
                 </div>
             </div>
         </div>
-        <!-- Main Nav:  -->
+        <!-- Main Nav -->
         <nav class="navbar navbar-expand-md navbar-dark bg-dark">
             <div class="container-fluid">
-                <!-- Mobile Only Logo: Small Screens -->
+                <!-- Mobile Only Logo -->
                 <div id="mobile-logo" class="justify-content-start">
                     <a class="uppercase white-text d-md-none" href="#">The <strong>Academy</strong></a>
                 </div>
-                <!-- Mobile Only Hamburger Icon: Small Screens -->
+                <!-- Mobile Only Hamburger Icon -->
                 <div class="justify-content-end">
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -97,15 +98,17 @@
                 <!-- Main Nav Links -->
                 <div class="collapse navbar-collapse row my-2" id="navbarSupportedContent">
                     <ol class="navbar-nav flex-grow-1">
-                        <!-- Mobile Only Additional Links: Small Screens (dropdown) -->
+                        <!-- Mobile Only Additional Links (dropdown) -->
                         {% if request.user.is_authenticated %}
+                            <!-- HUB & Logout Buttons -->
                             <li id="mobile-profile" class="nav-item d-md-none">
-                                <a id="mobile-profile-link" class="nav-link" href="">Profile</a>
+                                <a id="mobile-profile-link" class="nav-link" href="{% url 'academic_profile' user.academic.id %}">HUB</a>
                             </li>                        
                             <li id="mobile-logout" class="nav-item d-md-none">
                                 <a id="mobile-logout-link" class="nav-link" href="{% url 'account_logout' %}">Logout</a>
                             </li>
                         {% else %}
+                            <!-- Login & Register Buttons -->
                             <li id="mobile-login" class="nav-item d-md-none">
                                 <a id="mobile-login-link" class="nav-link" href="{% url 'account_login' %}">Login</a>
                             </li>                        
@@ -113,7 +116,7 @@
                                 <a id="mobile-register-link" class="nav-link" href="{% url 'account_signup' %}">Register</a>
                             </li>
                         {% endif %}
-                        <!-- Main Categories: Larger Screens -->
+                        <!-- Main Categories (all sizes) -->
                         <li class="nav-item dropdown col">
                             <a class="nav-link dropdown-toggle uppercase" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Human

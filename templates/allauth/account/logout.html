@@ -5,17 +5,30 @@
 {% block head_title %}{% trans "Sign Out" %}{% endblock %}
 
 {% block content %}
-<h1>{% trans "Sign Out" %}</h1>
-
-<p>{% trans 'Are you sure you want to sign out?' %}</p>
-
-<form method="post" action="{% url 'account_logout' %}">
-  {% csrf_token %}
-  {% if redirect_field_value %}
-  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
-  {% endif %}
-  <button type="submit">{% trans 'Sign Out' %}</button>
-</form>
-
+<div class="container spacer">
+    <div class="row">
+        <h1 id="header" class="center uppercase mt-4">{% trans "Sign Out" %}</h1>
+        <hr>
+        <p class="fs-4 text-center">{% trans 'Ready to sign out?' %}</p>
+    </div>
+    <div class="row">
+        <div class="col-12 text-center">
+          <form method="post" action="{% url 'account_logout' %}">
+                {% csrf_token %}
+                {% if redirect_field_value %}
+                    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+                {% endif %}
+                <button id="signout" class="m-3 p-2" type="submit">{% trans 'Sign Out' %}</button>
+            </form>
+            <p class="fs-4 text-center mt-5">
+                Or check out more articles...
+            </p>
+            <a id="return-button" class="btn text-uppercase" href="{% url 'articles' %}">
+              <i class="fas fa-chevron-left"></i>
+              Articles
+            </a>
+        </div>
+    </div>
+</div>
 
 {% endblock %}
