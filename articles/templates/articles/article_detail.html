@@ -73,13 +73,15 @@
                 </form>
             </div>
         </div>
-        <div class="col-8 offset-2">
-            <hr>
-        </div>
-        <div class="row">
-            <div class="col">
-                
-            </div>
-        </div>
     </div>
+{% endblock %}
+
+{% block cta %}
+    {% if request.user.is_authenticated and user.is_superuser %}
+        {% include './includes/cta/potential.html' with level=request.user.academic.level name=request.user.academic.name %}
+    {% elif request.user.is_authenticated %}
+        {% include './includes/cta/contribute.html' with name=request.user.academic.name %}
+    {% else %}
+        {% include './includes/cta/join.html' %}
+    {% endif %}
 {% endblock %}

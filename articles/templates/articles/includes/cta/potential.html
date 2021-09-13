@@ -1,0 +1,45 @@
+{% load mathfilters %}
+
+<div class="d-flex align-items-end flex-column"></div>
+    <div class="mt-auto row">
+        <div id="bottom-box" class="col-8 offset-2 mb-5">
+            <!-- CTA Title -->
+            <div class="row mt-4 mb-3">
+                <div class="col center">
+                    <p class="uppercase md-text">Reach Your Full Potential!</p>
+                </div>
+            </div>
+            <!-- Teaser Text -->
+            <div class="row mb-3">
+                <div class="col-10 offset-1">
+                    <p>{% if level >= 80 %}
+                            You are {{ 100|sub:level|floatformat }} points away from SAGE level.
+                        {% elif level < 80 and level >= 60 %}
+                            You are {{ 80|sub:level|floatformat }} points away from SAVANT level.
+                        {% elif level < 60 and level >= 40 %}
+                            You are {{ 60|sub:level|floatformat }} points away from PROFESSOR level.
+                        {% elif level < 40 and level >= 20 %}
+                            You are {{ 40|sub:level|floatformat }} points away from ACADEMIC level.
+                        {% elif level < 20 %}
+                            You are {{ 20|sub:level|floatformat }} points away from STUDENT level.
+                        {% endif %}
+                    </p>
+                    <p>
+                        You are obviously an esteemed academic in your own right, generating praise from your
+                        peers and contributing significantly to your chosen subjects. Well done.
+                    </p>
+                    <p>
+                        By submitting articles that receive critical acclaim by other high-ranking academics,
+                        you can progress to the next level and reach your full potential.
+                    </p>
+                </div>
+            </div>
+            <!-- CTA Button -->
+            <div class="row mb-3">
+                <div class="d-flex justify-content-center">
+                    <a class="nav-link black-text center" id="register-link-bottom" href="{% url 'add_article' %}">Contribute</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
