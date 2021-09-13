@@ -35,6 +35,13 @@ div.article a:hover {
     border-radius: 0px;
 }
 
+#signup {
+    background-color: #35DB95;
+    color: black;
+    border: 1px solid black;
+    border-radius: 0px;
+}
+
 
 html {
     font-family: Montserrat, sans-serif;
