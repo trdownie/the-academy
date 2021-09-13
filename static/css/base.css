@@ -13,6 +13,20 @@ div.proposal a:hover {
     color: greenyellow;
 }
 
+.article, .article * {
+    background-color: rgb(220, 220, 220);
+    color: black;
+}
+
+div.article a:hover {
+    color: greenyellow;
+}
+
+.title-rule {
+    color: black;
+}
+
+
 html {
     font-family: Montserrat, sans-serif;
     font-size: 16px;

@@ -17,8 +17,10 @@
                             <img class="card-img-top" src="{{ MEDIA_URL }}noimage.png" alt="{{ article.name }}">
                         </a>
                     {% endif %}
-                    <div class="card-body">
+                    <div class="card-header">
                         <h5 class="card-title center">{{ article.title }}</h5>
+                    </div>
+                    <div class="card-body">
                         <p class="card-text"><i class="fas fa-thumbs-up fa-fw"></i>
                             {{ article.stakers }}
                         </p>

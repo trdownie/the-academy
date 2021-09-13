@@ -55,12 +55,14 @@
         <div class="row">
             {% for article in articles %}
                 <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 pb-5">
-                    <div class="card h-100 {% if article.proposal %}proposal{% endif %}">
+                    <div class="card h-100 {% if article.proposal %}proposal{% else %}article{% endif %}">
                         <a href="{% url 'article_detail' article.id %}">
                             <img class="card-img-top" src="{{ article.image.url }}"  alt="{{ article.name }}">
                         </a>
-                        <div class="card-body">
+                        <div class="card-header">
                             <h5 class="card-title center">{{ article.title }}</h5>
+                        </div>
+                        <div class="card-body">
                             <p class="card-text">
                                 {% for author in article.authors.all %}
                                     <i class="fas fa-user fa-fw"></i>
