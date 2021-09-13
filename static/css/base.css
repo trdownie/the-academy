@@ -7,8 +7,21 @@
     color: white;
 }
 
-div.proposal a:hover {
-    color: greenyellow;
+a {
+    text-decoration: none;
+}
+
+/* Code inspired by this transition */
+/* https://css-tricks.com/snippets/css/scale-on-hover-with-webkit-transition/ */
+
+a, button, .grow { 
+    display: inline-block !important;
+    transition: transform 0.5s ease-in-out;
+}
+
+a:hover, button:hover, .grow:hover {
+    display: inline-block;
+    transform: scale(1.1);
 }
 
 .article, .article * {
@@ -16,9 +29,6 @@ div.proposal a:hover {
     color: black;
 }
 
-div.article a:hover {
-    color: greenyellow;
-}
 
 .title-rule {
     color: black;
@@ -35,12 +45,16 @@ div.article a:hover {
     border-radius: 0px;
 }
 
-
 #home {
     background-color: #FFA52C;
     color: black;
     border: 1px solid black;
     border-radius: 0px;
+}
+
+#signout:hover, #signup:hover, #signin:hover, #home:hover {
+    background-color: white;
+    color: black;
 }
 
 .allauth-inner-content input {
@@ -55,11 +69,6 @@ div.article a:hover {
 html {
     font-family: Montserrat, sans-serif;
     font-size: 16px;
-}
-
-a {
-    text-decoration: none;
-    color: black;
 }
 
 .md-text {

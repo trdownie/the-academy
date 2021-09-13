@@ -16,7 +16,9 @@
                         </a>
                     {% endif %}
                     <div class="card-header">
-                        <h5 class="card-title center">{{ article.title }}</h5>
+                        <a href="{% url 'article_detail_profile' article.id %}">
+                            <h5 class="card-title text-center grow">{{ article.title }}</h5>
+                        </a>
                     </div>
                     <div class="card-body">
                         <p class="card-text"><i class="fas fa-star fa-fw"></i>
@@ -30,13 +32,17 @@
                         <p>
                             {% for subject in article.subjects.all %}
                                 <i class="fas fa-info-circle fa-fw"></i>
-                                <a href="{% url 'articles' %}?subject={{ subject.subject_name }}" class="card-text text-capitalize">{{ subject.friendly_name }}</a>
+                                <span class="grow">
+                                    <a href="{% url 'articles' %}?subject={{ subject.subject_name }}" class="card-text text-capitalize">{{ subject.friendly_name }}</a>
+                                </span>
                             {% endfor %}
                         </p>
                         <p class="card-text"><i class="fas fa-pound-sign fa-fw"></i> {{ article.price}}</p>
                     </div>
                     <div class="card-footer center">
-                        <a id="more-button" href="{% url 'article_detail_profile' article.id %}" class="btn">VIEW</a>
+                        <div class="grow">
+                            <a id="more-button" href="{% url 'article_detail_profile' article.id %}" class="btn">VIEW</a>
+                        </div>
                         <a id="buy-button" href="{% url 'edit_article' article.id %}" class="btn">EDIT</a>
                     </div>
                 </div>
