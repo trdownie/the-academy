@@ -1,1 +1,13 @@
 {% extends "base.html" %}
+
+{% block content %}
+<div class="container spacer">
+    <div class="row">
+        <div class="col-6 offset-3 allauth-inner-content">
+            {% block inner_content %}
+
+            {% endblock %}
+        </div>
+    </div>
+  </div>
+{% endblock %}

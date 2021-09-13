@@ -28,20 +28,29 @@ div.article a:hover {
     min-height: 90vh;
 }
 
-#signout {
-    background-color: #FD636B;
+#signout, #signup, #signin {
+    background-color: black;
+    color: white;
+    border: 1px solid black;
+    border-radius: 0px;
+}
+
+
+#home {
+    background-color: #FFA52C;
     color: black;
     border: 1px solid black;
     border-radius: 0px;
 }
 
-#signup {
-    background-color: #35DB95;
-    color: black;
+.allauth-inner-content input {
     border: 1px solid black;
     border-radius: 0px;
 }
 
+.allauth-inner-content label:not([for="id_remember"]) {
+    display: none;
+}
 
 html {
     font-family: Montserrat, sans-serif;
