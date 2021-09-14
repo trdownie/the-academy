@@ -8,7 +8,7 @@
     <!-- Background image & tooltip -->
     <div id="" class="container-fluid position-relative">
         <div id="bag-box" class="row position-absolute mt-5">
-            <div class="center">
+            <div class="text-center">
                 <h1 id="syllabus-text" class="py-3 mb-0 bg-dark">Enroll</h1>
             </div>
             <table class="table table-dark table-striped">
@@ -44,6 +44,25 @@
                 </tbody>
             </table>
             <div class="col-12">
+                {% if not user.is_authenticated %}
+                <div class="row text-center">
+                    <div id="login-box" class="col-8 offset-2 mb-3">
+                        <div class="p-3">
+                            <p>Login or create an account to save your information and order history.</p>
+                            <label class="form-check-label" for="id-save-info">
+                                <a class="btn btn-white" href="{% url 'account_signup' %}">
+                                    <i class="fas fa-user-plus"></i>
+                                    Create Account
+                                </a>
+                                <a class="btn btn-black" href="{% url 'account_login' %}">
+                                    Login
+                                    <i class="fas fa-sign-in-alt"></i>
+                                </a>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
                 <p>Please fill out the form below to complete your order</p>
                 <form action="{% url 'checkout' %}" method="POST" id="payment-form">
                     {% csrf_token %}
@@ -65,11 +84,6 @@
                             {% if user.is_authenticated %}
                                 <label class="form-check-label" for="id-save-info">Save billing information to my profile (excluding card details)</label>
                                 <input class="form-check-input" type="checkbox" id="id-save-info" name="save-info" checked>
-                            {% else %}
-                                <label class="form-check-label" for="id-save-info">
-                                    <a href="{% url 'account_signup' %}">Create Account</a>
-                                    <a href="{% url 'account_login' %}">Login</a> to save information
-                                </label>
                             {% endif %}
                         </div>
                     </fieldset>
@@ -82,24 +96,20 @@
                         <!-- Pass client secret to view to obtain payment intent id -->
                         <input type="hidden" value="{{ client_secret }}" name="client_secret">
                     </fieldset>
-                    <div class="submit-button text-right mt-5 mb-2">
-                        <a href="{% url 'bag' %}" class="btn">
-                            <span class="icon">
-                                <i class="fas fa-chevron-left"></i>
-                            </span>
-                            <span class="font-weight-bold">Adjust Bag</span>
+                    <div class="text-right mt-5 mb-2">
+                        <a href="{% url 'bag' %}" class="btn btn-white">
+                            <i class="fas fa-chevron-left"></i>
+                            Adjust Bag
                         </a>
-                        <button id="submit-button" class="btn">
-                            <span class="font-weight-bold">Complete Order</span>
-                            <span class="icon">
-                                <i class="fas fa-lock"></i>
-                            </span>
+                        <button class="btn btn-black">
+                            Complete Order
+                            <i class="fas fa-check"></i>
                         </button>
                         <p class="small text-danger my-0">
                             <span class="icon">
-                                <i class="fas fa-exclamation-circle"></i>
+                                <i class="fas fa-info-circle"></i>
                             </span>
-                            <span>Your card will be charged <strong>${{ grand_total|floatformat:2 }}</strong></span>
+                            <span>Your card will be charged <strong>£{{ bag_total|floatformat:2 }}</strong></span>
                         </p>
                     </div>
                 </form>

@@ -1,5 +1,5 @@
 <div class="row">
-    <h2 class="center mt-3 pt-5">ARTICLES SUBMITTED</h2>
+    <h2 class="text-center mt-3 pt-5">ARTICLES SUBMITTED</h2>
 </div>
 <div class="row my-5">
     {% for article in articles %}
@@ -7,17 +7,17 @@
             <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 pb-5">
                 <div class="card h-100 article">
                     {% if article.image %}
-                        <a href="{% url 'article_detail_profile' article.id %}">
+                        <a class="article-img" href="{% url 'article_detail_profile' article.id %}">
                             <img class="card-img-top" src="{{ article.image.url }}"  alt="{{ article.name }}">
                         </a>
                     {% else %}
-                        <a href="{% url 'article_detail_profile' article.id %}">
+                        <a class="article-img" href="{% url 'article_detail_profile' article.id %}">
                             <img class="card-img-top" src="{{ MEDIA_URL }}noimage.png" alt="{{ article.name }}">
                         </a>
                     {% endif %}
                     <div class="card-header">
                         <a href="{% url 'article_detail_profile' article.id %}">
-                            <h5 class="card-title text-center grow">{{ article.title }}</h5>
+                            <h5 class="card-title text-center"><a href="{% url 'article_detail_profile' article.id %}">{{ article.title }}</a></h5>
                         </a>
                     </div>
                     <div class="card-body">
@@ -31,26 +31,21 @@
                         <p class="card-text"><i class="fas fa-calendar fa-fw"></i> {{ article.date }}</p>
                         <p>
                             {% for subject in article.subjects.all %}
-                                <i class="fas fa-info-circle fa-fw"></i>
-                                <span class="grow">
-                                    <a href="{% url 'articles' %}?subject={{ subject.subject_name }}" class="card-text text-capitalize">{{ subject.friendly_name }}</a>
-                                </span>
+                                <a href="{% url 'articles' %}?subject={{ subject.subject_name }}" class="card-text text-capitalize"><i class="fas fa-info-circle fa-fw"></i> {{ subject.friendly_name }}</a>
                             {% endfor %}
                         </p>
                         <p class="card-text"><i class="fas fa-pound-sign fa-fw"></i> {{ article.price}}</p>
                     </div>
-                    <div class="card-footer center">
-                        <div class="grow">
-                            <a id="more-button" href="{% url 'article_detail_profile' article.id %}" class="btn">VIEW</a>
-                        </div>
-                        <a id="buy-button" href="{% url 'edit_article' article.id %}" class="btn">EDIT</a>
+                    <div class="card-footer text-center">
+                        <a href="{% url 'article_detail_profile' article.id %}" class="btn btn-black">VIEW</a>
+                        <a href="{% url 'edit_article' article.id %}" class="btn btn-orange">EDIT</a>
                     </div>
                 </div>
             </div>
         {% endif %}
     {% endfor %}
-    <div class="center mt-5">
-        <a id="return-button" class="btn text-uppercase" href="{% url 'add_article' %}">
+    <div class="text-center mt-5">
+        <a class="btn btn-blue" href="{% url 'add_article' %}">
             <i class="fas fa-pen"></i>
             Submit Article
         </a>

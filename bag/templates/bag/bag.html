@@ -8,7 +8,7 @@
     <!-- Background image & tooltip -->
     <div id="banner" class="container-fluid position-relative">
         <div id="bag-box" class="row position-absolute mt-5">
-            <div class="center">
+            <div class="text-center">
                 <h1 id="syllabus-text" class="py-3 mb-0 bg-dark">Syllabus</h1>
             </div>
             <div class="col-12">
@@ -37,7 +37,7 @@
                                     <td class="align-middle">
                                         <form class="form" action="{% url 'remove_from_bag' article.article.id %}" method="POST">
                                             {% csrf_token %}
-                                            <input id="remove-button" type="submit" class="btn text-uppercase" value="X">
+                                            <input type="submit" class="btn btn-red" value="X">
                                             <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                         </form>
                                     </td>
@@ -50,22 +50,22 @@
                             </tr>
                             <tr>
                                 <td colspan="5" class="text-center">
-                                    <a id="return-button" class="btn mt-3 text-uppercase" href="{% url 'articles' %}">
+                                    <a class="btn btn-orange mt-3 " href="{% url 'articles' %}">
                                         <i class="fas fa-chevron-left"></i>
                                         Articles
                                     </a>
-                                    <a id="checkout-button" class="btn mt-3 text-uppercase" href="{% url 'checkout' %}">
-                                        <i class="fas fa-chevron-lock"></i>
+                                    <a class="btn btn-black mt-3" href="{% url 'checkout' %}">
                                         Secure Checkout
+                                        <i class="fas fa-lock"></i>
                                     </a>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                 {% else %}
-                    <div class="center">
+                    <div class="text-center">
                         <p>No articles on syllabus!</p>
-                        <a id="begin-button" class="btn px-4" href="{% url 'articles' %}">See Articles</a>
+                        <a class="btn btn-black px-4" href="{% url 'articles' %}">See Articles</a>
                     </div>
                 {% endif %}
             </div>

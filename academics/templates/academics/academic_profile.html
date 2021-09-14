@@ -7,8 +7,8 @@
 {% block page_header %}
 <div class="container">
     <div class="row">
-        <h1 id="header" class="center uppercase mt-4">{{ academic.name }}{% if user.username == academic.username %}'S ACADEMIC HUB{% endif %}</h1>
-        <p class="fs-4 center">
+        <h1 id="header" class="text-center text-uppercase mt-4">{{ academic.name }}{% if user.username == academic.username %}'S ACADEMIC HUB{% endif %}</h1>
+        <p class="fs-4 text-center">
             {% if academic.level >= 80 %}
                 <span>- SAGE -</span>
             {% elif academic.level < 80 and academic.level >= 60 %}
@@ -24,16 +24,16 @@
     </div>
     <div class="row">
         <div class="col-3">
-            <p class="center"><i class="fas fa-at fa-fw"></i>{{ academic.username }}</p>
+            <p class="text-center"><i class="fas fa-at fa-fw"></i>{{ academic.username }}</p>
         </div>
         <div class="col-3">
-            <p class="center"> <i class="fas fa-pen fa-fw"></i> Articles: {{ academic.article_set.all.count }}</p>
+            <p class="text-center"> <i class="fas fa-pen fa-fw"></i> Articles: {{ academic.article_set.all.count }}</p>
         </div>
         <div class="col-3">
-            <p class="center"><i class="fas fa-eye fa-fw"></i> Following: {{ academic.following.all.count }}</p>
+            <p class="text-center"><i class="fas fa-eye fa-fw"></i> Following: {{ academic.following.all.count }}</p>
         </div>
         <div class="col-3">
-            <p class="center"><i class="far fa-eye fa-fw"></i> Followers: {{ follower_count }}</p>
+            <p class="text-center"><i class="far fa-eye fa-fw"></i> Followers: {{ follower_count }}</p>
         </div>
     </div>
     <hr class="py-0 my-0">
@@ -42,8 +42,8 @@
 
 {% block content %}
     <div id="main-content" class="container">
-        <div class="center mt-5">
-            <a id="return-button" class="btn text-uppercase" href="{% url 'articles' %}">
+        <div class="text-center mt-5">
+            <a class="btn btn-black mt-3" href="{% url 'articles' %}">
                 <i class="fas fa-chevron-left"></i>
                 Articles
             </a>
@@ -66,13 +66,13 @@
         {% if user.username == academic.username %}
             <hr class="py-0 my-0">
             <div class="row">
-                <h2 class="center mt-3 pt-5">PERSONAL INFO</h2>
+                <h2 class="text-center mt-3 pt-5">PERSONAL INFO</h2>
             </div>
         {% endif %}
         <div class="row">
             <div class="col-6 my-5">
-                <a href="{{ academic.image.url }}" target="_blank">
-                    <img class="article-image" src="{{ academic.image.url }}"  alt="{{ academic.name }}">
+                <a class="profile-img" href="{{ academic.image.url }}" target="_blank">
+                    <img class="profile-image" src="{{ academic.image.url }}"  alt="{{ academic.name }}">
                 </a>
             </div>
             <div class="col-6">
@@ -80,21 +80,21 @@
                     {% include 'includes/profile.html' %}
                 {% else %}
                     <div class="row">
-                        <h2 class="center mt-3 pt-5">SUMMARY</h2>
+                        <h2 class="text-center mt-3 pt-5">SUMMARY</h2>
                     </div>
                     <div class="row">
                         <p class="mt-4">{{ academic.about }}</p>
                     </div>
                     <div class="row">
-                        <div class="col center mt-4">
-                            <a id="return-button" class="btn text-uppercase" href="{% url 'articles' %}">
+                        <div class="col text-center mt-4">
+                            <a class="btn btn-black" href="{% url 'articles' %}">
                                 <i class="fas fa-chevron-left"></i>
                                 Articles
                             </a>
                             {% if user.academic in followers or following == True %}
-                                <a id="follow-button" href="{% url 'unfollow' academic.id %}" class="btn text">Unfollow <strong>@{{ academic.username }}</strong></a>
+                                <a href="{% url 'unfollow' academic.id %}" class="btn btn-white">Unfollow <strong>@{{ academic.username }}</strong></a>
                             {% elif user.academic not in followers or following == False %}
-                                <a id="follow-button" href="{% url 'follow' academic.id %}" class="btn text">Follow <strong>@{{ academic.username }}</strong></a>
+                                <a href="{% url 'follow' academic.id %}" class="btn btn-white">Follow <strong>@{{ academic.username }}</strong></a>
                             {% endif %}
                         </div>
                     </div>

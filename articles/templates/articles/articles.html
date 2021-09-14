@@ -7,7 +7,7 @@
 {% block page_header %}
 <div class="container">
     <div class="row">
-        <div class="col-12 mt-4 center">
+        <div class="col-12 mt-4 text-center">
             {% for subject in current_subjects %}
                 <a id="category-button" href="{% url 'articles' %}?subject={{ subject.subject_name }}" class="btn">
                     {% if subject.friendly_name %}
@@ -47,7 +47,7 @@
 
 {% block content %}
     <!-- TEST TEST TEST TEST TEST TEST TEST TEST --
-    <div class="center">
+    <div class="text-center">
         <h1>Test 1: {{ test_one }}</h1>
         <h1>Test 2: {{ test_two }}</h1>
     </div>
@@ -58,17 +58,16 @@
             {% for article in articles %}
                 <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 pb-5">
                     <div class="card h-100 {% if article.proposal %}proposal{% else %}article{% endif %}">
-                        <a href="{% url 'article_detail' article.id %}">
+                        <a class="article-img" href="{% url 'article_detail' article.id %}">
                             <img class="card-img-top" src="{{ article.image.url }}"  alt="{{ article.name }}">
                         </a>
                         <div class="card-header">
-                            <h5 class="card-title center">{{ article.title }}</h5>
+                            <h5 class="card-title text-center"><a href="{% url 'article_detail' article.id %}">{{ article.title }}</a></h5>
                         </div>
                         <div class="card-body">
                             <p class="card-text">
                                 {% for author in article.authors.all %}
-                                    <i class="fas fa-user fa-fw"></i>
-                                    <a href="{% url 'academic_profile' author.id %}"> {{ author }}</a>
+                                    <a href="{% url 'academic_profile' author.id %}"><i class="fas fa-user fa-fw"></i> {{ author }}</a>
                                 {% endfor %}
                             </p>
                             <p class="card-text"><i class="fas fa-star fa-fw"></i>
@@ -81,15 +80,14 @@
                             <p class="card-text"><i class="fas fa-calendar fa-fw"></i> {{ article.date }}</p>
                             <p>
                                 {% for subject in article.subjects.all %}
-                                    <i class="fas fa-info-circle fa-fw"></i>
-                                    <a href="{% url 'articles' %}?subject={{ subject.subject_name }}" class="card-text text-capitalize">{{ subject.friendly_name }}</a>
+                                    <a href="{% url 'articles' %}?subject={{ subject.subject_name }}" class="card-text text-capitalize"><i class="fas fa-info-circle fa-fw"></i> {{ subject.friendly_name }}</a>
                                 {% endfor %}
                             </p>
                             <p class="card-text"><i class="fas fa-pound-sign fa-fw"></i> {{ article.price}}</p>
                         </div>
-                        <div class="card-footer center">
-                            <a id="more-button" href="{% url 'article_detail' article.id %}" class="btn">MORE</a>
-                            <a id="buy-button" href="{% url 'quick_add_to_bag' article.id %}" class="btn">QUICK ADD</a>
+                        <div class="card-footer text-center">
+                            <a href="{% url 'article_detail' article.id %}" class="btn btn-black">MORE</a>
+                            <a href="{% url 'quick_add_to_bag' article.id %}" class="btn btn-green">QUICK ADD</a>
                         </div>
                     </div>
                 </div>

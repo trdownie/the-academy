@@ -7,7 +7,7 @@
 {% block page_header %}
 <div class="container">
     <div class="row">
-        <h1 id="header" class="center text-capitalize mt-4">{{ article.title }}</h1>
+        <h1 id="header" class="text-center text-capitalize mt-4">{{ article.title }}</h1>
         <div class="col mt-4">
             <p class="">
                 {% for author in article.authors.all %}
@@ -41,34 +41,34 @@
     <div id="main-content" class="container">
         <div class="row">
             <div class="col-6 my-5">
-                <a href="{{ article.image.url }}" target="_blank">
+                <a class="article-img" href="{{ article.image.url }}" target="_blank">
                     <img class="article-image" src="{{ article.image.url }}"  alt="{{ article.name }}">
                 </a>
             </div>
             <div class="col-6 my-5">
                 <div class="row">
-                    <h2 class="center">SUMMARY</h2>
+                    <h2 class="text-center">SUMMARY</h2>
                 </div>
                 <div class="row">
                     <p class="">{{ article.summary }}</p>
                 </div>
-                <p class="card-text center fs-5"><i class="fas fa-pound-sign fa-fw"></i> {{ article.price}}</p>
+                <p class="card-text text-center fs-5"><i class="fas fa-pound-sign fa-fw"></i> {{ article.price}}</p>
                 <form class="form" action="{% url 'add_to_bag' article.id %}" method="POST">
                     {% csrf_token %}
                     <div class="row">
-                        <div class="col-12 center">
+                        <div class="col-12 text-center">
                             {% if from_profile %}
-                                <a id="return-button" class="btn mt-3 text-uppercase" href="{% url 'academic_profile' user.academic.id %}">
+                                <a class="btn btn-black mt-3" href="{% url 'academic_profile' user.academic.id %}">
                                     <i class="fas fa-chevron-left"></i>
                                     Profile
                                 </a>
                             {% else %}
-                                <a id="return-button" class="btn mt-3 text-uppercase" href="{% url 'articles' %}">
+                                <a class="btn btn-black mt-3" href="{% url 'articles' %}">
                                     <i class="fas fa-chevron-left"></i>
                                     Articles
                                 </a>
                             {% endif %}
-                            <input id="buy-button" type="submit" class="btn rounded-0 text-uppercase mt-3" value="Add to Bag">
+                            <input type="submit" class="btn btn-green mt-3" value="Add to Bag">
                             <input type="hidden" name="redirect_url" value="{{ request.path }}">
                         </div>
                     </div>

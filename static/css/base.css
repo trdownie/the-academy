@@ -1,103 +1,88 @@
-.asteriskField {
-    display: none;
+/***********************************  SITEWIDE STYLING  ************************************/
+
+/*----------------------------------  Global Variables  -----------------------------------*/
+
+:root {
+    --orange-peel: #ffa52c;
+    --medium-aquamarine: #35db95;
+    --fiery-rose: #fd636b;
+    --maya-blue: #63bafd;
+    --black-border: 1px solid black;
+    --square-border: 0px;
 }
 
-.proposal, .proposal * {
-    background-color: rgb(80, 80, 80);
+/*----------------------------------  Sitewide Elements/Utilities  -------------------------------------------*/
+
+a, a:hover, .btn, .btn:hover {
+    text-decoration: none;
+    color: currentColor;
+}
+
+.btn {
+    border: var(--black-border);
+    border-radius: var(--square-border);
+    text-transform: uppercase;
+}
+
+.btn-blue, .btn-blue:hover {
+    background-color: var(--maya-blue);
+    color: black;
+}
+
+.btn-green, .btn-green:hover {
+    background-color: var(--medium-aquamarine);
+    color: black;
+}
+
+.btn-orange, .btn-orange:hover {
+    background-color: var(--orange-peel);
+    color: black;
+}
+
+.btn-red, .btn-red:hover {
+    background-color: var(--fiery-rose);
+    color: black;
+}
+
+.btn-white, .btn-white:hover {
+    background-color: white;
+    color: black;
+}
+
+.btn-black, .btn-black:hover {
+    background-color: black;
     color: white;
 }
 
-a {
-    text-decoration: none;
-}
-
-/* Code inspired by this transition */
+/* TRANSITION - INSPIRED BY POST BELOW */
 /* https://css-tricks.com/snippets/css/scale-on-hover-with-webkit-transition/ */
 
-a, button, .grow { 
-    display: inline-block !important;
-    transition: transform 0.5s ease-in-out;
-}
-
-a:hover, button:hover, .grow:hover {
+/* First, make most anchors/buttons inline-block & set transition style*/
+a:not(.dropdown-item):not(.article-img):not(.profile-img), .btn { 
     display: inline-block;
-    transform: scale(1.1);
+    transition: transform 0.2s ease-in-out;
 }
 
-.article, .article * {
-    background-color: rgb(220, 220, 220);
-    color: black;
+/* Second, scale these items up by 20% */
+a:hover:not(.dropdown-item):not(.article-img):not(.profile-img), .btn:hover {
+    transform: scale(1.2);
 }
 
+/* Third, remove the anchor backgrounds on non-buttons to avoid scaling the block background */
+a:not(.btn) {
+    background-color: transparent;
+}
+/* END OF TRANSITION */
 
-.title-rule {
-    color: black;
+.underline {
+    text-decoration: underline;
 }
 
 .spacer {
     min-height: 90vh;
 }
 
-#signout, #signup, #signin {
-    background-color: black;
-    color: white;
-    border: 1px solid black;
-    border-radius: 0px;
-}
-
-#home {
-    background-color: #FFA52C;
-    color: black;
-    border: 1px solid black;
-    border-radius: 0px;
-}
-
-#signout:hover, #signup:hover, #signin:hover, #home:hover {
-    background-color: white;
-    color: black;
-}
-
-.allauth-inner-content input {
-    border: 1px solid black;
-    border-radius: 0px;
-}
-
-.allauth-inner-content label:not([for="id_remember"]) {
-    display: none;
-}
-
-html {
-    font-family: Montserrat, sans-serif;
-    font-size: 16px;
-}
-
-.md-text {
-    font-size: 1.25rem;
-}
-
-.lg-text {
-    font-size: 1.5rem;
-}
-
-.xl-text {
-    font-size: 2rem;
-}
-
-.xxl-text {
-    font-size: 2.5rem;
-}
-
-.white-text {
-    color: white;
-}
-
-.black-text {
-    color: black;
-}
-
-.center {
-    text-align: center;
-}
+/* Nav bar & Footer bar (base.html) */
 
 #search-btn-main, #search-btn-mobile, .form-control-custom {
     height: 35px;
@@ -113,16 +98,7 @@ html {
 
 #search-btn-main:hover, #search-btn-mobile:hover {
     color: black;
-    border-color: black;
     background-color: white;
-}
-
-.uppercase {
-    text-transform: uppercase;
-}
-
-.underline {
-    text-decoration: underline;
 }
 
 #logo-main {
@@ -136,32 +112,9 @@ html {
     height: 50px;
 }
 
-#main-login-link, #main-profile-link, #mobile-login-link,
-#mobile-register-link, #mobile-profile-link, #mobile-logout-link, #navbarDropdown,  #main-register-link:hover {
+#shopping-bag-link, #main-login-link, #main-profile-link, #navbarDropdown, #main-logo-link, #footer-logo-link,
+ #mobile-login-link, #mobile-register-link, #mobile-profile-link, #mobile-logout-link {
     color: white;
-}
-
-#main-login-link:hover, #main-profile-link:hover, #mobile-login-link:hover,
-#mobile-register-link:hover, #mobile-profile-link:hover, #mobile-logout-link:hover, #navbarDropdown:hover, #logo-main-link:hover {
-    color: grey;
-}
-
-#main-register-link, #register-link-bottom {
-    background-color: #35DB95;
-    color: black;
-    border: 1px solid black;
-    border-radius: 0px;
-}
-
-#main-logout-link {
-    background-color: #FD636B;
-    color: black;
-    border: 1px solid black;
-    border-radius: 0px;
-}
-
-#register-link-bottom {
-    width: 100px;
 }
 
 .dropdown-menu {
@@ -172,15 +125,14 @@ html {
     text-align: center;
 }
 
-#bottom-box {
-    border: 1px solid #C7C7C7;
-}
-
 #bottom-bar {
     height: 50px;
     align-content: center;
     justify-content: center;
 }
+
+
+
 
 #banner {
     height: 1000px;
@@ -214,27 +166,17 @@ html {
     min-height: 750px;
 }
 
+
 /* articles */
 
-#category-button {
-    background-color: white;
+.article {
+    background-color: #cccccc;
     color: black;
-    border: 1px solid black;
-    border-radius: 0px;
 }
 
-#more-button {
-    background-color: lightgreen;
-    color: black;
-    border: 1px solid black;
-    border-radius: 0px;
-}
-
-#buy-button {
-    background-color: black;
+.proposal {
+    background-color: #666666;
     color: white;
-    border: 1px solid black;
-    border-radius: 0px;
 }
 
 .card-img-top {
@@ -251,44 +193,23 @@ html {
     justify-content: space-between;
 }
 
-/* article_detail */
+/* CTA includes */
 
-.article-image {
+#bottom-box {
+    border: 1px solid #cccccc;
+}
+
+/* article detail */
+
+.article-image, .profile-image {
     max-width: 100%;
 }
 
-#return-button {
-    background-color: #FFA52C;
-    color: black;
-    border: 1px solid black;
-    border-radius: 0px;
-}
-
-
-@media screen and (max-width: 767px){
-    #mobile-logo {
-        font-size: 20px;
-    }
-    .navbar {
-        padding: 10px 0px;
-    }
-    .dropdown-menu, #mobile-login-link, #mobile-register-link,
-    #mobile-profile-link, #mobile-logout-link {
-        text-align: center;
-    }
-    #main-register-link {
-        background-color: revert;
-        color: white;
-    }
-}
-
-/* academic_profile */
+/* academic profile */
 
 #follow-button {
     background-color: white;
     color: black;
-    border: 1px solid black;
-    border-radius: 0px;
 }
 
 /* profile */
@@ -317,29 +238,6 @@ html {
     object-fit: cover;
 }
 
-#remove-button {
-    background-color: #FD636B;
-    color: black;
-    border: 1px solid black;
-    border-radius: 0px;
-}
-
-#checkout-button {
-    background-color: white;
-    color: black;
-    border: 1px solid black;
-    border-radius: 0px;
-}
-
-.toast-container {
-    position: fixed;
-    z-index: 100;
-}
-
-.toast {
-    overflow: visible;
-}
-
 .bag-item-wrapper {
     height: 150px;
     overflow-x: hidden;
@@ -352,6 +250,10 @@ html {
 }
 
 /* checkout */
+
+#login-box {
+    border: 1px solid #cccccc;
+}
 
 #loading-overlay {
     display: none;
@@ -372,11 +274,60 @@ html {
     height: 100%;
 }
 
+
 /* edit article */
 
 #form-mini-img {
     width: 100px;
     height: 100px;
+}
+
+/* allauth forms */
+.allauth-inner-content input {
+    border: var(--black-border);
+    border-radius: var(--square-border);
+}
+
+.allauth-inner-content label:not([for="id_remember"]) {
+    display: none;
+}
+
+
+/* toasts */
+
+.toast-container {
+    position: fixed;
+    z-index: 100;
+}
+
+.toast {
+    overflow: visible;
+}
+
+/* crispy forms */
+.asteriskField {
+    display: none;
+}
+
+
+/***********************************  RESPONSIVE STYLING  ************************************/
+
+
+@media screen and (max-width: 767px){
+    #mobile-logo {
+        font-size: 20px;
+    }
+    .navbar {
+        padding: 10px 0px;
+    }
+    .dropdown-menu, #mobile-login-link, #mobile-register-link,
+    #mobile-profile-link, #mobile-logout-link {
+        text-align: center;
+    }
+    #main-register-link {
+        background-color: revert;
+        color: white;
+    }
 }
 
 @media screen and (max-width: 991px){

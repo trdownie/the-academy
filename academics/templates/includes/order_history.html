@@ -1,6 +1,6 @@
 <hr class="py-0 my-0">
 <div class="row">
-    <h2 class="center mt-3 pt-5">ORDER HISTORY</h2>
+    <h2 class="text-center mt-3 pt-5">ORDER HISTORY</h2>
 </div>
 <div id="order-history" class="row my-5">
     <div class="">
@@ -17,7 +17,7 @@
                 {% for order in orders %}
                     <tr>
                         <td class="col-1">
-                            <a href="{% url 'order_history' order.order_number %}" title="{{ order.order_number }}">{{ order.order_number|truncatechars:7 }}</a>
+                            <a href="{% url 'order_history' order.order_number %}" title="{{ order.order_number }}"><strong>{{ order.order_number|truncatechars:7 }}</strong></a>
                         </td>
                         <td class="align-middle">{{ order.date }}</td>
                         <td class="align-middle">{% for article in order.order_items.all %}{% if not forloop.counter == 1 %}<br>{% endif %}{{ article }}{% endfor %}</td>

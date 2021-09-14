@@ -8,7 +8,7 @@
     <!-- Background image & tooltip -->
     <div id="" class="container-fluid position-relative">
         <div id="bag-box" class="row position-absolute mt-5">
-            <div class="center">
+            <div class="text-center">
                 {% if from_profile %}
                     <h1 id="syllabus-text" class="py-3 mb-0 bg-dark">Order Details</h1>
                 {% else %}
@@ -46,12 +46,18 @@
                 </tbody>
             </table>
             {% if from_profile %}
-                <div class="center">
-                    <a id="begin-button" class="btn px-4" href="{% url 'academic_profile' academic.id %}">Return to Profile</a>
+                <div class="text-center">
+                    <a id="begin-button" class="btn btn-black px-4" href="{% url 'academic_profile' academic.id %}">
+                        <i class="fas fa-chevron-left"></i>
+                        Return to Profile
+                    </a>
                 </div>
             {% else %}
-                <div class="center">
-                    <a id="begin-button" class="btn px-4" href="{% url 'articles' %}">See More Articles</a>
+                <div class="text-center">
+                    <a id="begin-button" class="btn btn-black px-4" href="{% url 'articles' %}">
+                        <i class="fas fa-chevron-left"></i>
+                        See More Articles
+                    </a>
                 </div>
             {% endif %}
             </div>

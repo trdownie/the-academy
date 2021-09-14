@@ -38,7 +38,7 @@
             <div class="row">
                 <!-- Main Logo -->
                 <div id="logo-main" class="col-4">
-                    <a id="logo-main-link" class="uppercase white-text" href="{% url 'home' %}">The <strong>Academy</strong></a>
+                    <a id="main-logo-link" class="text-uppercase" href="{% url 'home' %}">The <strong>Academy</strong></a>
                 </div>
                 <!-- Main Search Form -->
                 <div class="col-4">
@@ -54,7 +54,7 @@
                     <div class="row">
                         <!-- Shopping Bag -->
                         <div class="col-lg-3 offset-lg-3 col-md-4 mt-2">
-                            <a href="{% url 'bag' %}" class="center white-text">
+                            <a id="shopping-bag-link" href="{% url 'bag' %}" class="text-center">
                                 {% if bag_total %}
                                     <i class="fas fa-shopping-bag"></i>
                                     <span>£{{ bag_total|floatformat:2 }}</span>
@@ -67,7 +67,7 @@
                                 <a id="main-profile-link" class="nav-link" href="{% url 'academic_profile' user.academic.id %}">HUB</a>
                             </div>                      
                             <div class="col-lg-3 col-md-4 text-center">
-                                <a id="main-logout-link" class="nav-link" href="{% url 'account_logout' %}">Logout</a>
+                                <a class="nav-link btn btn-red" href="{% url 'account_logout' %}">Logout</a>
                             </div>
                         {% else %}
                             <!-- Login & Register Buttons -->
@@ -75,7 +75,7 @@
                                 <a id="main-login-link" class="nav-link" href="{% url 'account_login' %}">Login</a>
                             </div>
                             <div class="col-lg-3 col-md-4 text-center">
-                                <a id="main-register-link" class="nav-link" href="{% url 'account_signup' %}">Register</a>
+                                <a class="nav-link btn btn-blue" href="{% url 'account_signup' %}">Register</a>
                             </div>
                         {% endif %}
                     </div>
@@ -87,7 +87,7 @@
             <div class="container-fluid">
                 <!-- Mobile Only Logo -->
                 <div id="mobile-logo" class="justify-content-start">
-                    <a class="uppercase white-text d-md-none" href="#">The <strong>Academy</strong></a>
+                    <a class="text-uppercase d-md-none" href="#">The <strong>Academy</strong></a>
                 </div>
                 <!-- Mobile Only Hamburger Icon -->
                 <div class="justify-content-end">
@@ -116,9 +116,9 @@
                                 <a id="mobile-register-link" class="nav-link" href="{% url 'account_signup' %}">Register</a>
                             </li>
                         {% endif %}
-                        <!-- Main Categories (all sizes) -->
-                        <li class="nav-item dropdown col">
-                            <a class="nav-link dropdown-toggle uppercase" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <!-- Main Categories (all screen sizes) -->
+                        <li class="nav-item dropdown col text-center">
+                            <a class="nav-link dropdown-toggle text-uppercase" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Human
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -131,13 +131,14 @@
                                 <li><a class="dropdown-item" href="{% url 'articles' %}?subject=law">Law</a></li>
                                 <li><a class="dropdown-item" href="{% url 'articles' %}?subject=philosophy">Philosophy</a></li>
                                 <li><a class="dropdown-item" href="{% url 'articles' %}?subject=theology">Theology</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#">Propose</a></li>
-                                <li><a class="dropdown-item" href="#">Submit</a></li>
+                                {% if request.user.is_authenticated %}
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="{% url 'add_article' %}">Submit</a></li>
+                                {% endif %}
                             </ul>
                         </li>
-                        <li class="nav-item dropdown col">
-                            <a class="nav-link dropdown-toggle uppercase" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <li class="nav-item dropdown col text-center">
+                            <a class="nav-link dropdown-toggle text-uppercase" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Social
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -150,13 +151,14 @@
                                 <li><a class="dropdown-item" href="{% url 'articles' %}?subject=psychology">Psychology</a></li>
                                 <li><a class="dropdown-item" href="{% url 'articles' %}?subject=sociology">Sociology</a></li>
                                 <li><a class="dropdown-item" href="{% url 'articles' %}?subject=social_work">Social Work</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#">Propose</a></li>
-                                <li><a class="dropdown-item" href="#">Submit</a></li>
+                                {% if request.user.is_authenticated %}
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="{% url 'add_article' %}">Submit</a></li>
+                                {% endif %}
                             </ul>
                         </li>
-                        <li class="nav-item dropdown col">
-                            <a class="nav-link dropdown-toggle uppercase" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <li class="nav-item dropdown col text-center">
+                            <a class="nav-link dropdown-toggle text-uppercase" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Natural
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -167,13 +169,14 @@
                                 <li><a class="dropdown-item" href="{% url 'articles' %}?subject=earth_science">Earth Science</a></li>
                                 <li><a class="dropdown-item" href="{% url 'articles' %}?subject=space_science">Space Science</a></li>
                                 <li><a class="dropdown-item" href="{% url 'articles' %}?subject=physics">Physics</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#">Propose</a></li>
-                                <li><a class="dropdown-item" href="#">Submit</a></li>
+                                {% if request.user.is_authenticated %}
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="{% url 'add_article' %}">Submit</a></li>
+                                {% endif %}
                             </ul>
                         </li>
-                        <li class="nav-item dropdown col">
-                            <a class="nav-link dropdown-toggle uppercase" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <li class="nav-item dropdown col text-center">
+                            <a class="nav-link dropdown-toggle text-uppercase" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Formal
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -181,13 +184,14 @@
                                 <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item" href="{% url 'articles' %}?subject=computer_science">Computer Science</a></li>
                                 <li><a class="dropdown-item" href="{% url 'articles' %}?subject=mathematics">Mathematics</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#">Propose</a></li>
-                                <li><a class="dropdown-item" href="#">Submit</a></li>
+                                {% if request.user.is_authenticated %}
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="{% url 'add_article' %}">Submit</a></li>
+                                {% endif %}
                             </ul>
                         </li>
-                        <li class="nav-item dropdown col">
-                            <a class="nav-link dropdown-toggle uppercase" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <li class="nav-item dropdown col text-center">
+                            <a class="nav-link dropdown-toggle text-uppercase" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Applied
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -196,9 +200,10 @@
                                 <li><a class="dropdown-item" href="{% url 'articles' %}?subject=business">Business</a></li>
                                 <li><a class="dropdown-item" href="{% url 'articles' %}?subject=engineering,technology">Engineering & Technology</a></li>
                                 <li><a class="dropdown-item" href="{% url 'articles' %}?subject=medicine,health">Medicine & Health</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#">Propose</a></li>
-                                <li><a class="dropdown-item" href="#">Submit</a></li>
+                                {% if request.user.is_authenticated %}
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="{% url 'add_article' %}">Submit</a></li>
+                                {% endif %}
                             </ul>
                         </li>
                         <!-- Mobile Only Search Bar: Small Screens (dropdown) -->
@@ -247,8 +252,8 @@
         <!-- Sitewide Footer -->
         <div class="d-flex align-items-end flex-column"></div>
             <div class="mt-auto bg-dark row" id="bottom-bar">
-                <div class="col center">
-                    <a class="uppercase white-text" href="{% url 'home' %}">The <strong>Academy</strong></a>
+                <div class="col text-center">
+                    <a id="footer-logo-link" class="text-uppercase" href="{% url 'home' %}">The <strong>Academy</strong></a>
                 </div>
             </div>
         </div>
