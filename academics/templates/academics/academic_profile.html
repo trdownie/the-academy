@@ -64,12 +64,12 @@
             </div>
         {% endif %}
         <div class="row">
-            <div class="col-sm-12 col-md-6 my-5">
+            <div class="col-md-12 col-lg-6 my-5">
                 <a class="profile-img" href="{{ academic.image.url }}" target="_blank">
                     <img class="profile-image" src="{{ academic.image.url }}"  alt="{{ academic.name }}">
                 </a>
             </div>
-            <div class="col-sm-12 col-md-6">
+            <div class="col-md-12 col-lg-6">
                 {% if user.username == academic.username %}
                     {% include 'includes/profile.html' %}
                 {% else %}
@@ -82,20 +82,20 @@
                     <div class="row">
                         <div class="col text-center mt-4">
                             {% if from_profile %}
-                                <a class="btn btn-black mt-3" href="{% url 'academic_profile' user.academic.id %}">
+                                <a class="btn btn-black my-3" href="{% url 'academic_profile' user.academic.id %}">
                                     <i class="fas fa-chevron-left"></i>
                                     Hub
                                 </a>
                             {% else %}
-                                <a class="btn btn-black mt-3" href="{% url 'articles' %}">
+                                <a class="btn btn-black my-3" href="{% url 'articles' %}">
                                     <i class="fas fa-chevron-left"></i>
                                     Articles
                                 </a>
                             {% endif %}
                             {% if user.academic in followers or following == True %}
-                                <a href="{% url 'unfollow' academic.id %}" class="btn btn-white mt-3">Unfollow <strong>@{{ academic.username }}</strong></a>
+                                <a href="{% url 'unfollow' academic.id %}" class="btn btn-white my-3">Unfollow <strong>@{{ academic.username }}</strong></a>
                             {% elif user.academic not in followers or following == False %}
-                                <a href="{% url 'follow' academic.id %}" class="btn btn-white mt-3">Follow <strong>@{{ academic.username }}</strong></a>
+                                <a href="{% url 'follow' academic.id %}" class="btn btn-white my-3">Follow <strong>@{{ academic.username }}</strong></a>
                             {% endif %}
                         </div>
                     </div>
