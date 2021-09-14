@@ -9,7 +9,7 @@
     </div>
     {% if bag_total and not on_profile %}
         <hr>
-        <h6 class="center underline">Items in Bag</h6>
+        <h6 class="text-center underline">Items in Bag</h6>
         <div class="bag-item-wrapper">
             {% for article in bag_articles %}
                 <div class="row">
@@ -34,8 +34,8 @@
             </div>
         </div>
     <hr class="mt-0">
-    <div class="center">
-        <a id="begin-button" class="btn px-3 mb-3" href="{% url 'bag' %}">Shopping Bag</a>
+    <div class="text-center">
+        <a class="btn btn-black px-3 mb-3" href="{% url 'bag' %}">Shopping Bag</a>
     </div>
     {% endif %}
 </div>

@@ -112,8 +112,8 @@ a:not(.btn) {
     height: 50px;
 }
 
-#shopping-bag-link, #main-login-link, #main-profile-link, #navbarDropdown, #main-logo-link, #footer-logo-link,
- #mobile-login-link, #mobile-register-link, #mobile-profile-link, #mobile-logout-link {
+#shopping-bag-link, #main-register-link, #main-profile-link, #navbarDropdown, #main-logo-link, #footer-logo-link,
+ #mobile-login-link, #mobile-register-link, #mobile-profile-link, #mobile-logout-link, #mobile-logo {
     color: white;
 }
 
@@ -312,11 +312,8 @@ a:not(.btn) {
 
 /***********************************  RESPONSIVE STYLING  ************************************/
 
-
-@media screen and (max-width: 767px){
-    #mobile-logo {
-        font-size: 20px;
-    }
+/*
+@media screen and (max-width: 991px){
     .navbar {
         padding: 10px 0px;
     }
@@ -329,11 +326,14 @@ a:not(.btn) {
         color: white;
     }
 }
-
+*/
 @media screen and (max-width: 991px){
     #logo-main {
         font-size: 20px;
         padding-top: 2px;
+    }
+    #mobile-logo {
+        font-size: 20px;
     }
 }
 

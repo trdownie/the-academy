@@ -144,7 +144,6 @@ def checkout_success(request, order_number):
                 'level': order.academic.level,
                 'image': order.academic.image,
                 'following': order.academic.following,
-                'subscribers': order.academic.subscribers,
             }
             academic_profile_form = AcademicProfileForm(profile_data, instance=academic)
             if academic_profile_form.is_valid():
