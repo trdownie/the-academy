@@ -7,7 +7,7 @@
 {% block page_header %}
 <div class="container">
     <div class="row">
-        <h1 id="header" class="text-center text-capitalize mt-4">{{ article.title }}</h1>
+        <h1 id="header" class="text-center text-capitalize my-4">{{ article.title }}</h1>
         <div class="col-sm-12 col-md-3 mt-2 text-center">
             <p>
                 {% for author in article.authors.all %}
@@ -28,8 +28,7 @@
                 {% endfor %}
             </p>
         </div>
-            <hr>
-        </div>
+        <hr>
     </div>
 </div>
 {% endblock %}

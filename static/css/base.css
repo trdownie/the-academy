@@ -13,6 +13,12 @@
 
 /*----------------------------------  Sitewide Elements/Utilities  -------------------------------------------*/
 
+input:not(#flexSwitchCheckDefault), select, input::after, .input-group, textarea {
+    /* Not Bootstrap's toggle button */
+    border: var(--black-border) !important;
+    border-radius: var(--square-border) !important;
+}
+
 a, a:hover, .btn, .btn:hover {
     text-decoration: none;
     color: currentColor;
@@ -232,6 +238,12 @@ a:not(.btn) {
     height: 10%;
     opacity: 95%;
 }
+
+.table-box {
+    min-width: 600px;
+    overflow: scroll;
+}
+
 
 #syllabus-text {
     color: white;

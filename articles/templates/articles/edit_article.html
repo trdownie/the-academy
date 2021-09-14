@@ -7,17 +7,9 @@
 {% block page_header %}
 <div class="container">
     <div class="row">
-        <div class="col-12 mt-4 text-center">
-
-        </div>
-        <div class="col-4 mt-5">
-            <h1>Edit Article</h1>
-        </div>
-        <div class="col-4 offset-4 mt-3">
-
-        </div>
-        <hr class="mt-2 mb-5">
+        <h1 id="header" class="text-center text-capitalize mt-5">Edit Article</h1>
     </div>
+    <hr class="my-3">
 </div>
 {% endblock %}
 
@@ -26,22 +18,21 @@
     <div id="main-content" class="container">
         <div class="row">
             <div class="col-12">
-                <p>Please use the form below to manage or submit an article</p>
+                <p>Please use the form below to manage or submit an article.</p>
                 <form action="{% url 'edit_article' article.id %}" method="POST" id="article-form" enctype="multipart/form-data">
                     {% csrf_token %}
                     {{ form | crispy }}
-                    <div class="submit-button text-right mt-5 mb-2">
-                        <a href="{% url 'articles' %}" class="btn">
+                    <div class="text-center my-5">
+                        <a href="{% url 'articles' %}" class="btn btn-white">
                             <span class="icon">
                                 <i class="fas fa-chevron-left"></i>
                                 Cancel
                             </span>
-                            <span class="font-weight-bold">Adjust Bag</span>
                         </a>
-                        <button id="submit-button" class="btn" type="submit">
+                        <button id="submit-button" class="btn btn-black" type="submit">
                             <span class="font-weight-bold">Update Article</span>
                             <span class="icon">
-                                <i class="fas fa-lock"></i>
+                                <i class="fas fa-check"></i>
                             </span>
                         </button>
                     </div>

@@ -1,8 +1,8 @@
-<div class="my-5">
+<div class="mt-5">
     <form action="{% url 'academic_profile' academic.id %}" method="POST" id="profile-form" class="text-center">
         {% csrf_token %}
         {{ form|crispy }}
-        <button type="submit" class="btn btn-black">
+        <button type="submit" class="btn btn-black mb-3">
             Update Information
             <i class="fas fa-check"></i>
         </button>

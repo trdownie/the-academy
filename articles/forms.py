@@ -15,7 +15,7 @@ class ArticleForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         subjects = Subject.objects.all()
-        friendly_names = [(s.id, s.get_friendly_name()) for s in subjects]
+        friendly_names = [(s.id, s.get_friendly_name().capitalize()) for s in subjects]
 
         self.fields['subjects'].choices = friendly_names
         for field_name, field in self.fields.items():

@@ -7,20 +7,20 @@
 {% block page_header %}
 <div class="container">
     <div class="row">
-        <h1 id="header" class="text-center text-uppercase mt-4">{{ academic.name }}{% if user.username == academic.username %}'S ACADEMIC HUB{% endif %}</h1>
-        <p class="fs-4 text-center">
+        <h1 id="header" class="text-center text-capitalize mt-4 mb-0 pb-0">{{ academic.name }}{% if user.username == academic.username %}'s Academic Hub{% endif %}</h1>
+        <div class="text-center mt-0 pt-0">
             {% if academic.level >= 80 %}
-                <span>- SAGE -</span>
+                <h4>- SAGE -</h4>
             {% elif academic.level < 80 and academic.level >= 60 %}
-                <span>- SAVANT -</span>
+                <h4>- SAVANT -</h4>
             {% elif academic.level < 60 and academic.level >= 40 %}
-                <span>- PROFESSOR -</span>
+                <h4>- PROFESSOR -</h4>
             {% elif academic.level < 40 and academic.level >= 20 %}
-                <span>- ACADEMIC -</span>
+                <h4>- ACADEMIC -</h4>
             {% elif academic.level < 20 %}
-                <span>- STUDENT -</span>
+                <h4>- STUDENT -</h4>
             {% endif %}
-        </p>
+        </div>
     </div>
     <div class="row">
         <div class="col-sm-12 col-md-3 mt-2 text-center">
@@ -58,16 +58,20 @@
             {% include 'includes/order_history.html' %}
         {% endif %}
         {% if user.username == academic.username %}
-            <hr class="py-0 my-0">
+            <hr class="my-3">
             <div class="row">
-                <h2 class="text-center mt-3 pt-2">PERSONAL INFO</h2>
+                <h4 class="text-center mt-4">PERSONAL INFO</h4>
             </div>
         {% endif %}
         <div class="row">
             <div class="col-md-12 col-lg-6 my-5">
-                <a class="profile-img" href="{{ academic.image.url }}" target="_blank">
-                    <img class="profile-image" src="{{ academic.image.url }}"  alt="{{ academic.name }}">
-                </a>
+                {% if academic.image %}
+                    <a class="profile-img" href="{{ academic.image.url }}" target="_blank">
+                        <img class="profile-image" src="{{ academic.image.url }}"  alt="{{ academic.name }}">
+                    </a>
+                {% else %}
+                    <img class="profile-image" src="/media/noimage.jpeg"  alt="Placeholder">
+                {% endif %}
             </div>
             <div class="col-md-12 col-lg-6">
                 {% if user.username == academic.username %}

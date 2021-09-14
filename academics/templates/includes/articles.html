@@ -1,7 +1,7 @@
 <div class="row">
-    <h2 class="text-center mt-3 pt-2">ARTICLES SUBMITTED</h2>
+    <h4 class="text-center mt-4">ARTICLES SUBMITTED</h4>
 </div>
-<div class="row my-5">
+<div class="row mt-4">
     {% for article in articles %}
         {% if article.proposal is False %}
             <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 pb-5">
@@ -44,7 +44,7 @@
             </div>
         {% endif %}
     {% endfor %}
-    <div class="text-center mt-2">
+    <div class="text-center mb-4">
         {% if not from_profile %}
                 <a class="btn btn-black" href="{% url 'articles' %}">
                     <i class="fas fa-chevron-left"></i>
