@@ -75,9 +75,12 @@ def article_detail_profile(request, article_id):
 def follow(request, academic_id):
     """ follow another academic """
     academic = Academic.objects.get(user=request.user)
-    print(academic_id)
     current_profile = Academic.objects.get(pk=academic_id)
-    print(current_profile)
+    followers = current_profile.academic_set.all()
+    follower_count = (followers.count() + 1)
+    form = AcademicProfileForm(instance=academic)
+    orders = academic.orders.all()
+    articles = academic.article_set.all()
 
     # follow academic whose profile user is on - WORKING
     if academic_id == academic.id:
@@ -89,12 +92,6 @@ def follow(request, academic_id):
         else:
             academic.following.add(to_follow)
             academic.save()
-
-    followers = academic.academic_set.all()
-    follower_count = followers.count()
-    form = AcademicProfileForm(instance=academic)
-    orders = academic.orders.all()
-    articles = academic.article_set.all()
 
     context = {
         'academic': current_profile,
@@ -113,9 +110,12 @@ def follow(request, academic_id):
 def unfollow(request, academic_id):
     """ follow another academic """
     academic = Academic.objects.get(user=request.user)
-    print(academic_id)
     current_profile = Academic.objects.get(pk=academic_id)
-    print(current_profile)
+    followers = current_profile.academic_set.all()
+    follower_count = (followers.count() - 1)
+    form = AcademicProfileForm(instance=academic)
+    orders = academic.orders.all()
+    articles = academic.article_set.all()
 
     to_unfollow = get_object_or_404(Academic, pk=academic_id)
     if academic.following.filter(id=to_unfollow.id).exists():
@@ -124,12 +124,6 @@ def unfollow(request, academic_id):
         messages.error(request, f"You're no longer following {to_unfollow}.")
     else:
         messages.error(request, f"You're not following {to_unfollow}!")
-
-    followers = academic.academic_set.all()
-    follower_count = followers.count() - 1
-    form = AcademicProfileForm(instance=academic)
-    orders = academic.orders.all()
-    articles = academic.article_set.all()
 
     context = {
         'academic': current_profile,
