@@ -8,20 +8,20 @@
 <div class="container">
     <div class="row">
         <h1 id="header" class="text-center text-capitalize mt-4">{{ article.title }}</h1>
-        <div class="col mt-4">
-            <p class="">
+        <div class="col-sm-12 col-md-3 mt-2 text-center">
+            <p>
                 {% for author in article.authors.all %}
                     <a href="{% url 'academic_profile' author.id %}"><i class="fas fa-user fa-fw"></i> {{ author }}</a>
                 {% endfor %}
             </p>
         </div>
-        <div class="col mt-4 text-center">
+        <div class="col-sm-12 col-md-3 mt-2 text-center">
             <p class=""><i class="fas fa-calendar fa-fw"></i> {{ article.date }}</p>
         </div>
-        <div class="col mt-4 text-center">
+        <div class="col-sm-12 col-md-3 mt-2 text-center">
             <p class=""><i class="fas fa-star fa-fw"></i> {{ article.rating }}</p>
         </div>
-        <div class="col mt-4 d-flex justify-content-end">
+        <div class="col-sm-12 col-md-3 mt-2 text-center">
             <p>
                 {% for subject in article.subjects.all %}
                     <a href="{% url 'articles' %}?subject={{ subject.subject_name }}" class="card-text"><i class="fas fa-info-circle fa-fw"></i> {{ subject.friendly_name }}</a>
@@ -37,12 +37,12 @@
 {% block content %}
     <div id="main-content" class="container">
         <div class="row">
-            <div class="col-6 my-5">
+            <div class="col-sm-12 col-md-6 my-5">
                 <a class="article-img" href="{{ article.image.url }}" target="_blank">
                     <img class="article-image" src="{{ article.image.url }}"  alt="{{ article.name }}">
                 </a>
             </div>
-            <div class="col-6 my-5">
+            <div class="col-sm-12 col-md-6 my-5">
                 <div class="row">
                     <h2 class="text-center">SUMMARY</h2>
                 </div>

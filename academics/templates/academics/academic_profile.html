@@ -23,16 +23,16 @@
         </p>
     </div>
     <div class="row">
-        <div class="col mt-4">
+        <div class="col-sm-12 col-md-3 mt-2 text-center">
             <p><i class="fas fa-at fa-fw"></i>{{ academic.username }}</p>
         </div>
-        <div class="col mt-4 text-center">
+        <div class="col-sm-12 col-md-3 mt-2 text-center">
             <p> <i class="fas fa-pen fa-fw"></i> Articles: {{ academic.article_set.all.count }}</p>
         </div>
-        <div class="col mt-4 text-center">
+        <div class="col-sm-12 col-md-3 mt-2 text-center">
             <p><i class="fas fa-eye fa-fw"></i> Following: {{ academic.following.all.count }}</p>
         </div>
-        <div class="col mt-4 d-flex justify-content-end">
+        <div class="col-sm-12 col-md-3 mt-2 text-center">
             <p><i class="far fa-eye fa-fw"></i> Followers: {{ follower_count }}</p>
         </div>
     </div>
@@ -42,14 +42,6 @@
 
 {% block content %}
     <div id="main-content" class="container">
-        {% if not from_profile %}
-            <div class="text-center mt-2">
-                <a class="btn btn-black mt-3" href="{% url 'articles' %}">
-                    <i class="fas fa-chevron-left"></i>
-                    Articles
-                </a>
-            </div>
-        {% endif %}
         {% if user.username == academic.username and user.is_superuser %}
             {% include 'includes/articles.html' %}
         {% endif %}
@@ -68,16 +60,16 @@
         {% if user.username == academic.username %}
             <hr class="py-0 my-0">
             <div class="row">
-                <h2 class="text-center mt-3 pt-5">PERSONAL INFO</h2>
+                <h2 class="text-center mt-3 pt-2">PERSONAL INFO</h2>
             </div>
         {% endif %}
         <div class="row">
-            <div class="col-6 my-5">
+            <div class="col-sm-12 col-md-6 my-5">
                 <a class="profile-img" href="{{ academic.image.url }}" target="_blank">
                     <img class="profile-image" src="{{ academic.image.url }}"  alt="{{ academic.name }}">
                 </a>
             </div>
-            <div class="col-6">
+            <div class="col-sm-12 col-md-6">
                 {% if user.username == academic.username %}
                     {% include 'includes/profile.html' %}
                 {% else %}

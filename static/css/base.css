@@ -54,6 +54,12 @@ a, a:hover, .btn, .btn:hover {
     color: white;
 }
 
+#btn-clear, #btn-clear:hover {
+    background-color: transparent;
+    color: black;
+    border: none;
+}
+
 /* TRANSITION - INSPIRED BY POST BELOW */
 /* https://css-tricks.com/snippets/css/scale-on-hover-with-webkit-transition/ */
 
@@ -164,6 +170,7 @@ a:not(.btn) {
 
 #main-content {
     min-height: 500px;
+    max-width: 90%;
 }
 
 
