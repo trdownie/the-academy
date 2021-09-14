@@ -42,12 +42,14 @@
 
 {% block content %}
     <div id="main-content" class="container">
-        <div class="text-center mt-2">
-            <a class="btn btn-black mt-3" href="{% url 'articles' %}">
-                <i class="fas fa-chevron-left"></i>
-                Articles
-            </a>
-        </div>
+        {% if not from_profile %}
+            <div class="text-center mt-2">
+                <a class="btn btn-black mt-3" href="{% url 'articles' %}">
+                    <i class="fas fa-chevron-left"></i>
+                    Articles
+                </a>
+            </div>
+        {% endif %}
         {% if user.username == academic.username and user.is_superuser %}
             {% include 'includes/articles.html' %}
         {% endif %}
@@ -87,14 +89,21 @@
                     </div>
                     <div class="row">
                         <div class="col text-center mt-4">
-                            <a class="btn btn-black" href="{% url 'articles' %}">
-                                <i class="fas fa-chevron-left"></i>
-                                Articles
-                            </a>
+                            {% if from_profile %}
+                                <a class="btn btn-black mt-3" href="{% url 'academic_profile' user.academic.id %}">
+                                    <i class="fas fa-chevron-left"></i>
+                                    Hub
+                                </a>
+                            {% else %}
+                                <a class="btn btn-black mt-3" href="{% url 'articles' %}">
+                                    <i class="fas fa-chevron-left"></i>
+                                    Articles
+                                </a>
+                            {% endif %}
                             {% if user.academic in followers or following == True %}
-                                <a href="{% url 'unfollow' academic.id %}" class="btn btn-white">Unfollow <strong>@{{ academic.username }}</strong></a>
+                                <a href="{% url 'unfollow' academic.id %}" class="btn btn-white mt-3">Unfollow <strong>@{{ academic.username }}</strong></a>
                             {% elif user.academic not in followers or following == False %}
-                                <a href="{% url 'follow' academic.id %}" class="btn btn-white">Follow <strong>@{{ academic.username }}</strong></a>
+                                <a href="{% url 'follow' academic.id %}" class="btn btn-white mt-3">Follow <strong>@{{ academic.username }}</strong></a>
                             {% endif %}
                         </div>
                     </div>

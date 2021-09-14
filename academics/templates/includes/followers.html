@@ -8,29 +8,29 @@
         <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 pb-5">
             <div class="card h-100">
                 {% if follower.image %}
-                    <a class="profile-img" href="{% url 'academic_profile' follower.id %}">
+                    <a class="profile-img" href="{% url 'academic_profile_from_profile' follower.id %}">
                         <img class="card-img-top" src="{{ follower.image.url }}"  alt="{{ follower.name }}">
                     </a>
                 {% else %}
-                    <a class="profile-img" href="{% url 'academic_profile' follower.id %}">
+                    <a class="profile-img" href="{% url 'academic_profile_from_profile' follower.id %}">
                         <img class="card-img-top" src="{{ MEDIA_URL }}noimage.png" alt="{{ follower.name }}">
                     </a>
                 {% endif %}
                 <div class="card-body text-center">
                     <h5 class="card-title">
-                        <a href="{% url 'academic_profile' follower.id %}">
+                        <a href="{% url 'academic_profile_from_profile' follower.id %}">
                             {{ follower.name }}
                         </a>
                     </h5>
                     <p class="card-text">
-                        <a href="{% url 'academic_profile' follower.id %}">
+                        <a href="{% url 'academic_profile_from_profile' follower.id %}">
                             <i class="fas fa-at fa-fw"></i>
                             {{ follower.username }}
                         </a>
                     </p>
                 </div>
                 <div class="card-footer text-center">
-                    <a href="{% url 'academic_profile' follower.id %}" class="btn btn-black">VIEW PROFILE</a>
+                    <a href="{% url 'academic_profile_from_profile' follower.id %}" class="btn btn-black">VIEW PROFILE</a>
                 </div>
             </div>
         </div>

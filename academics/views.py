@@ -72,6 +72,30 @@ def article_detail_profile(request, article_id):
     return render(request, 'articles/article_detail.html', context)
 
 
+def academic_profile_from_profile(request, academic_id):
+    """ view to show academic profile from user's own profile """
+    academic = get_object_or_404(Academic, pk=academic_id)
+
+    followers = academic.academic_set.all()
+    follower_count = followers.count()
+    form = AcademicProfileForm(instance=academic)
+    orders = academic.orders.all()
+    articles = academic.article_set.all()
+
+    context = {
+        'academic': academic,
+        'followers': followers,
+        'follower_count': follower_count,
+        'form': form,
+        'orders': orders,
+        'on_profile': True,
+        'articles': articles,
+        'from_profile': True
+    }
+
+    return render(request, 'academics/academic_profile.html', context)
+
+
 def follow(request, academic_id):
     """ follow another academic """
     academic = Academic.objects.get(user=request.user)
