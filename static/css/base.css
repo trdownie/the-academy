@@ -65,7 +65,7 @@ a:not(.dropdown-item):not(.article-img):not(.profile-img), .btn {
 
 /* Second, scale these items up by 20% */
 a:hover:not(.dropdown-item):not(.article-img):not(.profile-img), .btn:hover {
-    transform: scale(1.2);
+    transform: scale(1.125);
 }
 
 /* Third, remove the anchor backgrounds on non-buttons to avoid scaling the block background */
@@ -163,7 +163,7 @@ a:not(.btn) {
 }
 
 #main-content {
-    min-height: 750px;
+    min-height: 500px;
 }
 
 

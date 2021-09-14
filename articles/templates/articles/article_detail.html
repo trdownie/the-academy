@@ -11,23 +11,20 @@
         <div class="col mt-4">
             <p class="">
                 {% for author in article.authors.all %}
-                    <i class="fas fa-user fa-fw"></i>
-                    <span class="card-text"> {{ author }}</span>
+                    <a href="{% url 'academic_profile' author.id %}"><i class="fas fa-user fa-fw"></i> {{ author }}</a>
                 {% endfor %}
             </p>
         </div>
-        <div class="col mt-4">
+        <div class="col mt-4 text-center">
             <p class=""><i class="fas fa-calendar fa-fw"></i> {{ article.date }}</p>
         </div>
-        <div class="col mt-4">
+        <div class="col mt-4 text-center">
             <p class=""><i class="fas fa-star fa-fw"></i> {{ article.rating }}</p>
         </div>
-        <div class="col mt-4">
-
+        <div class="col mt-4 d-flex justify-content-end">
             <p>
                 {% for subject in article.subjects.all %}
-                    <i class="fas fa-info-circle fa-fw"></i>
-                    <span href="#" class="card-text">{{ subject }}</span>
+                    <a href="{% url 'articles' %}?subject={{ subject.subject_name }}" class="card-text"><i class="fas fa-info-circle fa-fw"></i> {{ subject.friendly_name }}</a>
                 {% endfor %}
             </p>
         </div>

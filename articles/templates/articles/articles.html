@@ -9,7 +9,7 @@
     <div class="row">
         <div class="col-12 mt-4 text-center">
             {% for subject in current_subjects %}
-                <a id="category-button" href="{% url 'articles' %}?subject={{ subject.subject_name }}" class="btn">
+                <a href="{% url 'articles' %}?subject={{ subject.subject_name }}" class="btn btn-white">
                     {% if subject.friendly_name %}
                         {{ subject.friendly_name|title }}<br>
                     {% else %}
@@ -80,7 +80,7 @@
                             <p class="card-text"><i class="fas fa-calendar fa-fw"></i> {{ article.date }}</p>
                             <p>
                                 {% for subject in article.subjects.all %}
-                                    <a href="{% url 'articles' %}?subject={{ subject.subject_name }}" class="card-text text-capitalize"><i class="fas fa-info-circle fa-fw"></i> {{ subject.friendly_name }}</a>
+                                    <a href="{% url 'articles' %}?subject={{ subject.subject_name }}" class="card-text"><i class="fas fa-info-circle fa-fw"></i> {{ subject.friendly_name }}</a>
                                 {% endfor %}
                             </p>
                             <p class="card-text"><i class="fas fa-pound-sign fa-fw"></i> {{ article.price}}</p>
