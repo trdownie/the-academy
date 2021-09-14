@@ -169,10 +169,9 @@ a:not(.btn) {
 }
 
 #main-content {
-    min-height: 500px;
+    min-height: 80vh;
     max-width: 90%;
 }
-
 
 /* articles */
 

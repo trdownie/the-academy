@@ -5,44 +5,41 @@
 {% block extend_title %} - Checkout{% endblock %}
 
 {% block content %}
-    <!-- Background image & tooltip -->
-    <div id="" class="container-fluid position-relative">
-        <div id="bag-box" class="row position-absolute mt-5">
-            <div class="text-center">
-                <h1 id="syllabus-text" class="py-3 mb-0 bg-dark">Enroll</h1>
-            </div>
-            <table class="table table-dark table-striped">
-                <thead>
+<div id="main-content" class="container">
+    <div class="row">
+        <h1 id="header" class="text-center text-uppercase mt-4">Checkout</h1>
+        <hr class="mt-2 mb-5">
+        <table class="table table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">Article</th>
+                    <th scope="col"></th>
+                    <th scope="col">Author(s)</th>
+                    <th scope="col">Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for article in bag_articles %}
                     <tr>
-                        <th scope="col">Article</th>
-                        <th scope="col"></th>
-                        <th scope="col">Author(s)</th>
-                        <th scope="col">Price</th>
-                        <th scope="col"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for article in bag_articles %}
-                        <tr>
-                            <td class="col-1">
-                                <a href="{{ article.article.image.url }}" target="_blank">
-                                    <img class="bag-img" src="{{ article.article.image.url }}"  alt="{{ article.article.image.name }}">
-                                </a>
-                            </td>
-                            <td class="align-middle">{{ article.article.title }}</td>
-                            <td class="align-middle">{% for author in article.article.authors.all %}{% if not forloop.counter == 1 %}<br>{% endif %}{{ author }}{% endfor %}</td>
-                            <td class="align-middle">£ {{ article.article.price }}</td>
-                            <td class="align-middle">
-                            </td>
-                        </tr>
-                    {% endfor %}
-                    <tr>
-                        <td colspan="5" class="text-center py-3">
-                            <h4><strong>Total: £{{ bag_total|floatformat:2 }}</strong></h4>
+                        <td class="col-1">
+                            <a href="{{ article.article.image.url }}" target="_blank">
+                                <img class="bag-img" src="{{ article.article.image.url }}"  alt="{{ article.article.image.name }}">
+                            </a>
                         </td>
+                        <td class="align-middle">{{ article.article.title }}</td>
+                        <td class="align-middle">{% for author in article.article.authors.all %}{% if not forloop.counter == 1 %}<br>{% endif %}{{ author }}{% endfor %}</td>
+                        <td class="align-middle">£ {{ article.article.price }}</td>
                     </tr>
-                </tbody>
-            </table>
+                {% endfor %}
+            </tbody>
+            <tfoot class="table-dark">
+                <tr>
+                    <td colspan="5" class="text-center py-3">
+                        <h4><strong>Total: £{{ bag_total|floatformat:2 }}</strong></h4>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
             <div class="col-12">
                 {% if not user.is_authenticated %}
                 <div class="row text-center">
@@ -96,7 +93,7 @@
                         <!-- Pass client secret to view to obtain payment intent id -->
                         <input type="hidden" value="{{ client_secret }}" name="client_secret">
                     </fieldset>
-                    <div class="text-right mt-5 mb-2">
+                    <div class="text-center mt-5 mb-2">
                         <a href="{% url 'bag' %}" class="btn btn-white">
                             <i class="fas fa-chevron-left"></i>
                             Adjust Bag
