@@ -5,10 +5,11 @@ from academics.models import Academic
 
 
 class Subject(models.Model):
-
+    # Basic Info
     subject_name = models.CharField(max_length=200, null=False, blank=False)
-    friendly_name = models.CharField(max_length=200, blank=True)
+    friendly_name = models.CharField(max_length=200, null=False, blank=True)
 
+    # Master Area (dropdown)
     class ScienceArea(models.TextChoices):
         HUMAN = 'HU', _('Human')
         SOCIAL = 'SO', _('Social')
@@ -33,17 +34,22 @@ class Subject(models.Model):
 
 
 class Article(models.Model):
+    # Article Info
     proposal = models.BooleanField(default=False)
     title = models.CharField(max_length=200)
     authors = models.ManyToManyField(Academic)  # ['Einstein', 'Tesla', etc.]
     subjects = models.ManyToManyField(Subject)  # ['history', 'maths', etc.]
-    article = models.FileField(upload_to='uploads/')
+    article = models.FileField(upload_to='uploads/')  # Article itself
     date = models.DateField()
     summary = models.TextField()
-    rating = models.DecimalField(max_digits=2, decimal_places=1, null=True, blank=True)
+    rating = models.DecimalField(max_digits=2, decimal_places=1,
+                                 null=True, blank=True)
     price = models.DecimalField(max_digits=6, decimal_places=2)
     image = models.ImageField(default='/noimage.jpeg', blank=True)
-    stakers = models.DecimalField(max_digits=6, decimal_places=0, default=0, null=True, blank=True)
+
+    # Incremented when users purchase proposals
+    stakers = models.DecimalField(max_digits=6, decimal_places=0, default=0,
+                                  null=True, blank=True)
 
     class Meta:
         ordering = ['title']
