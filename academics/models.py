@@ -1,5 +1,3 @@
-import time
-
 from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
@@ -13,7 +11,7 @@ class Academic(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE,
                                 related_name='academic', null=True)
     name = models.CharField(max_length=70)
-    username = models.CharField(max_length=15)  # to delete?
+    username = models.CharField(max_length=15)
 
     # Contact Info
     default_email = models.EmailField(max_length=254, blank=True)
@@ -43,8 +41,10 @@ class Academic(models.Model):
 @receiver(post_save, sender=User)
 def create_or_update_academic_profile(sender, instance, created, **kwargs):
     """
-    Create or update  profile
+    Create/update Academic when User is created/updated
     """
+    # For new users, create Academic with matching details
+    # Note: name = username to avoid blanks on add_article page
     if created:
         Academic.objects.create(user=instance,
                                 username=instance.username,
