@@ -7,6 +7,7 @@ from django_countries.fields import CountryField
 
 
 class Academic(models.Model):
+
     # Profile Info
     user = models.OneToOneField(User, on_delete=models.CASCADE,
                                 related_name='academic', null=True)
@@ -43,6 +44,7 @@ def create_or_update_academic_profile(sender, instance, created, **kwargs):
     """
     Create/update Academic when User is created/updated
     """
+
     # For new users, create Academic with matching details
     # Note: name = username to avoid blanks on add_article page
     if created:

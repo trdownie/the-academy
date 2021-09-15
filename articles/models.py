@@ -5,11 +5,12 @@ from academics.models import Academic
 
 
 class Subject(models.Model):
+
     # Basic Info
     subject_name = models.CharField(max_length=200, null=False, blank=False)
     friendly_name = models.CharField(max_length=200, null=False, blank=True)
 
-    # Master Area (dropdown)
+    # Master Science Area (dropdown)
     class ScienceArea(models.TextChoices):
         HUMAN = 'HU', _('Human')
         SOCIAL = 'SO', _('Social')
@@ -34,6 +35,7 @@ class Subject(models.Model):
 
 
 class Article(models.Model):
+
     # Article Info
     proposal = models.BooleanField(default=False)
     title = models.CharField(max_length=200)

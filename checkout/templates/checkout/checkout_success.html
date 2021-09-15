@@ -53,14 +53,14 @@
             </div>
             <!-- Tailored links -->
             {% if from_profile %}
-                <div class="text-center mt-2">
+                <div class="text-center my-3">
                     <a class="btn btn-orange" href="{% url 'academic_profile' academic.id %}">
                         <i class="fas fa-chevron-left"></i>
                         Return to Profile
                     </a>
                 </div>
             {% else %}
-                <div class="text-center mt-2">
+                <div class="text-center my-3">
                     <a class="btn btn-green" href="{% url 'articles' %}">
                         See More Articles
                         <i class="fas fa-chevron-right"></i>
