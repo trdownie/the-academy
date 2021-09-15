@@ -8,11 +8,12 @@ from articles.models import Article
 def shopping_bag(request):
     """ view to render shopping bag contents """
 
+    template = 'bag/bag.html'
     context = {
 
     }
 
-    return render(request, 'bag/bag.html', context)
+    return render(request, template, context)
 
 
 def add_to_bag(request, article_id):
