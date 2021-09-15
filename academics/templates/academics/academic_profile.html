@@ -7,7 +7,7 @@
 {% block page_header %}
 <div class="container">
     <div class="row">
-        <h1 id="header" class="text-center text-capitalize mt-4 mb-0 pb-0">{{ academic.name }}{% if user.username == academic.username %}'s Academic Hub{% endif %}</h1>
+        <h1 id="header" class="text-center text-capitalize mt-4 mb-0 pb-0">{% if user.username == academic.username %}Academic Hub{% else %}{{ academic.name }}{% endif %}</h1>
         <div class="text-center mt-0 pt-0">
             {% if academic.level >= 80 %}
                 <h4>- SAGE -</h4>
@@ -17,7 +17,7 @@
                 <h4>- PROFESSOR -</h4>
             {% elif academic.level < 40 and academic.level >= 20 %}
                 <h4>- ACADEMIC -</h4>
-            {% elif academic.level < 20 %}
+            {% elif academic.level < 20 or not academic.level %}
                 <h4>- STUDENT -</h4>
             {% endif %}
         </div>

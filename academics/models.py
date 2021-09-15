@@ -1,3 +1,5 @@
+import time
+
 from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
@@ -44,6 +46,6 @@ def create_or_update_academic_profile(sender, instance, created, **kwargs):
     Create or update  profile
     """
     if created:
-        Academic.objects.create(user=instance)
+        Academic.objects.create(user=instance, username=instance.username)
     # For existing users, just save profile
     instance.academic.save()
