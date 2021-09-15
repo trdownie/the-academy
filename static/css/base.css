@@ -11,10 +11,12 @@
     --square-border: 0px;
 }
 
-/*----------------------------------  Sitewide Elements/Utilities  -------------------------------------------*/
+/*----------------------------------  Sitewide Elements/Utilities  ------------------------*/
 
-input:not(#flexSwitchCheckDefault), select, input::after, .input-group, textarea {
+/* Solid square borders to overwrite default styles */
+input:not(#flexSwitchCheckDefault), select, .input-group, textarea {
     /* Not Bootstrap's toggle button */
+    /* .input-group is crispy forms file upload */
     border: var(--black-border) !important;
     border-radius: var(--square-border) !important;
 }
@@ -24,12 +26,15 @@ a, a:hover, .btn, .btn:hover {
     color: currentColor;
 }
 
+/* Tailoring Bootstrap's styling */
 .btn {
     border: var(--black-border);
     border-radius: var(--square-border);
     text-transform: uppercase;
 }
 
+
+/* Custom button stles */
 .btn-blue, .btn-blue:hover {
     background-color: var(--maya-blue);
     color: black;
@@ -94,7 +99,57 @@ a:not(.btn) {
     min-height: 90vh;
 }
 
-/* Nav bar & Footer bar (base.html) */
+/*----------------------------------  Multi-Page Utilities  ------------------------*/
+
+#header {
+    color: #444444;
+}
+
+#main-content {
+    min-height: 80vh;
+    max-width: 90%;
+}
+
+.article-image, .profile-image {
+    max-width: 100%;
+}
+
+.article {
+    background-color: #cccccc;
+    color: black;
+}
+
+.proposal {
+    background-color: #666666;
+    color: white;
+}
+
+.card-img-top {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-body {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#responsive-table-box {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+#responsive-table {
+    min-width: 800px;
+}
+
+/***********************************  PAGE-SPECIFIC STYLING  ************************************/
+
+/*----------------------------------  Base Template  -----------------------------------*/
 
 #search-btn-main, #search-btn-mobile, .form-control-custom {
     height: 35px;
@@ -143,8 +198,7 @@ a:not(.btn) {
     justify-content: center;
 }
 
-
-
+/*----------------------------------  Index  --------------------------------------*/
 
 #banner {
     height: 1000px;
@@ -164,95 +218,7 @@ a:not(.btn) {
     margin-top: 55px;
 }
 
-#begin-button {
-    background-color: black;
-    color: white;
-    border-radius: 0px;
-}
-
-#header {
-    color: #444444;
-}
-
-#main-content {
-    min-height: 80vh;
-    max-width: 90%;
-}
-
-/* articles */
-
-.article {
-    background-color: #cccccc;
-    color: black;
-}
-
-.proposal {
-    background-color: #666666;
-    color: white;
-}
-
-.card-img-top {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-}
-
-.card-body {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-/* CTA includes */
-
-#bottom-box {
-    border: 1px solid #cccccc;
-}
-
-/* article detail */
-
-.article-image, .profile-image {
-    max-width: 100%;
-}
-
-/* academic profile */
-
-#follow-button {
-    background-color: white;
-    color: black;
-}
-
-/* profile */
-
-#responsive-table-box {
-    max-height: 400px;
-    overflow-y: auto;
-}
-
-#responsive-table {
-    min-width: 800px;
-}
-
-/* bag */
-
-#bag-box {
-    width: 100%;
-    height: 10%;
-    opacity: 95%;
-}
-
-.table-box {
-    min-width: 600px;
-    overflow: scroll;
-}
-
-
-#syllabus-text {
-    color: white;
-    border-bottom: 1px solid white;
-}
+/*----------------------------------  Shopping Bag ----------------------------------------*/
 
 .bag-img {
     width: 150px;
@@ -260,18 +226,7 @@ a:not(.btn) {
     object-fit: cover;
 }
 
-.bag-item-wrapper {
-    height: 150px;
-    overflow-x: hidden;
-    overflow-y: auto;
-}
-
-.bag-mini-img {
-    width: 100px;
-    height: 100px;
-}
-
-/* checkout */
+/*----------------------------------  Checkout Page --------------------------------*/
 
 #login-box {
     border: 1px solid #cccccc;
@@ -296,26 +251,14 @@ a:not(.btn) {
     height: 100%;
 }
 
+/*----------------------------------  CTA Includes (Articles App) ------------------------*/
 
-/* edit article */
-
-#form-mini-img {
-    width: 100px;
-    height: 100px;
-}
-
-/* allauth forms */
-.allauth-inner-content input {
-    border: var(--black-border);
-    border-radius: var(--square-border);
-}
-
-.allauth-inner-content label:not([for="id_remember"]) {
-    display: none;
+#bottom-box {
+    border: 1px solid #cccccc;
 }
 
 
-/* toasts */
+/*----------------------------------  Toast Includes (Main App) ----------------------------*/
 
 .toast-container {
     position: fixed;
@@ -326,29 +269,36 @@ a:not(.btn) {
     overflow: visible;
 }
 
-/* crispy forms */
+.bag-item-wrapper {
+    height: 150px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.bag-mini-img {
+    width: 100px;
+    height: 100px;
+}
+
+/*----------------------------------  AllAuth Forms ------------------------------------*/
+
+.allauth-inner-content input {
+    border: var(--black-border);
+    border-radius: var(--square-border);
+}
+
+.allauth-inner-content label:not([for="id_remember"]) {
+    display: none;
+}
+
+/*----------------------------------  Crispy Forms -----------------------------------------*/
 .asteriskField {
     display: none;
 }
 
-
 /***********************************  RESPONSIVE STYLING  ************************************/
 
-/*
-@media screen and (max-width: 991px){
-    .navbar {
-        padding: 10px 0px;
-    }
-    .dropdown-menu, #mobile-login-link, #mobile-register-link,
-    #mobile-profile-link, #mobile-logout-link {
-        text-align: center;
-    }
-    #main-register-link {
-        background-color: revert;
-        color: white;
-    }
-}
-*/
+/* Navbar */
 @media screen and (max-width: 991px){
     #logo-main {
         font-size: 20px;

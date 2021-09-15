@@ -14,7 +14,7 @@ def academic_profile(request, academic_id):
     academic = get_object_or_404(Academic, pk=academic_id)
 
     if request.method == 'POST':
-        form = AcademicProfileForm(request.POST, instance=academic)
+        form = AcademicProfileForm(request.POST, request.FILES, instance=academic)
         if form.is_valid():
             form.save()
             messages.success(request, f'Profile updated, {academic.name}')

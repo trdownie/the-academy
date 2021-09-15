@@ -99,10 +99,6 @@ def article_detail(request, article_id):
 def add_article(request):
     """Add new article to store"""
 
-    if not request.user.is_superuser:
-        messages.error(request, 'This area is for contributing academics only!')
-        return redirect(reverse('home'))
-
     if request.method == 'POST':
         form = ArticleForm(request.POST, request.FILES)
         if form.is_valid():

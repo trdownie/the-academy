@@ -42,22 +42,12 @@
 
 {% block content %}
     <div id="main-content" class="container">
-        {% if user.username == academic.username and user.is_superuser %}
+        {% if user.username == academic.username %}
             {% include 'includes/articles.html' %}
-        {% endif %}
-        {% if user.username == academic.username and user.is_superuser %}
             {% include 'includes/proposals.html' %}
-        {% endif %}
-        {% if user.username == academic.username %}
             {% include 'includes/following.html' %}
-        {% endif %}
-        {% if user.username == academic.username %}
             {% include 'includes/followers.html' %}
-        {% endif %}
-        {% if user.username == academic.username %}
             {% include 'includes/order_history.html' %}
-        {% endif %}
-        {% if user.username == academic.username %}
             <hr class="my-3">
             <div class="row">
                 <h4 class="text-center mt-4">PERSONAL INFO</h4>
