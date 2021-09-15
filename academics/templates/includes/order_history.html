@@ -2,27 +2,34 @@
 <div class="row">
     <h4 class="text-center mt-4">ORDER HISTORY</h4>
 </div>
-<div id="responsive-table-box" class="table-responsive mt-4">
-    <table id="responsive-table" class="table">
-        <thead class="table-dark">
-            <tr>
-                <th scope="col">Order Number</th>
-                <th scope="col">Date</th>
-                <th scope="col" colspan="3">Articles</th>
-                <th scope="col">Order Total</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for order in orders %}
+<!-- No Orders Text -->
+{% if orders|length == 0 %}
+    <h6 class="text-center my-4">No orders yet!</h6>
+<!-- If Orders Exist - Display Orders Table -->
+{% else %}
+    <div id="responsive-table-box" class="table-responsive mt-4">
+        <table id="responsive-table" class="table">
+            <thead class="table-dark">
                 <tr>
-                    <th scope="row">
-                        <a href="{% url 'order_history' order.order_number %}" title="{{ order.order_number }}">{{ order.order_number|truncatechars:7 }}</a>
-                    </th>
-                    <td class="align-middle">{{ order.date }}</td>
-                    <td class="align-middle" colspan="3">{% for article in order.order_items.all %}{% if not forloop.counter == 1 %}<br>{% endif %}{{ article }}{% endfor %}</td>
-                    <td class="align-middle">£ {{ order.order_total }}</td>
+                    <th scope="col">Order Number</th>
+                    <th scope="col">Date</th>
+                    <th scope="col" colspan="3">Articles</th>
+                    <th scope="col">Order Total</th>
                 </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-</div>
+            </thead>
+            <tbody>
+                {% for order in orders %}
+                    <tr>
+                        <!-- Order Numbers Link to Summary -->
+                        <th scope="row">
+                            <a href="{% url 'order_history' order.order_number %}" title="{{ order.order_number }}">{{ order.order_number|truncatechars:7 }}</a>
+                        </th>
+                        <td class="align-middle">{{ order.date }}</td>
+                        <td class="align-middle" colspan="3">{% for article in order.order_items.all %}{% if not forloop.counter == 1 %}<br>{% endif %}{{ article }}{% endfor %}</td>
+                        <td class="align-middle">£ {{ order.order_total }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endif %}

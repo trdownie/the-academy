@@ -4,13 +4,17 @@
     <h4 class="text-center mt-4">FOLLOWING</h4>
 </div>
 <div class="row mt-4">
+    <!-- No Following Text -->
     {% if academic.following.all|length == 0 %}
         <h6 class="text-center my-4">You aren't following anyone yet!</h6>
         <p class="text-center my-4">To follow academics, check their academic profiles.</p>
+    <!-- If Following People -->
     {% else %}
         {% for follower in academic.following.all %}
+            <!-- Display Following Cards -->
             <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 pb-5">
                 <div class="card h-100 proposal">
+                    <!-- Following Image/No Image -->
                     {% if follower.image %}
                         <a class="profile-img" href="{% url 'academic_profile_from_profile' follower.id %}">
                             <img class="card-img-top" src="{{ follower.image.url }}"  alt="{{ follower.name }}">
@@ -20,6 +24,7 @@
                             <img class="card-img-top" src="{{ MEDIA_URL }}noimage.png" alt="{{ follower.name }}">
                         </a>
                     {% endif %}
+                    <!-- Following Name/Username -->
                     <div class="card-body text-center">
                         <h5 class="card-title">
                             <a href="{% url 'academic_profile_from_profile' follower.id %}">
@@ -33,6 +38,7 @@
                             </a>
                         </p>
                     </div>
+                    <!-- View Profile/Unfollow Buttons -->
                     <div class="card-footer text-center">
                         <a href="{% url 'academic_profile_from_profile' follower.id %}" class="btn btn-black">VIEW PROFILE</a>
                         <a href="{% url 'unfollow_from_hub' follower.id %}" class="btn btn-white">UNFOLLOW</a>

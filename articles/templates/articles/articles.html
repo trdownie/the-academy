@@ -7,6 +7,7 @@
 {% block page_header %}
 <div class="container">
     <div class="row">
+        <!-- Subject Boxes/Filters -->
         <div class="col-12 mt-4 text-center">
             {% for subject in current_subjects %}
                 <a href="{% url 'articles' %}?subject={{ subject.subject_name }}" class="btn btn-white">
@@ -18,16 +19,19 @@
                 </a>
             {% endfor %}
         </div>
+        <!-- Count of On-Screen Articles -->
         <div class="col-4 mt-5">
             <span class="align-bottom">
                 Articles found: {{ articles|length }}{% if search_term %} found for <strong>"{{ search_term }}"</strong>{% endif %}
             </span>
         </div>
         <div class="col-4 offset-4">
+            <!-- Proposals Only Toggle Button (Bootstrap) -->
             <form id="proposals-form" class="form-check form-switch d-flex justify-content-end" method ="GET" action="{% url 'articles' %}?proposals=True">
                 <input class="form-check-input mx-2" type="checkbox" id="flexSwitchCheckDefault" name="proposals" {% if proposals %}checked{% endif %}>
                 <label class="form-check-label" for="flexSwitchCheckDefault">Proposals Only</label>
             </form>
+            <!-- Sort Selector for Articles -->
             <select id="sort-selector" class="mt-3 form-select border-{% if current_sorting != 'None_None' %}grey{% else %}black{% endif %}" aria-label="Sort selector">
                 <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort by...</option>
                 <option value="rating_desc" {% if current_sorting == 'rating_desc' %}selected{% endif %}>Rating (high)</option>
@@ -46,24 +50,29 @@
 {% endblock %}
 
 {% block content %}
-    <!-- MAIN CONTENT -->
     <div id="main-content" class="container">
         <div class="row">
+            <!-- Article Cards -->
             {% for article in articles %}
                 <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 pb-5">
+                    <!-- Tailored Class for Articles/Proposals -->
                     <div class="card h-100 {% if article.proposal %}proposal{% else %}article{% endif %}">
+                        <!-- Article Image -->
                         <a class="article-img" href="{% url 'article_detail' article.id %}">
                             <img class="card-img-top" src="{{ article.image.url }}"  alt="{{ article.name }}">
                         </a>
+                        <!-- Article Title -->
                         <div class="card-header">
                             <h5 class="card-title text-center"><a href="{% url 'article_detail' article.id %}">{{ article.title }}</a></h5>
                         </div>
                         <div class="card-body">
+                            <!-- Article Author(s) -->
                             <p class="card-text">
                                 {% for author in article.authors.all %}
                                     <a href="{% url 'academic_profile' author.id %}"><i class="fas fa-user fa-fw"></i> {{ author }}</a>
                                 {% endfor %}
                             </p>
+                            <!-- Article Rating -->
                             <p class="card-text"><i class="fas fa-star fa-fw"></i>
                                 {% if article.rating %}
                                      {{ article.rating }}
@@ -71,14 +80,18 @@
                                      No Rating
                                 {% endif %}
                             </p>
+                            <!-- Article Date -->
                             <p class="card-text"><i class="fas fa-calendar fa-fw"></i> {{ article.date }}</p>
+                            <!-- Article Subjects -->
                             <p>
                                 {% for subject in article.subjects.all %}
                                     <a href="{% url 'articles' %}?subject={{ subject.subject_name }}" class="card-text"><i class="fas fa-info-circle fa-fw"></i> {{ subject.friendly_name }}</a>
                                 {% endfor %}
                             </p>
+                            <!-- Article Price -->
                             <p class="card-text"><i class="fas fa-pound-sign fa-fw"></i> {{ article.price}}</p>
                         </div>
+                        <!-- More/Quick Add Buttons -->
                         <div class="card-footer text-center">
                             <a href="{% url 'article_detail' article.id %}" class="btn btn-black">MORE</a>
                             <a href="{% url 'quick_add_to_bag' article.id %}" class="btn btn-green">QUICK ADD</a>
@@ -91,12 +104,17 @@
     
 {% endblock %}
 
+<!-- Tailored CTA -->
 {% block cta %}
-    {% if request.user.is_authenticated and user.is_superuser %}
+    {% if request.user.is_authenticated and request.user.academic.level >= 1 %}
+        <!-- If user is registered and they have submitted a paper (i.e., level >= 1) include 'Potential' CTA -->
         {% include './includes/cta/potential.html' with level=request.user.academic.level name=request.user.academic.name %}
     {% elif request.user.is_authenticated %}
+        <!-- If user is registered but they have not submitted a paper (i.e., level not >=1) include 'Contribute' CTA -->
+        <!-- Note: also pass the level and name variables into the include for use in the template -->
         {% include './includes/cta/contribute.html' with name=request.user.academic.name %}
     {% else %}
+        <!-- If user is not registered include 'Join' CTA -->
         {% include './includes/cta/join.html' %}
     {% endif %}
 {% endblock %}

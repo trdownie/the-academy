@@ -7,7 +7,9 @@
 {% block page_header %}
 <div class="container">
     <div class="row">
+        <!-- Tailored Heading (Whether Hub or Academic Profile) -->
         <h1 id="header" class="text-center text-capitalize mt-4 mb-0 pb-0">{% if user.username == academic.username %}Academic Hub{% else %}{{ academic.name }}{% endif %}</h1>
+        <!-- Academic Title via Academic Level -->
         <div class="text-center mt-0 pt-0">
             {% if academic.level >= 80 %}
                 <h4>- SAGE -</h4>
@@ -18,20 +20,26 @@
             {% elif academic.level < 40 and academic.level >= 20 %}
                 <h4>- ACADEMIC -</h4>
             {% elif academic.level < 20 or not academic.level %}
+                <!-- Default is Student -->
                 <h4>- STUDENT -</h4>
             {% endif %}
         </div>
     </div>
     <div class="row">
+        <!-- Sub-Heading Text -->
+        <!-- Username -->
         <div class="col-sm-12 col-md-3 mt-2 text-center">
             <p><i class="fas fa-at fa-fw"></i>{{ academic.username }}</p>
         </div>
+        <!-- No. of Articles Submitted -->
         <div class="col-sm-12 col-md-3 mt-2 text-center">
             <p> <i class="fas fa-pen fa-fw"></i> Articles: {{ academic.article_set.all.count }}</p>
         </div>
+        <!-- Following Count -->
         <div class="col-sm-12 col-md-3 mt-2 text-center">
             <p><i class="fas fa-eye fa-fw"></i> Following: {{ academic.following.all.count }}</p>
         </div>
+        <!-- Followers Count -->
         <div class="col-sm-12 col-md-3 mt-2 text-center">
             <p><i class="far fa-eye fa-fw"></i> Followers: {{ follower_count }}</p>
         </div>
@@ -42,6 +50,7 @@
 
 {% block content %}
     <div id="main-content" class="container">
+        <!-- If Hub (Own Profile) Display all Sections -->
         {% if user.username == academic.username %}
             {% include 'includes/articles.html' %}
             {% include 'includes/proposals.html' %}
@@ -55,6 +64,7 @@
         {% endif %}
         <div class="row">
             <div class="col-md-12 col-lg-6 my-5">
+                <!-- Academic Image/No Image -->
                 {% if academic.image %}
                     <a class="profile-img" href="{{ academic.image.url }}" target="_blank">
                         <img class="profile-image" src="{{ academic.image.url }}"  alt="{{ academic.name }}">
@@ -64,8 +74,10 @@
                 {% endif %}
             </div>
             <div class="col-md-12 col-lg-6">
+                <!-- If Hub (Own Profile) Display Profile Include -->
                 {% if user.username == academic.username %}
                     {% include 'includes/profile.html' %}
+                <!-- Else (Academic Profile) Display Summary Only -->
                 {% else %}
                     <div class="row">
                         <h2 class="text-center mt-3 pt-5">SUMMARY</h2>
@@ -75,6 +87,7 @@
                     </div>
                     <div class="row">
                         <div class="col text-center mt-4">
+                            <!-- Tailored Exit Buttons -->
                             {% if from_profile %}
                                 <a class="btn btn-black my-3" href="{% url 'academic_profile' user.academic.id %}">
                                     <i class="fas fa-chevron-left"></i>
@@ -86,6 +99,7 @@
                                     Articles
                                 </a>
                             {% endif %}
+                            <!-- Tailored Follow/Unfollow Buttons -->
                             {% if user.academic in followers or following == True %}
                                 <a href="{% url 'unfollow' academic.id %}" class="btn btn-white my-3">Unfollow <strong>@{{ academic.username }}</strong></a>
                             {% elif user.academic not in followers or following == False %}

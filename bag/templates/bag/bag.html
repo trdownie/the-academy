@@ -9,6 +9,7 @@
         <div class="row">
             <h1 id="header" class="text-center text-capitalize mt-4">Shopping Bag</h1>
             <hr class="mt-3">
+            <!-- Order Summary -->
             <div class="col-12">
                 {% if bag_total %}
                     <div id="responsive-table-box" class="table-responsive mt-4">
@@ -33,6 +34,7 @@
                                         <td colspan="4" class="align-middle">{{ article.article.title }}</td>
                                         <td colspan="2" class="align-middle">{% for author in article.article.authors.all %}{% if not forloop.counter == 1 %}<br>{% endif %}{{ author }}{% endfor %}</td>
                                         <td colspan="2" class="align-middle">£{{ article.article.price }}</td>
+                                        <!-- Delete Item Button -->
                                         <td class="align-middle">
                                             <form class="form" action="{% url 'remove_from_bag' article.article.id %}" method="POST">
                                                 {% csrf_token %}
@@ -45,9 +47,11 @@
                             </tbody>
                         </table>
                     </div>
+                    <!-- Order Total -->
                     <div class="text-center py-3">
                         <h5 class="underline"><strong>Total: £{{ bag_total|floatformat:2 }}</strong></h5>
                     </div>
+                    <!-- Return/Proceed Buttons -->
                     <div class="text-center">
                         <a class="btn btn-orange my-3 " href="{% url 'articles' %}">
                             <i class="fas fa-chevron-left"></i>
@@ -59,6 +63,7 @@
                         </a>
                     </div>
                 {% else %}
+                    <!-- If/when no items in bag -->
                     <div class="text-center">
                         <p>No articles on syllabus!</p>
                         <a class="btn btn-black px-4" href="{% url 'articles' %}">See Articles</a>

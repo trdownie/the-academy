@@ -4,13 +4,17 @@
     <h4 class="text-center mt-4">FOLLOWERS</h4>
 </div>
 <div class="row mt-4">
+    <!-- No Followers Text -->
     {% if followers|length == 0 %}
         <h6 class="text-center my-4">Nobody is following you yet!</h6>
         <p class="text-center my-4">To get followers, submit some articles and/or proposals.</p>
+    <!-- If Followers Exist -->
     {% else %}
         {% for follower in followers %}
+            <!-- Display Followers Cards -->
             <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 pb-5">
                 <div class="card h-100">
+                    <!-- Follower Image/No Image -->
                     {% if follower.image %}
                         <a class="profile-img" href="{% url 'academic_profile_from_profile' follower.id %}">
                             <img class="card-img-top" src="{{ follower.image.url }}"  alt="{{ follower.name }}">
@@ -20,6 +24,7 @@
                             <img class="card-img-top" src="{{ MEDIA_URL }}noimage.png" alt="{{ follower.name }}">
                         </a>
                     {% endif %}
+                    <!-- Follower Name/Username -->
                     <div class="card-body text-center">
                         <h5 class="card-title">
                             <a href="{% url 'academic_profile_from_profile' follower.id %}">
@@ -33,6 +38,7 @@
                             </a>
                         </p>
                     </div>
+                    <!-- View Follower Profile -->
                     <div class="card-footer text-center">
                         <a href="{% url 'academic_profile_from_profile' follower.id %}" class="btn btn-black">VIEW PROFILE</a>
                     </div>

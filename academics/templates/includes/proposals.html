@@ -4,13 +4,17 @@
     <h4 class="text-center mt-4">PROPOSALS SUBMITTED</h4>
 </div>
 <div class="row mt-4">
+    <!-- No Proposals Text -->
     {% if articles|length == 0 %}
         <h6 class="text-center my-4">No proposals submitted yet!</h6>
+    <!-- If Submitted Proposals Exist -->
     {% else %}
         {% for article in articles %}
+            <!-- Only Display Proposals -->
             {% if article.proposal is True %}
                 <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 pb-5">
                     <div class="card h-100 proposal">
+                        <!-- Proposal Image/No Image -->
                         {% if article.image %}
                             <a class="article-img" href="{% url 'article_detail_profile' article.id %}">
                                 <img class="card-img-top" src="{{ article.image.url }}"  alt="{{ article.name }}">
@@ -20,9 +24,11 @@
                                 <img class="card-img-top" src="{{ MEDIA_URL }}noimage.png" alt="{{ article.name }}">
                             </a>
                         {% endif %}
+                        <!-- Proposal Title -->
                         <div class="card-header">
                             <h5 class="card-title text-center"><a href="{% url 'article_detail_profile' article.id %}">{{ article.title }}</a></h5>
                         </div>
+                        <!-- Proposal Info -->
                         <div class="card-body">
                             <p class="card-text"><i class="fas fa-thumbs-up fa-fw"></i>
                                 {{ article.stakers }}
@@ -36,6 +42,7 @@
                             </p>
                             <p class="card-text"><i class="fas fa-chart-line fa-fw"></i> £{{ article.price|mul:article.stakers }}</p>
                         </div>
+                        <!-- Proposal View/Edit Buttons -->
                         <div class="card-footer text-center">
                             <a href="{% url 'article_detail_profile' article.id %}" class="btn btn-black">VIEW</a>
                             <a href="{% url 'edit_article' article.id %}" class="btn btn-orange">EDIT</a>
@@ -45,6 +52,7 @@
             {% endif %}
         {% endfor %}
     {% endif %}
+    <!-- CTA to Submit Proposal -->
     <div class="text-center mb-4">
         <a class="btn btn-blue" href="{% url 'add_article' %}">
             <i class="fas fa-pen"></i>

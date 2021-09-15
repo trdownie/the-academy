@@ -14,14 +14,15 @@
 {% endblock %}
 
 {% block content %}
-    <!-- MAIN CONTENT -->
     <div id="main-content" class="container">
         <div class="row">
             <div class="col-12">
                 <p>Please use the form below to manage or submit an article</p>
+                <!-- Add Article Form -->
                 <form action="{% url 'add_article' %}" method="POST" id="article-form" enctype="multipart/form-data">
                     {% csrf_token %}
                     {{ form | crispy }}
+                    <!-- Cancel/Confirm Buttons -->
                     <div class="text-center my-5">
                         <a href="{% url 'articles' %}" class="btn btn-white">
                             <span class="icon">

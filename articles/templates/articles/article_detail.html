@@ -8,6 +8,8 @@
 <div class="container">
     <div class="row">
         <h1 id="header" class="text-center text-capitalize my-4">{{ article.title }}</h1>
+        <!-- Sub-Heading Info -->
+        <!-- Authors -->
         <div class="col-sm-12 col-md-3 mt-2 text-center">
             <p>
                 {% for author in article.authors.all %}
@@ -15,12 +17,15 @@
                 {% endfor %}
             </p>
         </div>
+        <!-- Date -->
         <div class="col-sm-12 col-md-3 mt-2 text-center">
             <p class=""><i class="fas fa-calendar fa-fw"></i> {{ article.date }}</p>
         </div>
+        <!-- Rating -->
         <div class="col-sm-12 col-md-3 mt-2 text-center">
             <p class=""><i class="fas fa-star fa-fw"></i> {{ article.rating }}</p>
         </div>
+        <!-- Subjects -->
         <div class="col-sm-12 col-md-3 mt-2 text-center">
             <p>
                 {% for subject in article.subjects.all %}
@@ -36,11 +41,13 @@
 {% block content %}
     <div id="main-content" class="container">
         <div class="row">
+            <!-- Article Image -->
             <div class="col-md-12 col-lg-6 my-5">
                 <a class="article-img" href="{{ article.image.url }}" target="_blank">
                     <img class="article-image" src="{{ article.image.url }}"  alt="{{ article.name }}">
                 </a>
             </div>
+            <!-- Article Summary -->
             <div class="col-md-12 col-lg-6 my-5">
                 <div class="row">
                     <h2 class="text-center">SUMMARY</h2>
@@ -48,11 +55,14 @@
                 <div class="row">
                     <p class="">{{ article.summary }}</p>
                 </div>
+                <!-- Article Price -->
                 <p class="card-text text-center fs-5"><i class="fas fa-pound-sign fa-fw"></i> {{ article.price}}</p>
+                <!-- Add to Bag -->
                 <form class="form" action="{% url 'add_to_bag' article.id %}" method="POST">
                     {% csrf_token %}
                     <div class="row">
                         <div class="col-12 text-center">
+                            <!-- Custom Buttons: Return to Hub or Articles -->
                             {% if from_profile %}
                                 <a class="btn btn-black mt-3" href="{% url 'academic_profile' user.academic.id %}">
                                     <i class="fas fa-chevron-left"></i>
@@ -74,12 +84,17 @@
     </div>
 {% endblock %}
 
+<!-- Tailored CTA -->
 {% block cta %}
-    {% if request.user.is_authenticated and user.is_superuser %}
+    {% if request.user.is_authenticated and request.user.academic.level >= 1 %}
+        <!-- If user is registered and they have submitted a paper (i.e., level >= 1) include 'Potential' CTA -->
         {% include './includes/cta/potential.html' with level=request.user.academic.level name=request.user.academic.name %}
     {% elif request.user.is_authenticated %}
+        <!-- If user is registered but they have not submitted a paper (i.e., level not >=1) include 'Contribute' CTA -->
+        <!-- Note: also pass the level and name variables into the include for use in the template -->
         {% include './includes/cta/contribute.html' with name=request.user.academic.name %}
     {% else %}
+        <!-- If user is not registered include 'Join' CTA -->
         {% include './includes/cta/join.html' %}
     {% endif %}
 {% endblock %}
