@@ -92,8 +92,9 @@ def all_articles(request):
 
 
 def article_detail(request, article_id):
-    """ view to show individual article details """
-
+    """Show individual article details """
+    
+    # Obtain article object & return to template
     article = get_object_or_404(Article, pk=article_id)
 
     template = 'articles/article_detail.html'
@@ -121,6 +122,7 @@ def add_article(request):
         else:
             messages.error(request, 'Article failed to upload. \
                            Please check form!')
+
     # Upon usual (non-POST) function request, define form using ArticleForm()
     else:
         form = ArticleForm()
@@ -137,22 +139,34 @@ def add_article(request):
 def edit_article(request, article_id):
     """Edit article"""
 
+    # Get the article object in question
     article = get_object_or_404(Article, pk=article_id)
 
+    # If the user is not one of the article's authors
     if not article.authors.filter(user=request.user).exists():
+        # And if the user is not a superuser
         if not request.user.is_superuser:
-            messages.error(request, 'Area for senior academics only!')
+            # Redirect the user to the homepage with a message
+            messages.error(request, 'Area for article authors or \
+                           senior academics only!')
             return redirect(reverse('home'))
 
+    # Provided user is the author/superuser, upon submitting edit article form
     if request.method == 'POST':
+        # Set form as the submitted form
         form = ArticleForm(request.POST, request.FILES, instance=article)
+        # Check if the form is valid and if so save it
         if form.is_valid():
             form.save()
             messages.success(request, 'Article updated!')
             return redirect(reverse('article_detail', args=[article.id]))
+        # Otherwise return an error message
         else:
             messages.error(request, 'Article failed to update. \
                            Please check form!')
+
+    # On other request, use the ArticleForm() form for the article in question
+    # and provide a custom message
     else:
         form = ArticleForm(instance=article)
         messages.info(request, f'You are now editing {article.title}')
@@ -162,17 +176,26 @@ def edit_article(request, article_id):
         'form': form,
         'article': article,
     }
-    
+
     return render(request, template, context)
+
 
 @login_required
 def delete_article(request, article_id):
-    """Edit article"""
-    if not request.user.is_superuser:
-        messages.error(request, 'Area for contributing academics only!')
-        return redirect(reverse('home'))
+    """Delete article"""
 
+    # Get the article object in question
     article = get_object_or_404(Article, pk=article_id)
+
+    # If the user is not one of the article's authors
+    if not article.authors.filter(user=request.user).exists():
+        # And if the user is not a superuser
+        if not request.user.is_superuser:
+            messages.error(request, 'Area for authors/senior academics only!')
+            return redirect(reverse('home'))
+
+    # Otherwise, delete article with message to confirm
     article.delete()
     messages.success(request, 'Article deleted!')
+
     return redirect(reverse('articles'))
