@@ -27,7 +27,6 @@ class AcademicProfileForm(forms.ModelForm):
                 'about': 'About',
         }
 
-        # Not working
         self.fields['about'].widget = forms.Textarea(
             attrs={'rows': 6, 'cols': 25})
 
