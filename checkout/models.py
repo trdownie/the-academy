@@ -42,32 +42,8 @@ class Order(models.Model):
         """
         update order total when saving Order
         """
-        # self.order_total = self.order_items.aggregate(Sum('price'))['price__sum']
-        # if self.pk is None:
-        #    self.order_total = 0
-        # else:
+
         self.order_total = sum(article.price for article in self.order_items.all())
-
-    
-    """
-    FROM STACK OVERFLOW
-    def order_total(self):
-        queryset = self.order_items.all().aggregate(
-            order_total=models.Sum('price'))
-        return queryset["total_price"]
-    """
-
-    """
-    def calculate_total(self):
-        return sum(Article.price for article in self.order_items)
-    """
-    
-    """
-    def update_total(self):
-        Update order total each time a line item is added
-        self.order_total = self.order_items.aggregate(Sum('price'))
-        self.save()
-    """
 
     def save(self, *args, **kwargs):
         """
