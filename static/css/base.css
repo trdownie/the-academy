@@ -282,10 +282,10 @@ a:not(.btn) {
 /*----------------------------------  AllAuth Forms ------------------------------------*/
 
 .allauth-inner-content input {
-    border: var(--black-border);
     border-radius: var(--square-border);
 }
 
+/* Hide all labels on allauth forms except the remember checkbox */
 .allauth-inner-content label:not([for="id_remember"]) {
     display: none;
 }

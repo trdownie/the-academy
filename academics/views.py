@@ -17,7 +17,7 @@ def academic_profile(request, academic_id):
 
     academic = get_object_or_404(Academic, pk=academic_id)
 
-    # When user submits form to update profile, obtain the form, 
+    # When user submits form to update profile, obtain the form,
     # check it is valid, save it, and display a message
     if request.method == 'POST':
         form = AcademicProfileForm(request.POST, request.FILES,

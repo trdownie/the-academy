@@ -28,18 +28,6 @@ var style = {
 var card = elements.create('card', {style: style});
 card.mount('#card-element');
 
-/*
-// Set up Stripe.js and Elements to use in checkout form - FROM STRIPE:
-var elements = stripe.elements();
-var style = {
-  base: {
-    color: "#32325d",
-  }
-};
-
-var card = elements.create("card", { style: style });
-card.mount("#card-element");
-*/
 
 // Handle realtime validation errors on card element
 card.addEventListener('change', function (event) {
