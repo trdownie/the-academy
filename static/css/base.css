@@ -226,9 +226,13 @@ a:not(.btn) {
 
 /* profile */
 
-#order-history {
+#responsive-table-box {
     max-height: 400px;
     overflow-y: auto;
+}
+
+#responsive-table {
+    min-width: 800px;
 }
 
 /* bag */

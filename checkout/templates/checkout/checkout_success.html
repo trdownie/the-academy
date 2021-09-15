@@ -14,46 +14,52 @@
             <h1 id="header" class="text-center text-uppercase mt-4">Success!</h1>
         {% endif %}
         <hr class="mt-2 mb-5">
-        <table class="table table-hover">
-            <thead class="table-dark">
-                <tr>
-                    <th scope="col">Article</th>
-                    <th scope="col"></th>
-                    <th scope="col">Author(s)</th>
-                    <th scope="col">Price</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for article in order.order_items.all %}
+        <div id="responsive-table-box" class="table-responsive mt-4">
+            <table id="responsive-table" class="table">
+                <thead class="table-dark">
                     <tr>
-                        <td class="col-1">
-                            <a class="article-img" href="{{ article.image.url }}" target="_blank">
-                                <img class="bag-img" src="{{ article.image.url }}"  alt="{{ article.image.name }}">
-                            </a>
-                        </td>
-                        <td class="align-middle">{{ article.title }}</td>
-                        <td class="align-middle">{% for author in article.authors.all %}{% if not forloop.counter == 1 %}<br>{% endif %}{{ author }}{% endfor %}</td>
-                        <td class="align-middle">£ {{ article.price }}</td>
+                        <th scope="col" colspan="4">Article</th>
+                        <th scope="col"></th>
+                        <th scope="col" colspan="2">Author(s)</th>
+                        <th scope="col" colspan="2">Price</th>
+                        <th scope="col" colspan="2">Download</th>
                     </tr>
-                {% endfor %}
-            </tbody>
-            <tfoot class="table-dark">
-                <tr>
-                    <td colspan="5" class="text-center py-3">
-                        <h4><strong>Total: £{{ order.order_total|floatformat:2 }}</strong></h4>
-                    </td>
-                </tr>
-            </tfoot>
-        </table>
+                </thead>
+                <tbody>
+                    {% for article in order.order_items.all %}
+                        <tr>
+                            <td>
+                                <a class="article-img" href="{{ article.image.url }}" target="_blank">
+                                    <img class="bag-img" src="{{ article.image.url }}"  alt="{{ article.image.name }}">
+                                </a>
+                            </td>
+                            <td colspan="4" class="align-middle">{{ article.title }}</td>
+                            <td colspan="2" class="align-middle">{% for author in article.authors.all %}{% if not forloop.counter == 1 %}<br>{% endif %}{{ author }}{% endfor %}</td>
+                            <td colspan="2" class="align-middle">£{{ article.price }}</td>
+                            <td colspan="2" class="align-middle">
+                                <a class="btn btn-white ms-4 px-2 py-1" href="{{ article.article }}" download>
+                                <i class="fas fa-download"></i>
+                            </a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="text-center py-3">
+            <h5 class="underline"><strong>Total: £{{ order.order_total|floatformat:2 }}</strong></h5>
+            <div class="text-center mt-4">
+
+            </div>
+        </div>
         {% if from_profile %}
-            <div class="text-center m-3">
+            <div class="text-center mt-2">
                 <a class="btn btn-orange" href="{% url 'academic_profile' academic.id %}">
                     <i class="fas fa-chevron-left"></i>
                     Return to Profile
                 </a>
             </div>
         {% else %}
-            <div class="text-center m-3">
+            <div class="text-center mt-2">
                 <a class="btn btn-green" href="{% url 'articles' %}">
                     See More Articles
                     <i class="fas fa-chevron-right"></i>
