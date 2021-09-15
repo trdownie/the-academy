@@ -46,6 +46,8 @@ def create_or_update_academic_profile(sender, instance, created, **kwargs):
     Create or update  profile
     """
     if created:
-        Academic.objects.create(user=instance, username=instance.username)
+        Academic.objects.create(user=instance,
+                                username=instance.username,
+                                name=instance.username)
     # For existing users, just save profile
     instance.academic.save()

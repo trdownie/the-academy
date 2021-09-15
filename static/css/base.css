@@ -13,11 +13,10 @@
 
 /*----------------------------------  Sitewide Elements/Utilities  ------------------------*/
 
-/* Solid square borders to overwrite default styles */
-input:not(#flexSwitchCheckDefault), select, .input-group, textarea {
+/* Square borders to overwrite default styles */
+input:not(#flexSwitchCheckDefault), select, .input-group, .form-control, textarea {
     /* Not Bootstrap's toggle button */
     /* .input-group is crispy forms file upload */
-    border: var(--black-border) !important;
     border-radius: var(--square-border) !important;
 }
 
