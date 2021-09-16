@@ -1,5 +1,19 @@
 /***********************************  SITEWIDE STYLING  ************************************/
 
+/*****  Accessibility  *****/
+/*  CODE CREDIT: SKIP TO MAIN ADAPTED FROM NC STATE UNIVERSITY ACCESSIBILITY GUIDELINES  */
+/*  (https://accessibility.oit.ncsu.edu/it-accessibility-at-nc-state/developers/accessibility-handbook/mouse-and-keyboard-events/skip-to-main-content/)  */
+#skip-to-main {
+    left:-999px;
+    position:absolute;
+    top:auto;
+    width:1px;
+    height:1px;
+    overflow:hidden;
+    z-index:-999;
+}
+/*  END OF CODE CREDIT  */
+
 /*----------------------------------  Global Variables  -----------------------------------*/
 
 :root {
