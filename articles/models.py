@@ -58,7 +58,8 @@ class Article(models.Model):
     rating = models.DecimalField(max_digits=2, decimal_places=1,
                                  null=True, blank=True)
     price = models.DecimalField(max_digits=6, decimal_places=2)
-    image = models.ImageField(default='/media/noimage.jpeg', blank=True)
+    image = models.ImageField(default='https://s3.console.aws.amazon.com/s3/object/the-home-of-learning?region=eu-west-2&prefix=media/noimage.jpeg',
+                              blank=True)
 
     # Incremented when users purchase proposals
     stakers = models.DecimalField(max_digits=6, decimal_places=0, default=0,
