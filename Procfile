@@ -1,1 +1,1 @@
-web: gunicorn the-academy.wsgi:application
+web: gunicorn the_academy.wsgi:application
