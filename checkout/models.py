@@ -11,6 +11,9 @@ from academics.models import Academic
 
 
 class Order(models.Model):
+    """
+    Order class, created when a user places an order
+    """
 
     # Order Summary
     academic = models.ForeignKey(Academic, on_delete=models.SET_NULL,

@@ -5,12 +5,16 @@ from academics.models import Academic
 
 
 class Subject(models.Model):
+    """
+    Subject model is used for fixed subjects based
+    on Wikipedia's subject categories
+    """
 
     # Basic Info
     subject_name = models.CharField(max_length=200, null=False, blank=False)
     friendly_name = models.CharField(max_length=200, null=False, blank=True)
 
-    # Master Science Area (dropdown)
+    # Master Science Area choices (dropdown)
     class ScienceArea(models.TextChoices):
         HUMAN = 'HU', _('Human')
         SOCIAL = 'SO', _('Social')
@@ -18,12 +22,14 @@ class Subject(models.Model):
         FORMAL = 'FO', _('Formal')
         APPLIED = 'AP', _('Applied')
 
+    # Master Science Area
     science = models.CharField(
         max_length=2,
         choices=ScienceArea.choices,
         blank=False,
     )
 
+    # For ordering instances
     class Meta:
         ordering = ['subject_name']
 
@@ -31,10 +37,15 @@ class Subject(models.Model):
         return self.subject_name
 
     def get_friendly_name(self):
+        """Return friendly name when called"""
         return self.friendly_name
 
 
 class Article(models.Model):
+    """
+    Article model is used for all articles, added on
+    the frontend and edited on the frontend via ArticleForm form
+    """
 
     # Article Info
     proposal = models.BooleanField(default=False)
@@ -53,6 +64,7 @@ class Article(models.Model):
     stakers = models.DecimalField(max_digits=6, decimal_places=0, default=0,
                                   null=True, blank=True)
 
+    # For ordering instances
     class Meta:
         ordering = ['title']
 

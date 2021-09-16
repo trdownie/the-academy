@@ -5,14 +5,17 @@ from .models import Academic
 class AcademicProfileForm(forms.ModelForm):
     class Meta:
         model = Academic
-        exclude = ('user', 'level', 'following', 'subscribers',)
-        
+        exclude = ('user', 'level', 'following',)
+
     def __init__(self, *args, **kwargs):
         """
-        Add placeholders and classes, remove auto-generated
-        labels and set autofocus on first field
+        Add placeholders and classes, set TextArea size,
+        set placeholders, & remove auto-generated labels
         """
+
         super().__init__(*args, **kwargs)
+
+        # Define placeholders
         placeholders = {
                 'username': 'Username',
                 'image': 'Image',
@@ -27,9 +30,11 @@ class AcademicProfileForm(forms.ModelForm):
                 'about': 'About',
         }
 
+        # Define TextArea size
         self.fields['about'].widget = forms.Textarea(
             attrs={'rows': 6, 'cols': 25})
 
+        # Set placeholders and remove labsl
         for field in self.fields:
             if field != 'default_country':
                 if self.fields[field].required:

@@ -7,6 +7,10 @@ from django_countries.fields import CountryField
 
 
 class Academic(models.Model):
+    """
+    Academic class, for all users and
+    generated upon users registering for the site
+    """
 
     # Profile Info
     user = models.OneToOneField(User, on_delete=models.CASCADE,
@@ -32,6 +36,7 @@ class Academic(models.Model):
     image = models.ImageField(blank=True)
     following = models.ManyToManyField('self', symmetrical=False, blank=True)
 
+    # For ordering instances
     class Meta:
         ordering = ['name']
 
@@ -42,7 +47,7 @@ class Academic(models.Model):
 @receiver(post_save, sender=User)
 def create_or_update_academic_profile(sender, instance, created, **kwargs):
     """
-    Create/update Academic when User is created/updated
+    Create/update academic when user is created/updated
     """
 
     # For new users, create Academic with matching details

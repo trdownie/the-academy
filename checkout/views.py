@@ -1,8 +1,8 @@
 import stripe
 import json
 
-from django.shortcuts import render, redirect, reverse,
-                             get_object_or_404, HttpResponse
+from django.shortcuts import (render, redirect, reverse,
+                              get_object_or_404, HttpResponse)
 from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
@@ -49,7 +49,7 @@ def checkout(request):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
 
-    # When checkout form is submitted, create order
+    # When checkout form is submitted, create order instance
     if request.method == 'POST':
         bag = request.session.get('bag', {})
         form_data = {
