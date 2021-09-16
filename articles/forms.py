@@ -35,7 +35,7 @@ class ArticleForm(forms.ModelForm):
         }
 
         # Set title for proposal as check box
-        self.fields['proposal'].title = 'PROPOSAL ONLY'
+        self.fields['proposal'].label = 'PROPOSAL ONLY'
 
         # Set placeholders & remove titles for all others
         for field in self.fields:

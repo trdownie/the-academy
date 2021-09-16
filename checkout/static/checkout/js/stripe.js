@@ -6,6 +6,7 @@ CSS from here:
 https://stripe.com/docs/stripe-js
 */
 
+/* Get API keys, set base style to match Bootstrap & create card element*/
 var stripePublicKey = $('#id_stripe_public_key').text().slice(1, -1);
 var clientSecret = $('#id_client_secret').text().slice(1, -1);
 var stripe = Stripe(stripePublicKey);
@@ -48,6 +49,7 @@ card.addEventListener('change', function (event) {
 // Handle form submission
 var form = document.getElementById('payment-form');
 
+// On submit, apply overlay
 form.addEventListener('submit', function(ev) {
     ev.preventDefault();
     card.update({'disabled': true});
@@ -59,13 +61,16 @@ form.addEventListener('submit', function(ev) {
     var saveInfo = Boolean($('#id-save-info').attr('checked'));
     // Get csrf from form
     var csrfToken = $('input[name="csrfmiddlewaretoken"]').val();
+    // Get required data
     var postData = {
         'csrfmiddlewaretoken': csrfToken,
         'client_secret': clientSecret,
         'save_info': saveInfo,
     };
+    // Set url to trigger
     var url = '/checkout/cache_checkout_data/';
 
+    // Confirm card payment to Stripe
     $.post(url, postData).done(function() {
         stripe.confirmCardPayment(clientSecret, {
             payment_method: {
@@ -85,6 +90,7 @@ form.addEventListener('submit', function(ev) {
                 },
             }
         }).then(function(result) {
+            // If there's an error, display the message on screen
             if (result.error) {
                 var errorDiv = document.getElementById('card-errors');
                 var html = `
@@ -97,9 +103,9 @@ form.addEventListener('submit', function(ev) {
                 $('#loading-overlay').fadeToggle(100);
                 card.update({ 'disabled': false});
                 $('#submit-button').attr('disabled', false);
+            // Otherwise, submit the form
             } else {
                 if (result.paymentIntent.status === 'succeeded') {
-                    console.log('hello world')
                     form.submit();
                 }
             }
