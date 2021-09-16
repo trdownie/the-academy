@@ -19,35 +19,40 @@ class StripeWH_Handler:
         self.request = request
 
     def _send_confirmation_email(self, order):
-        """Send confirmation email"""
+        """
+        Send confirmation email upon order confirmed
+        """
+
+        # Get the customer's email address
         customer_email = order.email
+
+        # Compose the email from the templates
         subject = render_to_string(
             'checkout/confirmation_emails/confirmation_email_subject.txt',
             {'order': order})
         body = render_to_string(
             'checkout/confirmation_emails/confirmation_email_body.txt',
             {'order': order, 'contact_email': settings.DEFAULT_FROM_EMAIL})
-        
+
+        # Send the email
         send_mail(
             subject,
             body,
             settings.DEFAULT_FROM_EMAIL,
             [customer_email]
         )
-    
+
     def update_proposals(self, order):
-        """Update any stakes paid"""
+        """
+        Update any stakes paid (the purchase of a proposal, not an order)
+        """
+
+        # Check if an article is a proposal - if so update
         for article in order.order_items.all():
-            print(article)
             if article.proposal:
-                article = article
-                print(f'Article to update = {article}')
-                print(f'article.stakers before = {article.stakers}')
+                article = article  # newly defined article for each iteration
                 article.stakers += 1
                 article.save()
-                print(f'article.stakers after = {article.stakers}')
-                print(f'Article updated = {article.stakers}')
-
 
     def handle_event(self, event):
         """
@@ -61,6 +66,8 @@ class StripeWH_Handler:
         """
         Handle the payment_intent.succeeded webhook from Stripe
         """
+
+        # Obtain relevant details, including from intent
         intent = event.data.object
         pid = intent.id
         bag = intent.metadata.bag
@@ -69,14 +76,13 @@ class StripeWH_Handler:
         billing_details = intent.charges.data[0].billing_details
         order_total = round(intent.charges.data[0].amount / 100, 2)
 
-        # Update profile info is save_info checked
+        # Update profile info if save_info box checked 
+        # (and user logged in - not AnonymousUser)
         academic = None
         username = intent.metadata.username
-        print(username)
         if username != 'AnonymousUser':
             academic = Academic.objects.get(user__username=username)
             if save_info:
-                print('testing123')
                 academic.default_phone_number = billing_details.phone,
                 academic.default_country = billing_details.address.country,
                 academic.default_postcode = billing_details.address.postal_code,
@@ -86,6 +92,7 @@ class StripeWH_Handler:
                 academic.default_county = billing_details.address.state,
                 academic.save()
 
+        # Loop to try 5 times to find order (1s apart)
         order_exists = False
         attempt = 1
         while attempt <= 5:
@@ -109,10 +116,16 @@ class StripeWH_Handler:
             except Order.DoesNotExist:
                 attempt += 1
                 time.sleep(1)
+
+        # If order was found in above loop, send message/trigger methods
         if order_exists:
+            self.update_proposals(order)
             self._send_confirmation_email(order)
             return HttpResponse(content=f'Webhook received: {event["type"]} \
-                                | SUCCESS: Order exists in database', status=200)
+                                | SUCCESS: Order exists in database',
+                                status=200)
+
+        # Otherwise create the order from the bag (from the intent),
         else:
             order = None
             try:
@@ -134,15 +147,19 @@ class StripeWH_Handler:
                     article = get_object_or_404(Article, pk=article_id)
                     order.order_items.add(article)
                 order.save()
+            # If order cannot be successfully created, 
+            # delete order item & return error
             except Exception as e:
                 if order:
                     order.delete()
                 return HttpResponse(
                     content=f'Webhook received: {event["type"]} | ERROR: {e}',
                     status=500)
+
+        # If order was successfully created (by Stripe),
+        # send confirmation emails/trigger methods 
         self._send_confirmation_email(order)
         self.update_proposals(order)
-        print('test 1')
         return HttpResponse(content=f'Webhook received: {event["type"]} \
                             | SUCCESS: Created order in webhook', status=200)
 

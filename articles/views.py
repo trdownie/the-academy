@@ -9,7 +9,9 @@ from .forms import ArticleForm
 
 
 def all_articles(request):
-    """View to show all articles, including filtering/sorting/searching"""
+    """
+    View to show all articles, including filtering/sorting/searching
+    """
 
     # Get all articles
     articles = Article.objects.all()
