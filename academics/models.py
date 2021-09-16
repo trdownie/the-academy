@@ -34,7 +34,7 @@ class Academic(models.Model):
     about = models.TextField()
     level = models.DecimalField(max_digits=4, decimal_places=1, null=True,
                                 blank=True)
-    image = models.ImageField(default='https://s3.console.aws.amazon.com/s3/object/the-home-of-learning?region=eu-west-2&prefix=media/noimage.jpeg',
+    image = models.ImageField(default='https://the-home-of-learning.s3.eu-west-2.amazonaws.com/media/noimage.jpeg',
                               blank=True)
     following = models.ManyToManyField('self', symmetrical=False, blank=True)
 
