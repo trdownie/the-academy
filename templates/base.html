@@ -43,7 +43,7 @@
                 </div>
                 <!-- Main Search Form -->
                 <div class="col-4">
-                    <form class="d-flex" method="GET", action="{% url 'articles' %}">
+                    <form class="d-flex" method="GET" action="{% url 'articles' %}">
                         <input class="form-control form-control-custom me-2" type="search" name="q" placeholder="Search..." aria-label="Search">
                         <button id="search-btn-main" class="btn" type="submit">
                             <i class="fas fa-search" id="magnifying-glass-main"></i>
@@ -55,7 +55,7 @@
                     <div class="row">
                         <!-- Shopping Bag -->
                         <div class="col-lg-4 d-flex justify-content-end  mt-2">
-                            <a id="shopping-bag-link" href="{% url 'bag' %}" class="text-center">
+                            <a id="shopping-bag-link-main" href="{% url 'bag' %}" class="text-center">
                                 {% if bag_total %}
                                     <i class="fas fa-shopping-bag"></i>
                                     <span>£{{ bag_total|floatformat:2 }}</span>
@@ -98,7 +98,7 @@
                 </div>
                 <!-- Mobile Only Shopping Bag -->
                 <div class="d-flex justify-content-end px-3 d-lg-none">
-                    <a id="shopping-bag-link" href="{% url 'bag' %}" class="text-center">
+                    <a id="shopping-bag-link-mobile" href="{% url 'bag' %}" class="text-center">
                         {% if bag_total %}
                             <i class="fas fa-shopping-bag"></i>
                             <span>£{{ bag_total|floatformat:2 }}</span>

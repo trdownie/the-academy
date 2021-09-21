@@ -192,7 +192,7 @@ a:not(.btn) {
     height: 50px;
 }
 
-#shopping-bag-link, #main-register-link, #main-profile-link, #navbarDropdown, #main-logo-link, #footer-logo-link,
+#shopping-bag-link-main, #shopping-bag-link-mobile, #main-register-link, #main-profile-link, #navbarDropdown, #main-logo-link, #footer-logo-link,
  #mobile-login-link, #mobile-register-link, #mobile-profile-link, #mobile-logout-link, #mobile-logo {
     color: white;
 }
@@ -319,6 +319,9 @@ a:not(.btn) {
     }
     #mobile-logo {
         font-size: 20px;
+    }
+    #banner {
+        height: 100vh;
     }
 }
 
