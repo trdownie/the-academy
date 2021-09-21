@@ -215,7 +215,7 @@ a:not(.btn) {
 
 #banner {
     height: 1000px;
-    background-image: url("https://the-home-of-learning.s3.eu-west-2.amazonaws.com/media/banner-image.jpg");
+    background-image: url("banner-image.jpg");
     background-size: 100% 100%;
     background-attachment: fixed;
 }
