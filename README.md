@@ -246,7 +246,7 @@ The contents of this section are summarised below.
 	- [Deployment to Heroku](#deploymet-heroku)
 	- [Connecting to AWS](#connecting-aws)
 	- [Configuring the Environment](#configuring-environment)
-7. [Technology Used](#technology-used)
+7. [Technology Used](#technologies-used)
     - [Languages](#languages)
     - [Database](#database)
     - [Frameworks](#frameworks)
@@ -1042,7 +1042,7 @@ The **order_history()** function renders the checkout success template, as menti
 Finally, **the follow()**, **unfollow()**, and **unfollow_from_hub()** functions simply check whether the academic is in the list of academics the user follows, and updates the list accordingly. The 'from_hub' option is for directly unfollowing academics from the user's academic hub. (I admit using profile and hub interchangeably was a mistake here, and is in the future improvements section.)
 
  
-## <div align="center">3. Styling</div>
+## <div align="center" id="styling">3. Styling</div>
 
 The purpose of this project is demonstrational. As such, and since the development had taken me significantly longer than anticipated, the remainder of the styling and layout were done using a 'minimum viable product' approach.
 
@@ -1070,14 +1070,14 @@ All images were taken from Wikipedia or Google.
 I only used one custom CSS file for the whole site, since the CSS used was mostly sitewide and far from extensive.
 
  
-## <div align="center">4. Responsiveness</div>
+## <div align="center" id="responsiveness">4. Responsiveness</div>
 
 As with styling, this key step of design was somewhat restricted due to time implications, and a MVP approach was used.
 
 Luckily, Bootstrap makes this overwhelming easy with their grid system, which I leveraged to drop everything into columns where needed. The only real custom responsive elements that were required were expanding the functionality of the navbar to create a topbar on desktop and instead expand the menu on mobile devices, and adding divs to the tables and using Bootstrap's responsive table elements to allow scroll on smaller devices.
 	
  
-## <div align="center">5. Accessibility</div>
+## <div align="center" id="accessibility">5. Accessibility</div>
 	
 Finally, amendments and additions were made to ensure accessibility for a range of viewing approaches.
 
