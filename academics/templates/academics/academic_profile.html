@@ -69,14 +69,10 @@
         {% endif %}
         <div class="row">
             <div class="col-md-12 col-lg-6 my-5">
-                <!-- Academic image/no image -->
-                {% if academic.image %}
-                    <a class="profile-img" href="{{ academic.image.url }}" target="_blank">
-                        <img class="profile-image" src="{{ academic.image.url }}"  alt="{{ academic.name }}">
-                    </a>
-                {% else %}
-                    <img class="profile-image" src="https://the-home-of-learning.s3.eu-west-2.amazonaws.com/media/noimage.jpeg"  alt="Placeholder">
-                {% endif %}
+                <!-- Academic image -->
+                <a class="profile-img" href="{{ academic.image.url }}" target="_blank">
+                    <img class="profile-image" src="{{ academic.image.url }}"  alt="{{ academic.name }}">
+                </a>
             </div>
             <div class="col-md-12 col-lg-6">
                 <!-- If hub (own profile) display profile include -->

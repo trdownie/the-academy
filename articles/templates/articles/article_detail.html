@@ -68,14 +68,18 @@
                                     <i class="fas fa-chevron-left"></i>
                                     Hub
                                 </a>
+                                <a href="{% url 'edit_article' article.id %}" class="btn btn-orange">
+                                    <i class="fas fa-pen"></i>
+                                    Edit
+                                </a>
                             {% else %}
                                 <a class="btn btn-black mt-3" href="{% url 'articles' %}">
                                     <i class="fas fa-chevron-left"></i>
                                     Articles
                                 </a>
+                                <input type="submit" class="btn btn-green mt-3" value="Add to Bag">
+                                <input type="hidden" name="redirect_url" value="{{ request.path }}">
                             {% endif %}
-                            <input type="submit" class="btn btn-green mt-3" value="Add to Bag">
-                            <input type="hidden" name="redirect_url" value="{{ request.path }}">
                         </div>
                     </div>
                 </form>
