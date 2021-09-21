@@ -10,7 +10,7 @@
         <!-- Subject Boxes/Filters -->
         <div class="col-12 mt-4 text-center">
             {% for subject in current_subjects %}
-                <a href="{% url 'articles' %}?subject={{ subject.subject_name }}" class="btn btn-white">
+                <a href="{% url 'articles' %}?subject={{ subject.subject_name }}" class="btn btn-white my-2">
                     {% if subject.friendly_name %}
                         {{ subject.friendly_name|title }}<br>
                     {% else %}
@@ -28,7 +28,7 @@
         <div class="col-4 offset-4">
             <!-- Proposals Only Toggle Button (Bootstrap) -->
             <form id="proposals-form" class="form-check form-switch d-flex justify-content-end" method ="GET" action="{% url 'articles' %}?proposals=True">
-                <input class="form-check-input mx-2" type="checkbox" id="flexSwitchCheckDefault" name="proposals" {% if proposals %}checked{% endif %}>
+                <input class="form-check-input mx-md-2" type="checkbox" id="flexSwitchCheckDefault" name="proposals" {% if proposals %}checked{% endif %}>
                 <label class="form-check-label" for="flexSwitchCheckDefault">Proposals Only</label>
             </form>
             <!-- Sort Selector for Articles -->
