@@ -228,7 +228,7 @@ The contents of this section are summarised below.
     - [Articles App](#articles-app)
     - [Bag App](#bag-app)
     - [Checkout App](#checkout-app)
-    - [Academics](#academics-app)
+    - [Academics App](#academics-app)
 3. [Styling](#styling)
     - [Layout](#layout)
     - [Palette](#palette)
