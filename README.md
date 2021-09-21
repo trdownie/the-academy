@@ -10,11 +10,9 @@ I have streamlined certain elements of my README process to avoid duplication of
 
 Jump to section:
 
-[PART I: PRE-DEVELOPMENT](#part-i)
-[PART II: DEVELOPMENT](#part-ii)
-[PART III: POST-DEVELOPMENT](#part-iii)
+[PART I: PRE-DEVELOPMENT](#part-i) // [PART II: DEVELOPMENT](#part-ii) // [PART III: POST-DEVELOPMENT](#part-iii)
 
----
+ 
 # <div align="center" id="part-i">PART I: PRE-DEVELOPMENT</div>
 
 The first section of this README details the pre-development process. The contents of this section are summarised below.
@@ -26,7 +24,7 @@ The first section of this README details the pre-development process. The conten
 2. [Backend Design](#backend-design)
     - [Database](#database)
     - [Frameworks & Libraries](#backend-tools)
----
+ 
 
 ## <div align="center" id="frontend-design">1. Frontend Design: User Experience (UX)</div>
 
@@ -175,7 +173,7 @@ The following frontend libraries will be utilised:
 - [Google Fonts](https://fonts.google.com)
 	- Used to import Montserrat font
 
----
+ 
 
 ## <div align="center" id="backend-design">2. Backend Design: Database and Frameworks</div>
 
@@ -213,7 +211,7 @@ The [Django framework](https://www.djangoproject.com) will be used for backend d
 
 No backend libraries will be used.
  
----
+ 
 # <div align="center" id="part-ii">PART II: DEVELOPMENT</div>
 The second section of this README details the development process. The process itself was messier than this document implies, with occasional steps forward and then back. For clarity, this process has been smoothed out somewhat. In addition, while efforts have been made to document all salient steps, post-deployment tweaks are likely. To see the finished code, or the precise timeline of git commits, please see the [GitHub repository](https://github.com/trdownie/the-academy).
 
@@ -257,7 +255,7 @@ The contents of this section are summarised below.
     - [Hosting](#hosting)
     - [Version Control](#version-control)
     - [Other Tools](#other-tools)
----
+ 
 ## <div align="center" id="setting-up">1. Setting Up</div>
 
 This first section outlines the steps taken to set the development environment up.
@@ -494,7 +492,7 @@ The full base template is shown below for clarity. Initially, there were additio
 
 </html>
 ```
----
+ 
 ## <div align="center" id="functionality">2. Functionality</div>
 
 This section outlines the main stage of development, including the functionality for the entire site. For the sake of brevity, this section will look at key development steps, how they were achieved, and what their purpose was.
@@ -1043,7 +1041,7 @@ The **order_history()** function renders the checkout success template, as menti
 
 Finally, **the follow()**, **unfollow()**, and **unfollow_from_hub()** functions simply check whether the academic is in the list of academics the user follows, and updates the list accordingly. The 'from_hub' option is for directly unfollowing academics from the user's academic hub. (I admit using profile and hub interchangeably was a mistake here, and is in the future improvements section.)
 
----
+ 
 ## <div align="center">3. Styling</div>
 
 The purpose of this project is demonstrational. As such, and since the development had taken me significantly longer than anticipated, the remainder of the styling and layout were done using a 'minimum viable product' approach.
@@ -1071,14 +1069,14 @@ All images were taken from Wikipedia or Google.
 
 I only used one custom CSS file for the whole site, since the CSS used was mostly sitewide and far from extensive.
 
----
+ 
 ## <div align="center">4. Responsiveness</div>
 
 As with styling, this key step of design was somewhat restricted due to time implications, and a MVP approach was used.
 
 Luckily, Bootstrap makes this overwhelming easy with their grid system, which I leveraged to drop everything into columns where needed. The only real custom responsive elements that were required were expanding the functionality of the navbar to create a topbar on desktop and instead expand the menu on mobile devices, and adding divs to the tables and using Bootstrap's responsive table elements to allow scroll on smaller devices.
 	
----
+ 
 ## <div align="center">5. Accessibility</div>
 	
 Finally, amendments and additions were made to ensure accessibility for a range of viewing approaches.
@@ -1123,7 +1121,7 @@ The following accessibility considerations are based on the best ‘checklist’
 
 - There are no CAPTCHAs
 	
----
+ 
 ## <div align="center" id="deployment">6. Deployment</div>
 
 The final development step was to deploy the project. This involved three distinct steps: deplying the app on Heroku, creating and configuring an AWS account, and then configuring Heroku and the Django app so everything connected properly.
@@ -1347,7 +1345,7 @@ Fifth, I committed these changes to trigger a Heroku deployment and my Heroku ap
 
 Sixth, I navigated to Stripe and created a new webhook (to the new app address), adding the usual Stripe API key and secret key, alongside the new WH secret key, into Heroku's config vars area.
 
----
+ 
 ## <div align="center" id="technologies-used">7. Technologies Used</div>
 ### <div align="center" id="languages">- Languages -</div>
 - [HTML5](https://en.wikipedia.org/wiki/HTML5)
@@ -1384,7 +1382,7 @@ Sixth, I navigated to Stripe and created a new webhook (to the new app address),
 - [Chrome Dev Browser](https://google-chrome-dev.en.softonic.com/mac) (development/support)
 - [Am I Responsive](http://ami.responsivedesign.is/#) (responsive image)
 
----
+ 
 # <div align="center" id="part-iii">PART 3: POST-DEVELOPMENT</div>
 
 
@@ -1405,7 +1403,7 @@ The third and final section of this README details the post-development process.
     - [Information](#information)
     - [Acknowledgements](#achknowledgements)
 
----
+ 
 ## <div align="center" id="testing-fixes">1. Testing & Fixes</div>
 
 The website was tested from various angles: code, user perspectives, functionality, accessibility & responsiveness.
