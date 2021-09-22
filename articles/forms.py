@@ -23,23 +23,24 @@ class ArticleForm(forms.ModelForm):
 
         # Define placeholders
         placeholders = {
-                'image': 'Image',
                 'title': 'Title*',
                 'subjects': 'Subjects*',
                 'authors': 'Authors* (author consent required',
-                'article': 'Article or Proposal*',
                 'date': "Date Published* (today for proposals)",
                 'summary': 'Summary*',
                 'price': 'Price or Stake*',
                 'rating': 'Rating (if known)',
         }
 
-        # Set title for proposal as check box
-        self.fields['proposal'].label = 'PROPOSAL ONLY'
-
-        # Set placeholders & remove titles for all others
+        # Set placeholders or labels depending on field
         for field in self.fields:
-            if field != 'proposal':
+            if field = 'proposal'
+                self.fields['proposal'].label = 'PROPOSAL ONLY'
+            elif field = 'article'
+                self.fields['article'].label = 'Article OR Proposal*'
+            elif field = 'image':
+                self.fields['image'].label = 'Image (Recommended)'
+            else:
                 placeholder = placeholders[field]
                 self.fields[field].widget.attrs['placeholder'] = placeholder
                 self.fields[field].label = False
