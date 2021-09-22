@@ -22,7 +22,7 @@ class ArticleForm(forms.ModelForm):
         self.fields['subjects'].choices = friendly_names
 
         # Define placeholders
-        placeholders = {
+        labels = {
                 'image': 'Image',
                 'title': 'Title*',
                 'subjects': 'Subjects*',
@@ -37,9 +37,7 @@ class ArticleForm(forms.ModelForm):
         # Set title for proposal as check box
         self.fields['proposal'].label = 'PROPOSAL ONLY'
 
-        # Set placeholders & remove titles for all others
+        # Set labels
         for field in self.fields:
-            if field != 'proposal':
-                placeholder = placeholders[field]
-                self.fields[field].widget.attrs['placeholder'] = placeholder
-                self.fields[field].label = False
+            label = labels[field]
+            self.fields[field].label = label
