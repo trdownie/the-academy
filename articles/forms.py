@@ -34,11 +34,11 @@ class ArticleForm(forms.ModelForm):
 
         # Set placeholders or labels depending on field
         for field in self.fields:
-            if field = 'proposal':
+            if field == 'proposal':
                 self.fields['proposal'].label = 'PROPOSAL ONLY'
-            elif field = 'article':
+            elif field == 'article':
                 self.fields['article'].label = 'Article OR Proposal*'
-            elif field = 'image':
+            elif field == 'image':
                 self.fields['image'].label = 'Image (Recommended)'
             else:
                 placeholder = placeholders[field]
