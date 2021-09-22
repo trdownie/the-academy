@@ -16,7 +16,7 @@ class AcademicProfileForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
 
         # Define placeholders
-        labels = {
+        placeholders = {
                 'username': 'Username',
                 'image': 'Image',
                 'name': 'Full Name',
@@ -34,7 +34,12 @@ class AcademicProfileForm(forms.ModelForm):
         self.fields['about'].widget = forms.Textarea(
             attrs={'rows': 6, 'cols': 25})
 
-        # Set labels
+        # Set placeholders and remove labsl
         for field in self.fields:
-            label = labels[field]
-            self.fields[field].label = label
+            if field != 'default_country':
+                if self.fields[field].required:
+                    placeholder = f'{placeholders[field]} *'
+                else:
+                    placeholder = placeholders[field]
+            self.fields[field].widget.attrs['placeholder'] = placeholder
+            self.fields[field].label = False
