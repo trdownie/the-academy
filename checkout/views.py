@@ -136,6 +136,7 @@ def checkout(request):
         'order_form': order_form,
         'stripe_public_key': stripe_public_key,
         'client_secret': intent.client_secret,
+        'academic.id': 0,
     }
 
     return render(request, template, context)
@@ -147,6 +148,10 @@ def checkout_success(request, order_number):
     update profile with 'safe info' details,
     and attach user to order
     """
+
+    # Set academic.id to 0 for guest checkouts
+    # (so link back to academic page works)
+    academic = {'id': 0}
 
     # Get the save info details and the new order
     save_info = request.session.get('save_info')
