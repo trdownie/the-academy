@@ -13,7 +13,7 @@
         {% for follower in academic.following.all %}
             <!-- Display Following Cards -->
             <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 pb-5">
-                <div class="card h-100 proposal">
+                <div class="card h-100">
                     <!-- Following Image/No Image -->
                     {% if follower.image %}
                         <a class="profile-img" href="{% url 'academic_profile_from_profile' follower.id %}">
