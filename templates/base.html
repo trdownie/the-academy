@@ -211,11 +211,11 @@
                             Applied
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="{% url 'articles' %}?subject=business,engineering,technology,medicine,health">All</a></li>
+                                <li><a class="dropdown-item" href="{% url 'articles' %}?subject=business,engineering_technology,medicine_health">All</a></li>
                                 <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item" href="{% url 'articles' %}?subject=business">Business</a></li>
-                                <li><a class="dropdown-item" href="{% url 'articles' %}?subject=engineering,technology">Engineering & Technology</a></li>
-                                <li><a class="dropdown-item" href="{% url 'articles' %}?subject=medicine,health">Medicine & Health</a></li>
+                                <li><a class="dropdown-item" href="{% url 'articles' %}?subject=engineering_technology">Engineering & Technology</a></li>
+                                <li><a class="dropdown-item" href="{% url 'articles' %}?subject=medicine_health">Medicine & Health</a></li>
                                 {% if request.user.is_authenticated %}
                                     <li><hr class="dropdown-divider"></li>
                                     <li><a class="dropdown-item" href="{% url 'add_article' %}">Submit</a></li>
