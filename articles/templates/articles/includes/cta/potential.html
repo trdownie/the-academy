@@ -13,17 +13,17 @@
             <div class="col-10 offset-1">
                 <!-- Calculate point to next level and display as message -->
                 <p>{% if level >= 80 %}
-                        You are {{ 100|sub:level|floatformat }} points away from SAGE level.
+                        You are {{ 100|sub:level|floatformat }} points away from the highest SAGE level.
                     {% elif level < 80 and level >= 60 %}
-                        You are {{ 80|sub:level|floatformat }} points away from SAVANT level.
+                        You are {{ 80|sub:level|floatformat }} points away from SAGE level.
                     {% elif level < 60 and level >= 40 %}
-                        You are {{ 60|sub:level|floatformat }} points away from PROFESSOR level.
+                        You are {{ 60|sub:level|floatformat }} points away from SAVANT level.
                     {% elif level < 40 and level >= 20 %}
-                        You are {{ 40|sub:level|floatformat }} points away from ACADEMIC level.
+                        You are {{ 40|sub:level|floatformat }} points away from PROFESSOR level.
                     {% elif level < 20 %}
-                        You are {{ 20|sub:level|floatformat }} points away from STUDENT level.
+                        You are {{ 20|sub:level|floatformat }} points away from ACADEMIC level.
                     {% elif level == None %}
-                        You are 20 points away from STUDENT level.
+                        You are 20 points away from ACADEMIC level.
                     {% endif %}
                 </p>
                 <p>
