@@ -125,7 +125,10 @@ a:not(.btn) {
 
 .article-image, .profile-image {
     max-width: 100%;
-    max-height: 50vh;
+    max-height: 70vh;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .article {
