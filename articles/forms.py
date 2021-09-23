@@ -24,8 +24,6 @@ class ArticleForm(forms.ModelForm):
         # Define placeholders & labels
         placeholders = {
             'title': 'Title*',
-            'authors': 'Authors* (author consent required',
-            'subjects': 'Subjects*',
             'date': "Date Published* (today for proposals)",
             'summary': 'Summary*',
             'price': 'Price or Stake*',
@@ -33,8 +31,10 @@ class ArticleForm(forms.ModelForm):
         }
         labels = {
             'proposal': 'PROPOSAL ONLY',
-            'article': 'UPLOAD ARTICLE/PROPOSAL',
-            'image': 'UPLOAD COVER IMAGE (RECOMMENDED)',
+            'authors': 'Authors* (Author Consent Required)',
+            'subjects': 'Subjects*',
+            'article': 'Article/Proposal Upload*',
+            'image': 'Cover Image Upload (Recommended)',
         }
 
         # Set placeholders or labels depending on field
