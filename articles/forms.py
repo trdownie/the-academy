@@ -21,26 +21,29 @@ class ArticleForm(forms.ModelForm):
         # Render friendly names on the form
         self.fields['subjects'].choices = friendly_names
 
-        # Define placeholders
+        # Define placeholders & labels
         placeholders = {
-                'title': 'Title*',
-                'subjects': 'Subjects*',
-                'authors': 'Authors* (author consent required',
-                'date': "Date Published* (today for proposals)",
-                'summary': 'Summary*',
-                'price': 'Price or Stake*',
-                'rating': 'Rating (if known)',
+            'title': 'Title*',
+            'authors': 'Authors* (author consent required',
+            'subjects': 'Subjects*',
+            'date': "Date Published* (today for proposals)",
+            'summary': 'Summary*',
+            'price': 'Price or Stake*',
+            'rating': 'Rating (if known)',
+        }
+        labels = {
+            'proposal': 'PROPOSAL ONLY',
+            'article': 'UPLOAD ARTICLE/PROPOSAL',
+            'image': 'UPLOAD COVER IMAGE (RECOMMENDED)',
         }
 
         # Set placeholders or labels depending on field
         for field in self.fields:
-            if field == 'proposal':
-                self.fields['proposal'].label = 'PROPOSAL ONLY'
-            elif field == 'article':
-                self.fields['article'].label = 'Article OR Proposal*'
-            elif field == 'image':
-                self.fields['image'].label = 'Image (Recommended)'
-            else:
+            if field in placeholders:
                 placeholder = placeholders[field]
                 self.fields[field].widget.attrs['placeholder'] = placeholder
                 self.fields[field].label = False
+            elif field in labels:
+                label = labels[field]
+                self.fields[field].label = label
+
