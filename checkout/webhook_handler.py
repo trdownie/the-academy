@@ -80,7 +80,7 @@ class StripeWH_Handler:
         # (and user logged in - not AnonymousUser)
         academic = None
         username = intent.metadata.username
-        if username != 'AnonymousUser':
+        if request.user.is_authenticated:
             academic = Academic.objects.get(user__username=username)
             if save_info:
                 academic.default_phone_number = billing_details.phone,

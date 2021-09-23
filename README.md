@@ -1500,6 +1500,8 @@ The following bugs were not fully resolved:
 
 - When updating an existing order in the backend, the order total does not update first time, but requires a second save. This is due to the method for updating the order being triggered using the existing order items first time, and second time taking effect. There is likely a simple fix for this, but I couldn't find it in the short time I had.
 
+- The Stripe WHs are not succeeding when deplpoyed to Heroku for users that are authenticated. They work for both users and guests within GitPod, and they work for guests via Heroku. This issue was identified extremely late in development, and there was no time to fully identify the issue. However, logic would dictate that this isn't an issue in the code, since it works perfectly in GitPod. I reset the Stripe signing key on Stripe, and the problem persisted. The 
+
 If you spot any further bugs – please [get in touch] ([mailto:trdownie@gmail.com](mailto:trdownie@gmail.com)).
 
 ## <div align="center" id="limitations-improvements">2. Limitations & Improvements</div>
@@ -1519,6 +1521,10 @@ When articles are created, users can select any user as the article author. This
 #### ***Article Deletion***
 
 A warning modal with a confirm button could be added to the delete article button to prevent users accidentally deleting articles.
+
+#### ***File Download***
+
+In production, the file download link worked, as the file was stored within the model. In Heroku, however, the file download link was not connecting to the S3 bucket. There will be a way to connect the HREF to the S3 file, perhaps via file-naming conventions, but this was beyond the scope of what I could achieve at this point, with time limitations.
 
 #### ***Styling***
 
