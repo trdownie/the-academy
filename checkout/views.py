@@ -53,7 +53,8 @@ def checkout(request):
     if request.method == 'POST':
         bag = request.session.get('bag', {})
         form_data = {
-            'full_name': request.POST['full_name'],
+            'full_name': 'New Test',
+            # 'full_name': request.POST['full_name'],
             'email': request.POST['email'],
             'phone_number': request.POST['phone_number'],
             'street_address1': request.POST['street_address1'],
