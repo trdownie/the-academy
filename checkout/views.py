@@ -150,7 +150,7 @@ def checkout_success(request, order_number):
     """
 
     # Set academic.id to 0 for guest checkouts
-    # (so link back to academic page works)
+    # (so link back to academic page works on order history)
     academic = {'id': 0}
 
     # Get the save info details and the new order
