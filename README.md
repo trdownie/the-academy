@@ -550,9 +550,9 @@ The navbar can be seen below in desktop and mobile form.
 
 <div align="center"><img src="media/README/navbar-large-logged-in.png" style="height:50px" alt="desktop navbar logged in"></div>
 
-<div align="center"><img src="media/README/navbar-mobile-closed.png" style="height:200px" alt="mobile navbar closed"></div>
+<div align="center"><img src="media/README/navbar-mobile-closed.png" style="height:50px" alt="mobile navbar closed"></div>
 
-<div align="center"><img src="media/README/navbar-mobile.png" style="height:200px" alt="mobile navbar"></div>
+<div align="center"><img src="media/README/navbar-mobile.png" style="height:300px" alt="mobile navbar"></div>
 
 #### ***Templates > Base.html > Messages***
 
@@ -562,7 +562,7 @@ I made use of Bootstrap's toasts and the 'includes' feature within Django's temp
 
 The toasts are mostly just basic text messages, with the exception of the success toast, which displays the shopping bag and order total, unless the user is on their profile, in which case this is excluded.
 
-<div align="center"><img src="media/README/toast-success.png" style="height:200px" alt="success toast"></div>
+<div align="center"><img src="media/README/toast-success.png" style="height:500px" alt="success toast"></div>
 
 #### ***Templates > allauth ***
 
@@ -574,7 +574,7 @@ I styled the relevant allauth templates to match the site. To do this, I perform
 
 The revised sign in page is below.
 
-<div align="center"><img src="media/README/allauth-sign-in.png" style="height:200px" alt="sign in page"></div>
+<div align="center"><img src="media/README/allauth-sign-in.png" style="height:500px" alt="sign in page"></div>
 
 ### <div align="center" id="home-app">- Home App -</div>
 
@@ -686,7 +686,7 @@ To do this, I used a picture of Cambridge University I found on unsplash and set
 
 I also added a picture credit via a tooltip in the bottom corner and initialised this using JS.
 
-<div align="center"><img src="media/README/index.png" style="height:200px" alt="landing page with image of university and welcome text"></div>
+<div align="center"><img src="media/README/index.png" style="height:500px" alt="landing page with image of university and welcome text"></div>
 
 ### <div align="center" id="articles-app">- Articles App -</div>
 
@@ -741,29 +741,29 @@ The main article page has a number of key features.
 
 First, it automatically displays the entire index of articles upon first loading.
 
-<div align="center"><img src="media/README/articles-1.png" style="height:200px" alt="main index showing articles"></div>
+<div align="center"><img src="media/README/articles-1.png" style="height:500px" alt="main index showing articles"></div>
 
 Second, using the dropdown menus, articles can be filtered. In doing this, the current articles on display are shown at the top of the page. This can be done with multiple subjects, and each subject button at the top can be used to further filter articles.
 
-<div align="center"><img src="media/README/articles-2.png" style="height:200px" alt="main index showing subset of articles"></div>
+<div align="center"><img src="media/README/articles-2.png" style="height:500px" alt="main index showing subset of articles"></div>
 
 Third, the dropdown box at the top of the screen sorts the items into different orders.
 
-<div align="center"><img src="media/README/articles-3.png" style="height:200px" alt="main index showing dropdown box"></div>
+<div align="center"><img src="media/README/articles-3.png" style="height:500px" alt="main index showing dropdown box"></div>
 
 Fourth, there is a toggle button to only show proposals, which are highlighted in a different colour.
 
 (Note - the filtering, sorting and proposals toggle all work together to create niche subsets)
 
-<div align="center"><img src="media/README/articles-4.png" style="height:200px" alt="main index showing toggle button"></div>
+<div align="center"><img src="media/README/articles-4.png" style="height:500px" alt="main index showing toggle button"></div>
 
 Fifth, the article cards allow for filtering via the subject buttons.
 
-<div align="center"><img src="media/README/articles-5.png" style="height:200px" alt="list of subjects"></div>
+<div align="center"><img src="media/README/articles-5.png" style="height:75px" alt="list of subjects"></div>
 
 Sixth, the author names on the article cards take the users to the authors' academic profile page (outlined later).
 
-<div align="center"><img src="media/README/articles-6.png" style="height:200px" alt="list of subjects"></div>
+<div align="center"><img src="media/README/articles-6.png" style="height:75px" alt="list of subjects"></div>
 
 Seven, the 'MORE' button, alongside the article's image and title, take the user to an article detail page (outlined below).
 
@@ -775,7 +775,7 @@ Tenth, there is a CTA box at the bottom of the page (outlined below).
 
 #### ***Articles > Templates > Articles > Article_Detail.html***
 
-<div align="center"><img src="media/README/article-detail.png" style="height:200px" alt="the article detail page showing an image and article summary"></div>
+<div align="center"><img src="media/README/article-detail.png" style="height:500px" alt="the article detail page showing an image and article summary"></div>
 
 The article detail page has the following features:
 
@@ -832,7 +832,7 @@ This section will look at each in turn.
 
 #### ***Bag > Bag.html***
 
-<div align="center"><img src="media/README/shopping-bag.png" style="height:200px" alt="shopping bag page"></div>
+<div align="center"><img src="media/README/shopping-bag.png" style="height:250px" alt="shopping bag page"></div>
 
 The shopping bag page has the following features:
 
@@ -900,9 +900,9 @@ The OrderForm form maps to the Order class and tailors the appearance of the for
 
 #### ***Checkout > Templates > Checkout > Checkout.html***
 
-<div align="center"><img src="media/README/checkout-1.png" style="height:200px" alt="checkout screen with order summary"></div>
+<div align="center"><img src="media/README/checkout-1.png" style="height:250px" alt="checkout screen with order summary"></div>
 
-<div align="center"><img src="media/README/checkout-2.png" style="height:200px" alt="checkout screen with checkout form"></div>
+<div align="center"><img src="media/README/checkout-2.png" style="height:400px" alt="checkout screen with checkout form"></div>
 
 The checkout page has the following features:
 
@@ -917,7 +917,7 @@ The checkout page has the following features:
 
 #### ***Checkout > Templates > Checkout > Checkout_Success.html***
 
-<div align="center"><img src="media/README/checkout-success.png" style="height:200px" alt="checkout success screen with order summary"></div>
+<div align="center"><img src="media/README/checkout-success.png" style="height:400px" alt="checkout success screen with order summary"></div>
 
 The checkout success page, which is also the order details page that the order history (outlined below) links to, has the following features:
 
@@ -993,7 +993,7 @@ The AcademicProfileForm form maps to the Academic class, but prevents certain fi
 
 The academic profile serves two purposes. First, it provides a profile for users to view other academics. Second, it serves as a user's Academic Hub, which contains their own profile information as well as a number of other important elements.
 
-<div align="center"><img src="media/README/academic-profile-1.png" style="height:200px" alt="a user's academic profile with image and summary"></div>
+<div align="center"><img src="media/README/academic-profile-1.png" style="height:400px" alt="a user's academic profile with image and summary"></div>
 
 The academic profile of other users has the following features:
 
@@ -1005,27 +1005,27 @@ The academic profile of other users has the following features:
 
 A user's Academic Hub has a number of sections that are includes via includes if ther user is logged in. This way, each section can be tailored in isolation.
 
-<div align="center"><img src="media/README/academic-profile-2.png" style="height:200px" alt="a user's academic hub"></div>
+<div align="center"><img src="media/README/academic-profile-2.png" style="height:400px" alt="a user's academic hub"></div>
 
 The articles submitted page provides functionality for a user to view and edit their own articles.
 
-<div align="center"><img src="media/README/academic-profile-3.png" style="height:200px" alt="a user's academic hub"></div>
+<div align="center"><img src="media/README/academic-profile-3.png" style="height:400px" alt="a user's academic hub"></div>
 
 The proposals submitted page provides functionality for a user to view and edit their own proposals, as well as see at a glance how much these proposals have generated to date and by how many stakers.
 
-<div align="center"><img src="media/README/academic-profile-4.png" style="height:200px" alt="a user's academic hub"></div>
+<div align="center"><img src="media/README/academic-profile-4.png" style="height:400px" alt="a user's academic hub"></div>
 
 The following page allows for access to the profiles of academics the user is following, and a quick path to unfollow any of these.
 
-<div align="center"><img src="media/README/academic-profile-5.png" style="height:200px" alt="a user's academic hub"></div>
+<div align="center"><img src="media/README/academic-profile-5.png" style="height:400px" alt="a user's academic hub"></div>
 
 The followers page allows for access to the profiles of academics that follow the user.
 
-<div align="center"><img src="media/README/academic-profile-6.png" style="height:200px" alt="a user's academic hub"></div>
+<div align="center"><img src="media/README/academic-profile-6.png" style="height:400px" alt="a user's academic hub"></div>
 
 The order history tab provides a scrollable table of the user's orders, with the order number linking to the order summary that mirrors the checkout success page almost identically. Here, users can again download articles they've purchased.
 
-<div align="center"><img src="media/README/academic-profile-7.png" style="height:200px" alt="a user's academic hub"></div>
+<div align="center"><img src="media/README/academic-profile-7.png" style="height:400px" alt="a user's academic hub"></div>
 
 Finally, the user's profile details are included, alongside the form to update these as they wish.
 
@@ -1106,7 +1106,7 @@ The following accessibility considerations are based on the best ‘checklist’
 - Colour is not used to convey meaning (links & buttons grow on hover)
 - The colours used in the design of the website meet the WCAG triple A standard, with a contrast ratio of at least 7.17:1
 
-<div align="center"><img src="media/README/contrast.png" style="height:200px" alt="a screenshot showing the colours contrast well"></div>
+<div align="center"><img src="media/README/contrast.png" style="height:500px" alt="a screenshot showing the colours contrast well"></div>
 
 ### <div align="center" id="dynamic-content">- Dynamic Content -</div>
 
