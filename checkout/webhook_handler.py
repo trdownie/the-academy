@@ -55,7 +55,6 @@ class StripeWH_Handler:
                 article.save()
 
     def handle_event(self, event):
-        print("unknown event")
         """
         Handle a generic/unknown/unexpected webhook event
         """
@@ -69,7 +68,6 @@ class StripeWH_Handler:
         """
 
         # Obtain relevant details, including from intent
-        print("intent succeeded")
         intent = event.data.object
         pid = intent.id
         bag = intent.metadata.bag
@@ -77,17 +75,14 @@ class StripeWH_Handler:
 
         billing_details = intent.charges.data[0].billing_details
         order_total = round(intent.charges.data[0].amount / 100, 2)
-        print("intent succeeded 2")
+
         # Update profile info if save_info box checked 
         # (and user logged in - not AnonymousUser)
         academic = None
-        print("intent succeeded 3")
         username = intent.metadata.username
         if username != 'AnonymousUser':
-            print('user authenticated')
             academic = Academic.objects.get(user__username=username)
             if save_info:
-                print('save info checked')
                 academic.default_phone_number = billing_details.phone
                 academic.default_country = billing_details.address.country
                 academic.default_postcode = billing_details.address.postal_code
@@ -96,32 +91,29 @@ class StripeWH_Handler:
                 academic.default_street_address2 = billing_details.address.line2
                 academic.default_county = billing_details.address.state
                 academic.save()
-        print("intent succeeded 4")
+
         # Loop to try 5 times to find order (1s apart)
         order_exists = False
         attempt = 1
         while attempt <= 5:
             try:
                 order = Order.objects.get(stripe_pid=pid)
-                print('order found! (try loop)')
                 order_exists = True
                 break
             except Order.DoesNotExist:
-                print('order does not exist! (try loop)')
                 attempt += 1
                 time.sleep(1)
-        print("intent succeeded 5")
+
         # If order was found in above loop, send message/trigger methods
         if order_exists:
-            print('Success 1')
             self.update_proposals(order)
             self._send_confirmation_email(order)
             return HttpResponse(content=f'Webhook received: {event["type"]} \
                                 | SUCCESS: Order exists in database',
                                 status=200)
+
         # Otherwise create the order from the bag (from the intent)
         else:
-            print('Creating the order')
             order = None
             try:
                 order = Order.objects.create(
@@ -138,28 +130,24 @@ class StripeWH_Handler:
                     original_bag=bag,
                     stripe_pid=pid,
                 )
-                print('Order created (try loop 2)')
                 for article_id, article_count in json.loads(bag).items():
                     article = get_object_or_404(Article, pk=article_id)
                     order.order_items.add(article)
-                print('Saving created order')
                 order.save()
+
             # If order cannot be successfully created, 
             # delete order item & return error
             except Exception as e:
-                print('PROBLEM!!!!!!')
                 if order:
                     order.delete()
                 return HttpResponse(
                     content=f'Webhook received: {event["type"]} | ERROR: {e}',
                     status=500)
 
-        print("intent succeeded 6")
         # If order was successfully created (by Stripe),
         # send confirmation emails/trigger methods 
         self._send_confirmation_email(order)
         self.update_proposals(order)
-        print('Success 2')
         return HttpResponse(content=f'Webhook received: {event["type"]} \
                             | SUCCESS: Created order in webhook', status=200)
 
@@ -167,7 +155,6 @@ class StripeWH_Handler:
         """
         Handle the payment_intent.payment_failed webhook from Stripe
         """
-        print("intent failed")
         return HttpResponse(
             content=f'Webhook received: {event["type"]}',
             status=200)
