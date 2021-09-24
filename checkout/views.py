@@ -185,9 +185,10 @@ def checkout_success(request, order_number):
             if academic_profile_form.is_valid():
                 academic_profile_form.save()
 
-        messages.success(request, f'Order successfully processed. \
-            Your order number is {order_number}. A confirmation email \
-            will be sent to {order.email}.')
+    # Show success message
+    messages.success(request, f'Order successfully processed. \
+        Your order number is {order_number}. A confirmation email \
+        will be sent to {order.email}.')
 
     # Delete bag from session storage
     if 'bag' in request.session:
