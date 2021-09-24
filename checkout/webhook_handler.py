@@ -97,7 +97,10 @@ class StripeWH_Handler:
         attempt = 1
         while attempt <= 5:
             try:
-                order = Order.objects.get(stripe_pid=pid)
+                order = Order.objects.get(
+                    # stripe_pid=pid
+                    full_name='New Test123'
+                    )
                 order_exists = True
                 break
             except Order.DoesNotExist:
