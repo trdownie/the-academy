@@ -49,21 +49,6 @@
 </div>
 {% endblock %}
 
-<!-- Tailored CTA -->
-{% block cta %}
-    {% if request.user.is_authenticated and request.user.academic.article_set.all.count >= 1 %}
-        <!-- If user is registered and they have submitted a paper include 'Potential' CTA -->
-        {% include './includes/cta/potential.html' with level=request.user.academic.level name=request.user.academic.name %}
-    {% elif request.user.is_authenticated %}
-        <!-- If user is registered but they have not submitted a paper include 'Contribute' CTA -->
-        <!-- Note: also pass the level and name variables into the include for use in the template -->
-        {% include './includes/cta/contribute.html' with name=request.user.academic.name %}
-    {% else %}
-        <!-- If user is not registered include 'Join' CTA -->
-        {% include './includes/cta/join.html' %}
-    {% endif %}
-{% endblock %}
-
 {% block content %}
     <div id="main-content" class="container">
         <div class="row">
@@ -116,4 +101,20 @@
             {% endfor %}
         </div>
     </div>
+    
+{% endblock %}
+
+<!-- Tailored CTA -->
+{% block cta %}
+    {% if request.user.is_authenticated and request.user.academic.article_set.all.count >= 1 %}
+        <!-- If user is registered and they have submitted a paper include 'Potential' CTA -->
+        {% include './includes/cta/potential.html' with level=request.user.academic.level name=request.user.academic.name %}
+    {% elif request.user.is_authenticated %}
+        <!-- If user is registered but they have not submitted a paper include 'Contribute' CTA -->
+        <!-- Note: also pass the level and name variables into the include for use in the template -->
+        {% include './includes/cta/contribute.html' with name=request.user.academic.name %}
+    {% else %}
+        <!-- If user is not registered include 'Join' CTA -->
+        {% include './includes/cta/join.html' %}
+    {% endif %}
 {% endblock %}
