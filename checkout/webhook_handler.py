@@ -83,13 +83,13 @@ class StripeWH_Handler:
         if request.user.is_authenticated:
             academic = Academic.objects.get(user__username=username)
             if save_info:
-                academic.default_phone_number = billing_details.phone,
-                academic.default_country = billing_details.address.country,
-                academic.default_postcode = billing_details.address.postal_code,
-                academic.default_town_or_city = billing_details.address.city,
-                academic.default_street_address1 = billing_details.address.line1,
-                academic.default_street_address2 = billing_details.address.line2,
-                academic.default_county = billing_details.address.state,
+                academic.default_phone_number = billing_details.phone
+                academic.default_country = billing_details.address.country
+                academic.default_postcode = billing_details.address.postal_code
+                academic.default_town_or_city = billing_details.address.city
+                academic.default_street_address1 = billing_details.address.line1
+                academic.default_street_address2 = billing_details.address.line2
+                academic.default_county = billing_details.address.state
                 academic.save()
 
         # Loop to try 5 times to find order (1s apart)
