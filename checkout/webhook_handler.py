@@ -79,9 +79,9 @@ class StripeWH_Handler:
         # Update profile info if save_info box checked 
         # (and user logged in - not AnonymousUser)
         academic = None
-        username = intent.metadata.username
+        # username = intent.metadata.username
         if request.user.is_authenticated:
-            academic = Academic.objects.get(user__username=username)
+            academic = Academic.objects.get(user=request.user)
             if save_info:
                 academic.default_phone_number = billing_details.phone
                 academic.default_country = billing_details.address.country
@@ -97,10 +97,7 @@ class StripeWH_Handler:
         attempt = 1
         while attempt <= 5:
             try:
-                order = Order.objects.get(
-                    # stripe_pid=pid
-                    full_name='New Test123'
-                    )
+                order = Order.objects.get(stripe_pid=pid)
                 order_exists = True
                 break
             except Order.DoesNotExist:
